@@ -1,11 +1,18 @@
 import React, { FC } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
+import { UserContextProvider } from './context/User';
+import { Routes } from './routes';
+
 import './App.css';
 
 const App: FC = () => {
   return (
-    <div className="App">
-      Gdzie moje skrzypce?!
-    </div>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </UserContextProvider>
   );
 }
 
