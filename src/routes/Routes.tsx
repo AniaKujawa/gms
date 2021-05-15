@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Login, Dashboard } from './../views';
+import { StarterView, Dashboard } from './../views';
 
 import { useUserContext } from './../context/User';
 
 const BaseRoutes: FC = () => (
   <Switch>
     <Route path="/">
-      <Login />
+      <StarterView />
     </Route>
   </Switch>
 );
