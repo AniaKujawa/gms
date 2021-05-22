@@ -6,5 +6,6 @@ export type Props = {
   // password: string;
   // email: string;
   // handleChange: (name: string) => void;
-  register: any;
+  control: any;
+  errors: any;
 };
