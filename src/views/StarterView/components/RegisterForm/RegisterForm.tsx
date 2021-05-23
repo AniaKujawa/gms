@@ -72,4 +72,4 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
       </Link>
     </form>
   )
-}
+};
