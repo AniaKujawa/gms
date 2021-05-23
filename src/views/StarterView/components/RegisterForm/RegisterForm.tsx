@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Link } from '@material-ui/core';
 
 import { Form } from '../../shared/Form';
 
-import { RegisterFormProps } from './types';
+import { RegisterFormProps, Props } from './types';
 import { useStyles } from './RegisterForm.styles';
 
-export const RegisterForm: FC = () => {
+export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
 
   const onSubmit = (data: RegisterFormProps) => {
-    console.log('no', data);
+    console.log('register', data);
   }
 
   return (
@@ -67,6 +67,9 @@ export const RegisterForm: FC = () => {
       >
         Register
       </Button>
+      <Link onClick={() => setIsRegistered(true)}>
+        Have you already registered? Log in
+      </Link>
     </form>
   )
 }

@@ -4,14 +4,9 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      justifyContent: 'center',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+      maxWidth: theme.spacing(40),
     },
-    card: {
-      padding: theme.spacing(2)
-    }
   }),
 );
