@@ -29,5 +29,5 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
         Don't have an account? Register!
       </Link>
     </form>
-  )
-}
+  );
+};
