@@ -1,11 +1,9 @@
 import { RegisterFormProps } from '../components/RegisterForm/types';
+import { DeepMap, Control, FieldError } from 'react-hook-form';
 
 type FormProps = RegisterFormProps
 
 export type Props = {
-  // password: string;
-  // email: string;
-  // handleChange: (name: string) => void;
-  control: any;
-  errors: any;
+  control: Control<FormProps>;
+  errors: DeepMap<RegisterFormProps, FieldError>
 };
