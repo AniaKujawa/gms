@@ -6,7 +6,7 @@ import { useStyles } from './Button.styles';
 export const Button: FC<ButtonProps> = ({ children, color = 'primary', ...props }) => {
   const classes = useStyles();
 
-  return(
+  return (
     <MButton
       variant='contained'
       color={color}
@@ -15,5 +15,5 @@ export const Button: FC<ButtonProps> = ({ children, color = 'primary', ...props 
     >
       {children}
     </MButton>
-  )
-}
+  );
+};
