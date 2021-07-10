@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Button, TextField, Link } from '@material-ui/core';
+import { TextField, Link } from '@material-ui/core';
 
-import { Form } from '../../shared/Form';
+import { Form } from './../../shared/Form';
+import { Button } from './../../shared/Button';
 
 import { RegisterFormProps, Props } from './types';
 import { useStyles } from './RegisterForm.styles';
@@ -67,7 +68,10 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
       >
         Register
       </Button>
-      <Link onClick={() => setIsRegistered(true)}>
+      <Link
+        onClick={() => setIsRegistered(true)}
+        className={classes.link}
+      >
         Have you already registered? Log in
       </Link>
     </form>

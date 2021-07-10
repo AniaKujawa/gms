@@ -11,7 +11,12 @@ export const useStyles = makeStyles((theme: Theme) =>
       transform: 'translate(-50%, -50%)',
     },
     card: {
-      padding: theme.spacing(2)
+      padding: theme.spacing(4)
+    },
+    link: {
+      color: '#FFF',
+      textDecoration: 'none',
+      cursor: 'pointer',
     }
   }),
 );

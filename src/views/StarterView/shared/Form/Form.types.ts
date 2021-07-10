@@ -1,6 +1,6 @@
-import { RegisterFormProps } from '../components/RegisterForm/types';
+import { RegisterFormProps } from '../../components/RegisterForm/types';
 import { DeepMap, Control, FieldError } from 'react-hook-form';
-import { LoginFormProps } from '../components/LoginForm/types';
+import { LoginFormProps } from '../../components/LoginForm/types';
 
 type FormProps = RegisterFormProps | LoginFormProps
 

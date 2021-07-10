@@ -1,8 +1,10 @@
 import React, { FC, useState } from 'react';
-import { Card as MCard, Button, Container } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Card as MCard, Container } from '@material-ui/core';
 
 import { RegisterForm } from './components/RegisterForm';
 import { LoginForm } from './components/LoginForm';
+import { Button } from './shared/Button';
 import { useStyles } from './StarterView.styles';
 
 type CardProps = {
@@ -35,7 +37,11 @@ export const StarterView: FC = () => {
           </Card>)
         }
         <Card title='Check our platform' className={classes.card}>
-          <Button>Continue as a guest</Button>
+          <Button
+            color='secondary'
+          >
+            <Link className={classes.link} to='/dashboard'>Continue as a guest</Link>
+          </Button>
         </Card>
       </Container>
     </div>

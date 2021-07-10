@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './context/User';
 import { Routes } from './routes';
 
-import './App.css';
-
 const App: FC = () => {
   return (
     <UserContextProvider>

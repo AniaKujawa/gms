@@ -1,22 +1,26 @@
 import React, { FC } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { StarterView, Dashboard } from './../views';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { StarterView, Dashboard, DashboardPreview } from './../views';
 
 import { useUserContext } from './../context/User';
 
 const BaseRoutes: FC = () => (
   <Switch>
-    <Route path="/">
+    <Route exact path="/">
       <StarterView />
+    </Route>
+    <Route exact path="/dashboard">
+      <DashboardPreview />
     </Route>
   </Switch>
 );
 
 const AuthRoutes: FC = () => (
   <Switch>
-    <Route path="/">
+    <Route exact path="/dashboard">
       <Dashboard />
     </Route>
+    <Redirect key="dashboardRedirect" exact from="/" to="/dashboard" />
   </Switch>
 );
 

@@ -8,5 +8,8 @@ export const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       maxWidth: theme.spacing(40),
     },
+    link: {
+      cursor: 'pointer',
+    },
   }),
 );

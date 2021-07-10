@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { Button, Link } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 
-import { Form } from '../../shared/Form';
+import { Form } from './../../shared/Form';
+import { Button } from './../../shared/Button';
 
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
@@ -25,7 +26,10 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
       >
         Log in
       </Button>
-      <Link onClick={() => setIsRegistered(false)}>
+      <Link 
+        onClick={() => setIsRegistered(false)}
+        className={classes.link}
+      >
         Don't have an account? Register!
       </Link>
     </form>
