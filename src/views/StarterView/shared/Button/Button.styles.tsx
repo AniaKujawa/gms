@@ -3,13 +3,7 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column',
-      maxWidth: theme.spacing(40),
-    },
-    link: {
-      cursor: 'pointer',
-    },
+      margin: `${theme.spacing(5)}px ${theme.spacing(2)}px`
+    }
   }),
 );

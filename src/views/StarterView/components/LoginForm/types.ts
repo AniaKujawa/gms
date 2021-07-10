@@ -1,6 +1,4 @@
-export type RegisterFormProps = {
-  firstName: string;
-  lastName: string;
+export type LoginFormProps = {
   email: string;
   password: string;
 };
