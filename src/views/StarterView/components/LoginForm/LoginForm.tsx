@@ -4,6 +4,7 @@ import { Link } from '@material-ui/core';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
+import { userClient } from '../../../../client/User';
 
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
@@ -14,8 +15,9 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: LoginFormProps) => {
+  const onSubmit = async(data: LoginFormProps) => {
     console.log('login', data);
+    await userClient.getUsers();
   }
 
   return (

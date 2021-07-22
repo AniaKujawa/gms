@@ -4,6 +4,7 @@ import { TextField, Link } from '@material-ui/core';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
+import { userClient } from '../../../../client/User';
 
 import { RegisterFormProps, Props } from './types';
 import { useStyles } from './RegisterForm.styles';
@@ -14,8 +15,13 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: RegisterFormProps) => {
+  const onSubmit = async(data: RegisterFormProps) => {
     console.log('register', data);
+    try {
+      await userClient.registerUser(data);
+    } catch(e) {
+      console.log(`Can't register user`, e);
+    }
   }
 
   return (
@@ -62,6 +68,26 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
           </>
         )}
       />
+      <Controller
+        name='username'
+        control={control}
+        rules={{
+          required: 'Username can not be blank'
+        }}
+        defaultValue=''
+        error={!!errors.username}
+        render={(
+          { onChange, value }
+        )=> (
+          <TextField
+            label='Username'
+            type='text'
+            onChange={onChange}
+            value={value}
+            helperText={errors?.username?.message}
+          />
+        )}
+       />
       <Form control={control} errors={errors} />
       <Button
         type='submit'
