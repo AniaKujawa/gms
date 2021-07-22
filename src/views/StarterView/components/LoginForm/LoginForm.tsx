@@ -1,23 +1,36 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
+import { useMutation } from 'react-query';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
-import { userClient } from '../../../../client/User';
+import { client as queryClient } from './../../../../client/UserQuery';
 
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
+import { useUserContext } from '../../../../context/User';
 
 export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
+  const { login } = useUserContext();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
 
+  const mutation = useMutation(login, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('user')
+    },
+  })
+
   const onSubmit = async(data: LoginFormProps) => {
     console.log('login', data);
-    await userClient.getUsers();
+    try {
+      await mutation.mutate(data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
