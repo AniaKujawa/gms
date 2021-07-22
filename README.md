@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Icons made by [https://www.freepik.com] Freepik <br/>
+from [https://www.flaticon.com/] Flaticon
+
 ## Available Scripts
 
 In the project directory, you can run:
