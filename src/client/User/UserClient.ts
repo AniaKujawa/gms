@@ -57,7 +57,7 @@ class UserClient {
       return response.data
     } catch(e) {
       console.log(`Can't login`, e);
-      throw new Error(`Can't login`);
+      throw new Error(`Can't login, try again later`);
     }
   }
 };

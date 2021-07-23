@@ -5,7 +5,7 @@ import { Alert as AlertType, FeedbackContextProps } from './types';
 
 export const defaultAlert: AlertType = {
   isOpened: false,
-  warningLevel: undefined,
+  warningLevel: 'info',
   message: '',
 };
 
@@ -18,12 +18,6 @@ export const FeedbackContext = createContext<FeedbackContextProps>(defaultContex
 
 export const FeedbackContextProvider: FC = ({ children }) => {
   const [ alert, setAlert ] = useState(defaultAlert);
-  // const setAlert = (warningLevel: Warning, message: string, isOpened = true) => setAlertValues({
-  //   warningLevel,
-  //   message,
-  //   isOpened
-  // })
-  // const feedbackCtx = useMemo(() => ({ alert, setAlert }), [ alert ]);
 
   return (
     <FeedbackContext.Provider
