@@ -12,7 +12,6 @@ class FetchService {
 
   attachHeaders(options: AxiosRequestConfig) {
     const token = storage.getItem(AUTH_KEY);
-    console.log(token);
 
     return {
       ...options,
