@@ -13,7 +13,7 @@ class UserClient {
       });
       console.log(data.data);
       return data.data
-    } catch(e){
+    } catch(e) {
       console.log('Couldn\'t get all users', e);
       throw new Error('Couldn\'t get all users');
     }
@@ -27,7 +27,7 @@ class UserClient {
       });
       console.log(data.data);
       return data.data
-    } catch(e){
+    } catch(e) {
       console.log('Couldn\'t get the user', e);
       throw new Error(`Can't get the user`);
     }
@@ -41,7 +41,7 @@ class UserClient {
       });
       console.log(response.data);
       return response.data
-    } catch(e){
+    } catch(e) {
       console.log(`Can't register user`, e);
       throw new Error(`Can't register user`);
     }
