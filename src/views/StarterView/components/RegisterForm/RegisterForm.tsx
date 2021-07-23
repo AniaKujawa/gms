@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Link } from '@material-ui/core';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
-import { client as queryClient } from './../../../../client/UserQuery';
 import { useUserContext } from '../../../../context/User';
 
 import { RegisterFormProps, Props } from './types';
@@ -13,6 +12,7 @@ import { useStyles } from './RegisterForm.styles';
 
 export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
+  const queryClient = useQueryClient();
   const { register } = useUserContext();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
