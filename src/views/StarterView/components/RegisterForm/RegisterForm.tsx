@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
 import { useUserContext } from '../../../../context/User';
+import { useFeedback } from '../../../../hooks/useFeedback';
 
 import { RegisterFormProps, Props } from './types';
 import { useStyles } from './RegisterForm.styles';
@@ -14,6 +15,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
   const queryClient = useQueryClient();
   const { register } = useUserContext();
+  const { handleError } = useFeedback();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
@@ -22,16 +24,10 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
     onSuccess: () => {
       queryClient.invalidateQueries('user')
     },
+    onError: (err: Error) => handleError(err),
   });
 
-  const onSubmit = async(data: RegisterFormProps) => {
-    console.log('register', data);
-    try {
-      await mutation.mutate(data);;
-    } catch(e) {
-      console.log(`Can't register user`, e);
-    }
-  }
+  const onSubmit = (data: RegisterFormProps) => mutation.mutate(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
