@@ -32,7 +32,7 @@ export const StarterView: FC = () => {
           <Card title='Log in' className={classes.card}>
             <LoginForm setIsRegistered={setIsRegistered}  />
           </Card>) : (
-          <Card title='Sign in' className={classes.card}>
+          <Card title='Sign up' className={classes.card}>
             <RegisterForm setIsRegistered={setIsRegistered} />
           </Card>)
         }
