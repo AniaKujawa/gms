@@ -17,7 +17,7 @@ const UserContext = React.createContext<UserContextType>(defaultContext);
 
 export const UserContextProvider: FC = ({ children }) => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(defaultContext.isLoggedIn);
-  const { data: user } = useQuery('user', userClient.getUser);
+  const { data: user } = useQuery('user', userClient.getUser, { retry: false });
 
   useEffect(() => {
     if(user?.data) {

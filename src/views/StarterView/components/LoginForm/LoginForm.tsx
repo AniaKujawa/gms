@@ -9,11 +9,13 @@ import { Button } from './../../shared/Button';
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
 import { useUserContext } from '../../../../context/User';
+import { useFeedback } from '../../../../hooks/useFeedback';
 
 export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
   const queryClient = useQueryClient();
   const { login } = useUserContext();
+  const { handleError } = useFeedback();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
@@ -22,16 +24,10 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
     onSuccess: () => {
       queryClient.invalidateQueries('user')
     },
-  })
+    onError: (err: Error) => handleError(err),
+  });
 
-  const onSubmit = async(data: LoginFormProps) => {
-    console.log('login', data);
-    try {
-      await mutation.mutate(data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const onSubmit = (data: LoginFormProps) => mutation.mutate(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
