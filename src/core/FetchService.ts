@@ -11,8 +11,6 @@ class FetchService {
   }
 
   attachHeaders(options: AxiosRequestConfig) {
-    const token = storage.getItem(AUTH_KEY);
-
     return {
       ...options,
       paramsSerializer: (params: URLSearchParams) => this.serializeParams(params),
@@ -20,14 +18,36 @@ class FetchService {
         ...options.headers,
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization:  token && 'Token' + token
       },
-      withCredentials: true,
-    };
+    }
+  }
+
+  auth(options: AxiosRequestConfig) {
+    const token = storage.getItem(AUTH_KEY);
+
+    if(token) {
+      return {
+        ...options,
+        headers: {
+          ...options.headers,
+          Authorization: `Bearer ${token}`
+        }
+      }
+    }
+
+    return options;
   }
 
   request(options: AxiosRequestConfig): AxiosPromise {
     const optionsWithHeader = this.attachHeaders(options);
+    const optionsWithAuth = this.auth(optionsWithHeader);
+
+    return request(optionsWithAuth);
+  }
+
+  requestWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
+    const optionsWithHeader = this.attachHeaders(options);
+
     return request(optionsWithHeader);
   }
 
@@ -40,6 +60,13 @@ class FetchService {
 
   post(options: AxiosRequestConfig): AxiosPromise {
     return this.request({
+      ...options,
+      method: 'POST'
+    });
+  }
+
+  postWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
+    return this.requestWithoutAuth({
       ...options,
       method: 'POST'
     });
