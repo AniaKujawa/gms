@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Controller } from 'react-hook-form';
 import { Input, InputLabel, InputAdornment, IconButton, TextField, FormHelperText, FormControl } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -9,6 +10,7 @@ import { useStyles } from './Form.styles';
 export const Form: FC<Props> = ({ control, errors }) => {
   const classes = useStyles();
   const [ showPassword, setShowPassword ] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -16,11 +18,11 @@ export const Form: FC<Props> = ({ control, errors }) => {
         name='email'
         control={control}
         rules={{
-          required: 'Email can not be blank',
+          required: `${t('signing.errors.blankEmail')}`,
           pattern: {
             value:
               /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-            message: 'Invalid email address',
+            message: `${t('signing.errors.invalidEmail')}`,
           }
         }}
         defaultValue=''
@@ -29,7 +31,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
           { onChange, value }
         )=> (
           <TextField
-            label='Email'
+            label={t('signing.email')}
             type='text'
             onChange={onChange}
             value={value}
@@ -41,11 +43,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
         name='password'
         control={control}
         rules={{
-          required: 'Password can not be blank',
-          minLength: {
-            value: 8,
-            message: 'Must have at least 8 characters'
-          }
+          required: `${t('signing.errors.blankPassword')}`,
         }}
         defaultValue=''
         error={!!errors.password}
@@ -53,7 +51,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
           { onChange, value }
         )=> (
           <FormControl>
-            <InputLabel htmlFor="password">Password</InputLabel>
+            <InputLabel htmlFor="password">{t('signing.password')}</InputLabel>
             <Input
               type={showPassword ? 'text' : 'password'}
               id='password'

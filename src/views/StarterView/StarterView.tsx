@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card as MCard, Container } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import { RegisterForm } from './components/RegisterForm';
 import { LoginForm } from './components/LoginForm';
@@ -24,23 +25,24 @@ const Card: FC<CardProps> = ({ children, title, className }) => {
 export const StarterView: FC = () => {
   const classes = useStyles();
   const [ isRegistered, setIsRegistered ] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className='container'>
       <Container maxWidth='md' className={classes.root}>
         {isRegistered ? (
-          <Card title='Log in' className={classes.card}>
+          <Card title={t('signing.login')} className={classes.card}>
             <LoginForm setIsRegistered={setIsRegistered}  />
           </Card>) : (
-          <Card title='Sign up' className={classes.card}>
+          <Card title={t('signing.signup')} className={classes.card}>
             <RegisterForm setIsRegistered={setIsRegistered} />
           </Card>)
         }
-        <Card title='Check our platform' className={classes.card}>
+        <Card title={t('signing.checkPlatform')} className={classes.card}>
           <Button
             color='secondary'
           >
-            <Link className={classes.link} to='/dashboard'>Continue as a guest</Link>
+            <Link className={classes.link} to='/dashboard'>{t('signing.guestContinue')}</Link>
           </Button>
         </Card>
       </Container>

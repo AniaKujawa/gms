@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Link } from '@material-ui/core';
 import { useMutation, useQueryClient } from 'react-query';
@@ -13,6 +14,7 @@ import { useStyles } from './RegisterForm.styles';
 
 export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const { register } = useUserContext();
   const { handleError } = useFeedback();
@@ -35,7 +37,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         name='firstName'
         control={control}
         rules={{
-          required: 'First name can not be blank'
+          required: `${t('signing.errors.blankName')}`
         }}
         defaultValue=''
         error={!!errors.firstName}
@@ -43,7 +45,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
           { onChange, value }
         )=> (
           <TextField
-            label='First name'
+            label={t('signing.firstname')}
             type='text'
             onChange={onChange}
             value={value}
@@ -55,7 +57,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         name='lastName'
         control={control}
         rules={{
-          required: 'Last name can not be blank'
+          required: `${t('signing.errors.blankLastName')}`
         }}
         defaultValue=''
         error={!!errors.lastName}
@@ -64,7 +66,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         )=> (
           <>
             <TextField
-              label='Last name'
+              label={t('signing.lastname')}
               type='text'
               onChange={onChange}
               value={value}
@@ -77,7 +79,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         name='username'
         control={control}
         rules={{
-          required: 'Username can not be blank'
+          required: `${t('signing.errors.blankUsername')}`
         }}
         defaultValue=''
         error={!!errors.username}
@@ -85,7 +87,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
           { onChange, value }
         )=> (
           <TextField
-            label='Username'
+            label={t('signing.username')}
             type='text'
             onChange={onChange}
             value={value}
@@ -97,13 +99,13 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
       <Button
         type='submit'
       >
-        Register
+        {t('signing.register')}
       </Button>
       <Link
         onClick={() => setIsRegistered(true)}
         className={classes.link}
       >
-        Have you already registered? Log in
+        {t('signing.alreadyRegistered')}
       </Link>
     </form>
   )

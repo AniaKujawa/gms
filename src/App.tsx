@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@material-ui/core';
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 
@@ -10,6 +10,7 @@ import { FeedbackContextProvider } from './context/Feedback';
 import { client } from './client/UserQuery';
 import { Routes } from './routes';
 import { FeedbackAlert } from './shared/components/Feedback';
+import { GlobalLoader } from './views/GlobalLoader';
 
 const providers: FC[] = [
   FeedbackContextProvider,
@@ -19,11 +20,13 @@ const providers: FC[] = [
 const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <QueryClientProvider client={client}>,
+      <QueryClientProvider client={client}>
         <PipeProviders components={providers}>
           <BrowserRouter>
-            <Routes />
-            <FeedbackAlert />
+            <Suspense fallback={<GlobalLoader />}>
+              <Routes />
+              <FeedbackAlert />
+            </Suspense>
           </BrowserRouter>
         </PipeProviders>
       </QueryClientProvider>

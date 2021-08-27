@@ -1,0 +1,28 @@
+{
+  "signing": {
+    "signup": "Zarejestruj się",
+    "login": "Zaloguj się",
+    "loginButton": "Zaloguj",
+    "register": "Zarejestruj się",
+    "firstname": "Imię",
+    "lastname": "Nazwisko",
+    "username": "Nazwa",
+    "email": "Email",
+    "password": "Hasło",
+    "alreadyRegistered": "Masz juz konto? Zaloguj się!",
+    "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
+    "checkPlatform": "Obczaj naszą platformę",
+    "guestContinue": "Kontynuuj jako gość",
+    "errors": {
+      "blankEmail": "Email nie moze być pusty",
+      "invalidEmail": "Nieprawidłowy email",
+      "blankPassword": "Hasło nie moze być puste",
+      "blankName": "Imię nie moze być puste",
+      "blankLastName": "Nazwisko nie moze być puste",
+      "blankUsername": "Nazwa nie moze być pusta"
+    }
+  },
+  "dashboard": {
+
+  }
+}

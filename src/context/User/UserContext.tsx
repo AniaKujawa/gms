@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import noop from 'lodash/noop';
 
 import { userClient } from './../../client/User';
+import storage from './../../utils/storage';
 
 import { UserContext as UserContextType } from './types';
 
@@ -21,6 +22,7 @@ export const UserContextProvider: FC = ({ children }) => {
 
   useEffect(() => {
     if(user?.data) {
+      storage.setItem('token', user.data);
       setIsLoggedIn(true);
     }
   }, [user, setIsLoggedIn]);

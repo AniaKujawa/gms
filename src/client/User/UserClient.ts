@@ -1,6 +1,7 @@
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
 import { Login, User } from '../../types';
+import storage from './../../utils/storage';
 
 import { parseUser } from './formatter';
 
@@ -35,11 +36,12 @@ class UserClient {
 
   async registerUser(data: User) {
     try {
-      const response = await fetch.post({
-        url: endpoints.signIn,
+      const response = await fetch.postWithoutAuth({
+        url: endpoints.users,
         data: parseUser(data)
       });
-      console.log(response.data);
+      storage.setItem('token', response.data.token);
+
       return response.data
     } catch(e) {
       console.log(`Can't register user`, e);
@@ -49,11 +51,14 @@ class UserClient {
 
   async loginUser(data: Login) {
     try {
-      const response = await fetch.post({
-        url: endpoints.users,
-        data
+      const response = await fetch.postWithoutAuth({
+        url: endpoints.signIn,
+        data: {
+          user: data
+        }
       });
-      console.log(response.data);
+      storage.setItem('token', response.data.token);
+
       return response.data
     } catch(e) {
       console.log(`Can't login`, e);
