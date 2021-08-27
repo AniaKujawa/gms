@@ -1,4 +1,28 @@
 {
-  "signup": "Sign up",
-  "login": "Log in"
+  "signing": {
+    "signup": "Sign up",
+    "login": "Log in",
+    "loginButton": "Log in",
+    "register": "Register",
+    "firstname": "First name",
+    "lastname": "Last name",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "alreadyRegistered": "Have you already registered? Log in",
+    "firstTime": "Don't have an account? Register!",
+    "checkPlatform": "Check our platform",
+    "guestContinue": "Continue as a guest",
+    "errors": {
+      "blankEmail": "Email can not be blank",
+      "invalidEmail": "Invalid email",
+      "blankPassword": "Password can not be blank",
+      "blankName": "First name can not be blank",
+      "blankLastName": "Last name can not be blank",
+      "blankUsername": "Username can not be blank"
+    }
+  },
+  "dashboard": {
+
+  }
 }

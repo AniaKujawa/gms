@@ -31,18 +31,18 @@ export const StarterView: FC = () => {
     <div className='container'>
       <Container maxWidth='md' className={classes.root}>
         {isRegistered ? (
-          <Card title={t('login')} className={classes.card}>
+          <Card title={t('signing.login')} className={classes.card}>
             <LoginForm setIsRegistered={setIsRegistered}  />
           </Card>) : (
-          <Card title={t('signup')} className={classes.card}>
+          <Card title={t('signing.signup')} className={classes.card}>
             <RegisterForm setIsRegistered={setIsRegistered} />
           </Card>)
         }
-        <Card title='Check our platform' className={classes.card}>
+        <Card title={t('signing.checkPlatform')} className={classes.card}>
           <Button
             color='secondary'
           >
-            <Link className={classes.link} to='/dashboard'>Continue as a guest</Link>
+            <Link className={classes.link} to='/dashboard'>{t('signing.guestContinue')}</Link>
           </Button>
         </Card>
       </Container>

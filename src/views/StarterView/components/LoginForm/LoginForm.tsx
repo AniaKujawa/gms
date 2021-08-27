@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
 import { useMutation, useQueryClient } from 'react-query';
@@ -14,6 +15,7 @@ import { useFeedback } from '../../../../hooks/useFeedback';
 
 export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const { login } = useUserContext();
   const { handleError } = useFeedback();
@@ -36,13 +38,13 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
       <Button
         type='submit'
       >
-        Log in
+        {t('signing.loginButton')}
       </Button>
       <Link 
         onClick={() => setIsRegistered(false)}
         className={classes.link}
       >
-        Don't have an account? Register!
+        {t('signing.firstTime')}
       </Link>
     </form>
   );
