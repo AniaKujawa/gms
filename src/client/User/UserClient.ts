@@ -65,6 +65,22 @@ class UserClient {
       throw new Error('apiErrors.login');
     }
   }
+
+  async recoverPassword(email: string) {
+    try {
+      const response = await fetch.postWithoutAuth({
+        url: endpoints.signIn,
+        data: {
+          email
+        }
+      });
+
+      return response.data
+    } catch(e) {
+      console.log(`Can't recover password`, e);
+      throw new Error('apiErrors.passwordRecovery');
+    }
+  }
 };
 
 export const userClient = new UserClient();

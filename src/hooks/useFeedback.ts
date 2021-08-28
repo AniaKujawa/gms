@@ -13,7 +13,16 @@ export const useFeedback = () => {
     });
   };
 
+  const handleSuccess = (msg: string) => {
+    setAlert({
+      message: t(msg || 'defaultSuccess'),
+      warningLevel: 'success',
+      isOpened: true,
+    });
+  };
+
   return { 
     handleError,
+    handleSuccess
   };
 };

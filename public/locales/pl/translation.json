@@ -13,14 +13,17 @@
     "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
     "checkPlatform": "Obczaj naszą platformę",
     "guestContinue": "Kontynuuj jako gość",
+    "lostPassword": "Zapomniałem/am hasła",
     "errors": {
       "blankEmail": "Email nie moze być pusty",
       "invalidEmail": "Nieprawidłowy email",
       "blankPassword": "Hasło nie moze być puste",
       "blankName": "Imię nie moze być puste",
       "blankLastName": "Nazwisko nie moze być puste",
-      "blankUsername": "Nazwa nie moze być pusta"
-    }
+      "blankUsername": "Nazwa nie moze być pusta",
+      "badEmailWhenLostPassword": "Podaj prawidłowy adres emailowy"
+    },
+    "lostPasswordSentEmail": "Na podany email zostanie wysłana wiadomość z linkiem do zmiany hasła :)"
   },
   "dashboard": {
 
@@ -30,6 +33,8 @@
     "register": "Nie udało się zarejestrować, spróbuj ponownie później",
     "login": "Nie udało się zalogować, spróbuj ponownie później",
     "getUser": "Nie udało się pobrać uzytkownika",
-    "getUsers": "Nie udało się pobrać wszytskich uzytkowników"
-  }
+    "getUsers": "Nie udało się pobrać wszytskich uzytkowników",
+    "passwordRecovery": "Nie udało się wysłać maila na podany adres, spróbuj ponownie później"
+  },
+  "defaultSuccess": "Udało się!"
 }

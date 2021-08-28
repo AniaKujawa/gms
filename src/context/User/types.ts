@@ -8,4 +8,5 @@ export type UserContext = {
   user: User | {},
   login: MaybeNoop<(data: Login) => AxiosPromise<LoginResponse>>,
   register: MaybeNoop<(data: User) => AxiosPromise<LoginResponse>>,
+  recoverPassword: MaybeNoop<(email: string) => AxiosPromise<void>>,
 }
