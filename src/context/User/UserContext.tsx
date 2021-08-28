@@ -12,6 +12,7 @@ const defaultContext = {
   user: {},
   login: noop,
   register: noop,
+  recoverPassword: noop,
 };
 
 const UserContext = React.createContext<UserContextType>(defaultContext);
@@ -33,6 +34,7 @@ export const UserContextProvider: FC = ({ children }) => {
       user,
       login: userClient.loginUser,
       register: userClient.registerUser,
+      recoverPassword: userClient.recoverPassword,
     }}>
       {children}
     </UserContext.Provider>

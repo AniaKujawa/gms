@@ -4,13 +4,15 @@ import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
 import { useMutation, useQueryClient } from 'react-query';
 
+import { useUserContext } from '../../../../context/User';
+import { useFeedback } from '../../../../hooks/useFeedback';
+
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
 
+import { PasswordRecover } from './components/PasswordRecover';
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
-import { useUserContext } from '../../../../context/User';
-import { useFeedback } from '../../../../hooks/useFeedback';
 
 
 export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
@@ -46,6 +48,7 @@ export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
       >
         {t('signing.firstTime')}
       </Link>
+      <PasswordRecover control={control} emailErrors={errors.email} />
     </form>
   );
 };

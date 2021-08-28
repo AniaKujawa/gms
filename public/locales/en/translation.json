@@ -13,14 +13,17 @@
     "firstTime": "Don't have an account? Register!",
     "checkPlatform": "Check our platform",
     "guestContinue": "Continue as a guest",
+    "lostPassword": "Forgotten password",
     "errors": {
       "blankEmail": "Email can not be blank",
       "invalidEmail": "Invalid email",
       "blankPassword": "Password can not be blank",
       "blankName": "First name can not be blank",
       "blankLastName": "Last name can not be blank",
-      "blankUsername": "Username can not be blank"
-    }
+      "blankUsername": "Username can not be blank",
+      "badEmailWhenLostPassword": "Please fill your correct email"
+    },
+    "lostPasswordSentEmail": "We've sent you an email with link to changing your password :)"
   },
   "dashboard": {
 
@@ -30,6 +33,8 @@
     "register": "Can't register, try again later",
     "login": "Can't login, try again later",
     "getUser": "Couldn't get a user",
-    "getUsers": "Couldn't get all users"
-  }
+    "getUsers": "Couldn't get all users",
+    "passwordRecovery": "Something went wrong, please try later"
+  },
+  "defaultSuccess": "Success!"
 }
