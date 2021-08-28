@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { StarterView, Dashboard, DashboardPreview } from './../views';
 
 import { useUserContext } from './../context/User';
@@ -7,20 +7,19 @@ import { useUserContext } from './../context/User';
 const BaseRoutes: FC = () => (
   <Switch>
     <Route exact path="/">
-      <StarterView />
-    </Route>
-    <Route exact path="/dashboard">
       <DashboardPreview />
+    </Route>
+    <Route exact path="/start">
+      <StarterView />
     </Route>
   </Switch>
 );
 
 const AuthRoutes: FC = () => (
   <Switch>
-    <Route exact path="/dashboard">
+    <Route exact path="/">
       <Dashboard />
     </Route>
-    <Redirect key="dashboardRedirect" exact from="/" to="/dashboard" />
   </Switch>
 );
 
