@@ -24,5 +24,12 @@
   },
   "dashboard": {
 
+  },
+  "apiErrors": {
+    "default": "Przepraszamy, coś poszło nie tak",
+    "register": "Nie udało się zarejestrować, spróbuj ponownie później",
+    "login": "Nie udało się zalogować, spróbuj ponownie później",
+    "getUser": "Nie udało się pobrać uzytkownika",
+    "getUsers": "Nie udało się pobrać wszytskich uzytkowników"
   }
 }

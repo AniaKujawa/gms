@@ -16,7 +16,7 @@ class UserClient {
       return data.data
     } catch(e) {
       console.log('Couldn\'t get all users', e);
-      throw new Error('Couldn\'t get all users');
+      throw new Error('apiErrors.getUsers');
     }
   }
 
@@ -30,7 +30,7 @@ class UserClient {
       return data.data
     } catch(e) {
       console.log('Couldn\'t get the user', e);
-      throw new Error(`Can't get the user`);
+      throw new Error('apiErrors.getUser');
     }
   }
 
@@ -45,7 +45,7 @@ class UserClient {
       return response.data
     } catch(e) {
       console.log(`Can't register user`, e);
-      throw new Error(`Can't register user`);
+      throw new Error('apiErrors.register');
     }
   }
 
@@ -62,7 +62,7 @@ class UserClient {
       return response.data
     } catch(e) {
       console.log(`Can't login`, e);
-      throw new Error(`Can't login, try again later`);
+      throw new Error('apiErrors.login');
     }
   }
 };
