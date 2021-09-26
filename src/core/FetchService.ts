@@ -85,6 +85,24 @@ class FetchService {
       method: 'DELETE'
     });
   }
+
+  fakeRequest(options = {}, response: Record<any, any>, error = false): AxiosPromise {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (error === false) {
+          resolve({
+            config: {},
+            headers: {},
+            status: 200,
+            statusText: 'Success',
+            data: response,
+          });
+        } else {
+          reject({ error });
+        }
+      }, 500);
+    });
+  }
 }
 
 const instance = new FetchService();

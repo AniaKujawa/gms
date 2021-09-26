@@ -34,6 +34,7 @@
     "login": "Can't login, try again later",
     "getUser": "Couldn't get a user",
     "getUsers": "Couldn't get all users",
+    "getMusicians": "Couldn't get all musicians",
     "passwordRecovery": "Something went wrong, please try later"
   },
   "defaultSuccess": "Success!"
