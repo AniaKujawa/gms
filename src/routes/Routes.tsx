@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { StarterView, Dashboard, DashboardPreview } from './../views';
+import {
+  StarterView,
+  Dashboard,
+  DashboardPreview,
+  MusicView
+} from './../views';
 
 import { useUserContext } from './../context/User';
 
@@ -11,6 +16,9 @@ const BaseRoutes: FC = () => (
     </Route>
     <Route exact path="/start">
       <StarterView />
+    </Route>
+    <Route exact path="/muzyk/:id">
+      <MusicView />
     </Route>
   </Switch>
 );

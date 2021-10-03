@@ -12,6 +12,7 @@ export type Login = {
 };
 
 export type Musician = {
+  id: string;
   name: string;
   imageUrl: string;
   description: string;
