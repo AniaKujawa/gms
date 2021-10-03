@@ -26,7 +26,7 @@
     "lostPasswordSentEmail": "Na podany email zostanie wysłana wiadomość z linkiem do zmiany hasła :)"
   },
   "dashboard": {
-
+    "subtitle": "Poznaj naszych wykonawców"
   },
   "apiErrors": {
     "default": "Przepraszamy, coś poszło nie tak",
@@ -34,6 +34,7 @@
     "login": "Nie udało się zalogować, spróbuj ponownie później",
     "getUser": "Nie udało się pobrać uzytkownika",
     "getUsers": "Nie udało się pobrać wszytskich uzytkowników",
+    "getMusicians": "Nie udało się pobrać wszytskich muzyków",
     "passwordRecovery": "Nie udało się wysłać maila na podany adres, spróbuj ponownie później"
   },
   "defaultSuccess": "Udało się!"
