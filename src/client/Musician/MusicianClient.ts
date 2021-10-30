@@ -8,25 +8,15 @@ import { formatMusicians, formatMusician } from './formatter';
 class MusicianClient {
   // UNDER DEVELOPMENT
   async getMusicians(): Promise<Musician[]> {
-    try {
-      const data = await fetch.fakeRequest({}, mockedMusicians);
+    const data = await fetch.fakeRequest({}, mockedMusicians);
 
-      return formatMusicians(data.data)
-    } catch(e) {
-      console.log('Couldn\'t get all musicians', e);
-      throw new Error('apiErrors.getMusicians');
-    }
+    return formatMusicians(data.data)
   }
 
   async getMusician(id: string): Promise<Musician> {
-    try {
-      const data = await fetch.fakeRequest({}, mockedMusicians[0]);
+    const data = await fetch.fakeRequest({}, mockedMusicians[0]);
 
-      return formatMusician(data.data)
-    } catch(e) {
-      console.log('Couldn\'t get all musicians', e);
-      throw new Error('apiErrors.getMusicians');
-    }
+    return formatMusician(data.data)
   }
 }
 

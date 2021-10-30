@@ -2,10 +2,6 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
-import { useMutation, useQueryClient } from 'react-query';
-
-import { useUserContext } from '../../../../context/User';
-import { useFeedback } from '../../../../hooks/useFeedback';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -13,26 +9,17 @@ import { Button } from './../../shared/Button';
 import { PasswordRecover } from './components/PasswordRecover';
 import { LoginFormProps, Props } from './types';
 import { useStyles } from './LoginForm.styles';
+import { useLoginUser } from '../../../../queries/user';
 
 
 export const LoginForm: FC<Props> = ({ setIsRegistered }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
-  const { login } = useUserContext();
-  const { handleError } = useFeedback();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
-
-  const mutation = useMutation(login, {
-    onSuccess: () => {
-      queryClient.invalidateQueries('user')
-    },
-    onError: (err: Error) => handleError(err),
-  });
-
-  const onSubmit = (data: LoginFormProps) => mutation.mutate(data);
+  const { mutate } = useLoginUser();
+  const onSubmit = (data: LoginFormProps) => mutate(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>

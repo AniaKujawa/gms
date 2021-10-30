@@ -1,0 +1,9 @@
+{
+  "default": "Something went wrong",
+  "register": "Can't register, try again later",
+  "login": "Can't login, try again later",
+  "getUser": "Couldn't get a user",
+  "getUsers": "Couldn't get all users",
+  "getMusicians": "Couldn't get all musicians",
+  "passwordRecovery": "Something went wrong, please try later"
+}

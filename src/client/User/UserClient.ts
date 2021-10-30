@@ -8,78 +8,53 @@ import { parseUser } from './formatter';
 class UserClient {
   // UNDER DEVELOPMENT
   async getUsers() {
-    try {
-      const data = await fetch.get({
-        url: endpoints.users
-      });
-      console.log(data.data);
-      return data.data
-    } catch(e) {
-      console.log('Couldn\'t get all users', e);
-      throw new Error('apiErrors.getUsers');
-    }
+    const data = await fetch.get({
+      url: endpoints.users
+    });
+    console.log(data.data);
+    return data.data
   }
 
   // UNDER DEVELOPMENT
   async getUser() {
-    try {
-      const data = await fetch.get({
-        url: endpoints.users
-      });
-      console.log(data.data);
-      return data.data
-    } catch(e) {
-      console.log('Couldn\'t get the user', e);
-      throw new Error('apiErrors.getUser');
-    }
+    const data = await fetch.get({
+      url: endpoints.users
+    });
+    console.log(data.data);
+    return data.data
   }
 
   async registerUser(data: User) {
-    try {
-      const response = await fetch.postWithoutAuth({
-        url: endpoints.users,
-        data: parseUser(data)
-      });
-      storage.setItem('token', response.data.token);
+    const response = await fetch.postWithoutAuth({
+      url: endpoints.users,
+      data: parseUser(data)
+    });
+    storage.setItem('token', response.data.token);
 
-      return response.data
-    } catch(e) {
-      console.log(`Can't register user`, e);
-      throw new Error('apiErrors.register');
-    }
+    return response.data
   }
 
   async loginUser(data: Login) {
-    try {
-      const response = await fetch.postWithoutAuth({
-        url: endpoints.signIn,
-        data: {
-          user: data
-        }
-      });
-      storage.setItem('token', response.data.token);
+    const response = await fetch.postWithoutAuth({
+      url: endpoints.signIn,
+      data: {
+        user: data
+      }
+    });
+    storage.setItem('token', response.data.token);
 
-      return response.data
-    } catch(e) {
-      console.log(`Can't login`, e);
-      throw new Error('apiErrors.login');
-    }
+    return response.data
   }
 
   async recoverPassword(email: string) {
-    try {
-      const response = await fetch.postWithoutAuth({
-        url: endpoints.signIn,
-        data: {
-          email
-        }
-      });
+    const response = await fetch.postWithoutAuth({
+      url: endpoints.signIn,
+      data: {
+        email
+      }
+    });
 
-      return response.data
-    } catch(e) {
-      console.log(`Can't recover password`, e);
-      throw new Error('apiErrors.passwordRecovery');
-    }
+    return response.data
   }
 };
 

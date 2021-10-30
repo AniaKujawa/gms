@@ -1,20 +1,20 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import { useTranslation } from 'react-i18next';
 import { Card, CardMedia, Typography, Chip, Grid } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 
-import { musicianClient } from './../../client/Musician';
-
 import { useStyles } from './../Musician/Mucisian.styles';
+import { useGetMusicians } from '../../queries/musician';
 
 export const MusiciansList = () => {
-  const { data: musicians } = useQuery('musicians', musicianClient.getMusicians);
+  const { data: musicians } = useGetMusicians();
   const history = useHistory();
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
-      <Typography variant="h2">Poznaj naszych wykonawców</Typography>
+      <Typography variant="h2">{t('dashboard.subtitle')}</Typography>
       {musicians && musicians.map(music => (
         <Card
           key={music.id}

@@ -1,16 +1,15 @@
 import React, { FC } from 'react';
-import { useQuery } from 'react-query';
 import { CardMedia, Typography, Chip, Grid } from '@material-ui/core';
 
-import { musicianClient } from './../../client/Musician';
 import { GlobalLoader } from '../../views/GlobalLoader';
 
 import { Props } from './types';
 import { useStyles } from './Mucisian.styles';
+import { useGetMusician } from '../../queries/musician';
 
 
 export const Musician: FC<Props> = ({ id }) => {
-  const { data: musician, status } = useQuery(['musician', id], () => musicianClient.getMusician(id));
+  const { data: musician, status } = useGetMusician(id);
   const classes = useStyles();
 
 

@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "badEmailWhenLostPassword": "Podaj prawidłowy adres emailowy"
+  },
+  "lostPasswordSentEmail": "Na podany email zostanie wysłana wiadomość z linkiem do zmiany hasła :)"
+}

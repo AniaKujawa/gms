@@ -1,25 +1,20 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import noop from 'lodash/noop';
 
-import { userClient } from './../../client/User';
 import storage from './../../utils/storage';
 
 import { UserContext as UserContextType } from './types';
+import { useGetUser } from '../../queries/user';
 
 const defaultContext = {
   isLoggedIn: false,
   user: {},
-  login: noop,
-  register: noop,
-  recoverPassword: noop,
 };
 
 const UserContext = React.createContext<UserContextType>(defaultContext);
 
 export const UserContextProvider: FC = ({ children }) => {
   const [ isLoggedIn, setIsLoggedIn ] = useState(defaultContext.isLoggedIn);
-  const { data: user } = useQuery('user', userClient.getUser, { retry: false });
+  const { data: user } = useGetUser();
 
   useEffect(() => {
     if(user?.data) {
@@ -32,9 +27,6 @@ export const UserContextProvider: FC = ({ children }) => {
     <UserContext.Provider value={{
       isLoggedIn,
       user,
-      login: userClient.loginUser,
-      register: userClient.registerUser,
-      recoverPassword: userClient.recoverPassword,
     }}>
       {children}
     </UserContext.Provider>

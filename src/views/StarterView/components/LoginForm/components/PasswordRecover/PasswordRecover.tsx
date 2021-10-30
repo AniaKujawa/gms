@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from '@material-ui/core';
-import { useMutation } from 'react-query';
 
-import { useUserContext } from '../../../../../../context/User';
+import { useRecoverPassword } from '../../../../../../queries/user';
 import { useFeedback } from '../../../../../../hooks/useFeedback';
 import { useStyles } from './../../LoginForm.styles';
 
@@ -13,15 +12,9 @@ import { Props } from './types';
 export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { recoverPassword } = useUserContext();
-  const { handleError, handleSuccess } = useFeedback();
+  const { handleError } = useFeedback();
 
-  const mutation = useMutation(recoverPassword, {
-    onSuccess: () => {
-      handleSuccess('signing.lostPasswordSentEmail');
-    },
-    onError: (err: Error) => handleError(err),
-  });
+  const { mutate } = useRecoverPassword();
 
   const handleLostPassword = () => {
     const email = control.getValues('email');
@@ -30,7 +23,7 @@ export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
       return handleError(new Error('signing.errors.badEmailWhenLostPassword'));
     };
 
-    mutation.mutate(email);    
+    mutate(email);    
   };
 
   return (

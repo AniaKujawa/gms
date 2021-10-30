@@ -1,11 +1,17 @@
 import React, { FC } from 'react';
 import { MusiciansList } from './../../components';
+import { Typography } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 
 export const Dashboard: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h1>Welcome in GMS!</h1>
+      <Typography variant="h1">
+        {t('dashboard.title')}
+      </Typography>
       <MusiciansList />
     </>
   )

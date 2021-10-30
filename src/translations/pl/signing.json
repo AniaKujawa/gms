@@ -1,0 +1,24 @@
+{
+  "lostPassword": "Zapomniałem/am hasła",
+  "loginButton": "Zaloguj",
+  "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
+  "errors": {
+    "blankName": "Imię nie moze być puste",
+    "blankLastName": "Nazwisko nie moze być puste",
+    "blankUsername": "Nazwa nie moze być pusta",
+    "blankEmail": "Email nie moze być pusty",
+    "invalidEmail": "Nieprawidłowy email",
+    "blankPassword": "Hasło nie moze być puste"
+  },
+  "firstname": "Imię",
+  "lastname": "Nazwisko",
+  "username": "Nazwa",
+  "register": "Zarejestruj się",
+  "alreadyRegistered": "Masz juz konto? Zaloguj się!",
+  "email": "Email",
+  "password": "Hasło",
+  "login": "Zaloguj się",
+  "signup": "Zarejestruj się",
+  "checkPlatform": "Obczaj naszą platformę",
+  "guestContinue": "Kontynuuj jako gość"
+}

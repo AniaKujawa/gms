@@ -7,7 +7,7 @@ export const useFeedback = () => {
 
   const handleError = (err: Error) => {
     setAlert({
-      message: t(err.message || 'apiErrors.default'),
+      message: err.message || t('apiErrors.default'),
       warningLevel: 'error',
       isOpened: true,
     });
@@ -15,7 +15,7 @@ export const useFeedback = () => {
 
   const handleSuccess = (msg: string) => {
     setAlert({
-      message: t(msg || 'defaultSuccess'),
+      message: msg || t('defaultSuccess'),
       warningLevel: 'success',
       isOpened: true,
     });
