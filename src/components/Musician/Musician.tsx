@@ -4,7 +4,7 @@ import { CardMedia, Typography, Chip, Grid } from '@material-ui/core';
 import { GlobalLoader } from '../../views/GlobalLoader';
 
 import { Props } from './types';
-import { useStyles } from './Mucisian.styles';
+import { useStyles } from './Musician.styles';
 import { useGetMusician } from '../../queries/musician';
 
 
@@ -33,7 +33,9 @@ export const Musician: FC<Props> = ({ id }) => {
             </Grid>
           )}        
           <Grid xs={4} className={classes.description}>
-            {musician.description}
+            <Typography variant="body1">
+              {musician.description}
+            </Typography>
           </Grid>
           {musician.tags.map(tag => (
             <Chip

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardMedia, Typography, Chip, Grid } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 
-import { useStyles } from './../Musician/Mucisian.styles';
+import { useStyles } from './../Musician/Musician.styles';
 import { useGetMusicians } from '../../queries/musician';
 
 export const MusiciansList = () => {
@@ -15,34 +15,37 @@ export const MusiciansList = () => {
   return (
     <>
       <Typography variant="h2">{t('dashboard.subtitle')}</Typography>
-      {musicians && musicians.map(music => (
-        <Card
-          key={music.id}
-          className={classes.card}
-          onClick={() => history.push(`/muzyk/${music.id}`)}
-        >
-          <Typography variant="h3">{music.name}</Typography>
-          {music.imageUrl && (
-            <Grid
-              xs={3}
-              className={classes.image}
+      <Grid container>
+        {musicians && musicians.map(music => (
+          <Grid item lg={4} sm={6} xs={12}>
+            <Card
+              key={music.id}
+              className={classes.card}
+              onClick={() => history.push(`/muzyk/${music.id}`)}
             >
-              <CardMedia
-                width='400px'
-                component="img"
-                alt={music.name}
-                image={music.imageUrl}
-              />
-            </Grid>
-          )}
-          {music.tags.map(tag => (
-            <Chip
-              label={tag}
-              className={classes.tag}
-            />
-          ))}
-        </Card>
-      ))}
+              <Typography variant="h3">{music.name}</Typography>
+              {music.imageUrl && (
+                <Grid
+                  className={classes.image}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    alt={music.name}
+                    image={music.imageUrl}
+                  />
+                </Grid>
+              )}
+              {music.tags.map(tag => (
+                <Chip
+                  label={tag}
+                  className={classes.tag}
+                />
+              ))}
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </>
   )
 };
