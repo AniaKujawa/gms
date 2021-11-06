@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 import { MusiciansList } from './../../components';
-import { Typography } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { Container  } from '@material-ui/core';
+
+import { Welcome } from './../../components';
 
 
 export const Dashboard: FC = () => {
-  const { t } = useTranslation();
-
   return (
     <>
-      <Typography variant="h1">
-        {t('dashboard.title')}
-      </Typography>
-      <MusiciansList />
+      <Welcome />
+      <Container>
+        <MusiciansList />
+      </Container>
     </>
   )
 };

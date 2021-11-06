@@ -6,19 +6,24 @@ import {
   DashboardPreview,
   MusicView
 } from './../views';
+import { DashboardLayout } from './../layout/DashboardLayout';
 
 import { useUserContext } from './../context/User';
 
 const BaseRoutes: FC = () => (
   <Switch>
     <Route exact path="/">
-      <DashboardPreview />
+      <DashboardLayout>
+        <DashboardPreview />
+      </DashboardLayout>
     </Route>
     <Route exact path="/start">
       <StarterView />
     </Route>
     <Route exact path="/muzyk/:id">
-      <MusicView />
+      <DashboardLayout>
+        <MusicView />
+      </DashboardLayout>
     </Route>
   </Switch>
 );
@@ -26,7 +31,9 @@ const BaseRoutes: FC = () => (
 const AuthRoutes: FC = () => (
   <Switch>
     <Route exact path="/">
-      <Dashboard />
+      <DashboardLayout>
+        <Dashboard />
+      </DashboardLayout>
     </Route>
   </Switch>
 );
