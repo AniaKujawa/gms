@@ -3,7 +3,7 @@ import React, { FC, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 
-import { theme } from './utils/theme';
+import { theme } from './styles/theme';
 import { PipeProviders } from './utils/PipeProviders';
 import { UserContextProvider } from './context/User';
 import { FeedbackContextProvider } from './context/Feedback';

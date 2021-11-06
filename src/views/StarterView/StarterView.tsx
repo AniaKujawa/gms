@@ -42,7 +42,7 @@ export const StarterView: FC = () => {
           <Button
             color='secondary'
           >
-            <Link className={classes.link} to='/dashboard'>{t('signing.guestContinue')}</Link>
+            <Link className={classes.link} to='/'>{t('signing.guestContinue')}</Link>
           </Button>
         </Card>
       </Container>
