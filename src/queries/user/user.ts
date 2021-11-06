@@ -36,7 +36,7 @@ export const useGetUser = () => {
       console.log('Couldn\'t get the user', e);
       handleError(new Error(t('apiErrors.getUser')));
     }
-  });
+  }, { retry: false });
 };
 
 export const useRegisterUser = () => {
