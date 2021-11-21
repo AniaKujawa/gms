@@ -4,10 +4,13 @@ import storage from './../../utils/storage';
 
 import { UserContext as UserContextType } from './types';
 import { useGetUser } from '../../queries/user';
+import { noop } from 'lodash';
 
 const defaultContext = {
   isLoggedIn: false,
   user: {},
+  setIsLoggedIn: noop,
+  logout: noop,
 };
 
 const UserContext = React.createContext<UserContextType>(defaultContext);
@@ -23,10 +26,17 @@ export const UserContextProvider: FC = ({ children }) => {
     }
   }, [user, setIsLoggedIn]);
 
+  const logout = () => {
+    setIsLoggedIn(false);
+    storage.removeItem('token');
+  };
+
   return (
     <UserContext.Provider value={{
       isLoggedIn,
       user,
+      setIsLoggedIn,
+      logout,
     }}>
       {children}
     </UserContext.Provider>

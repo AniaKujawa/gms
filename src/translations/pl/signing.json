@@ -1,4 +1,6 @@
 {
+  "registerSuccess": "Udało ci się zarejestrować!",
+  "lostPasswordSentEmail": "Wysłaliśmy maila do dozyskania hasła.",
   "lostPassword": "Zapomniałem/am hasła",
   "loginButton": "Zaloguj",
   "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",

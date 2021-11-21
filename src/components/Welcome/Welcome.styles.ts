@@ -8,11 +8,11 @@ export const useStyles = makeStyles(() =>
       backgroundImage: `url(${bcg})`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      width: '100%',
       height: 600,
       display: 'flex',
       alignItems: 'center',
       padding: theme.spacing(2),
+      marginBottom: theme.spacing(2.5),
     },
   }),
 );

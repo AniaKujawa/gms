@@ -39,9 +39,7 @@ export const StarterView: FC = () => {
           </Card>)
         }
         <Card title={t('signing.checkPlatform')} className={classes.card}>
-          <Button
-            color='secondary'
-          >
+          <Button>
             <Link className={classes.link} to='/'>{t('signing.guestContinue')}</Link>
           </Button>
         </Card>
