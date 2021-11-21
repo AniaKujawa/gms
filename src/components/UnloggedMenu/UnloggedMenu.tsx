@@ -8,7 +8,7 @@ export const UnloggedMenu = () => {
   return (
     <>
       <Button color="secondary" variant="outlined" href="/start">
-        {t('joinUs')}
+        {t('translation.joinUs')}
       </Button>
     </>
   )

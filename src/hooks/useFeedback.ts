@@ -15,7 +15,7 @@ export const useFeedback = () => {
 
   const handleSuccess = (msg: string) => {
     setAlert({
-      message: msg || t('defaultSuccess'),
+      message: msg || t('translation.defaultSuccess'),
       warningLevel: 'success',
       isOpened: true,
     });
