@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useHistory } from "react-router";
 import { userClient } from "../../client/User";
 import { Login, User } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
+import { useUserContext } from "../../context/User";
 
   // UNDER DEVELOPMENT
 export const useGetUsers = () => {
@@ -41,14 +43,14 @@ export const useGetUser = () => {
 
 export const useRegisterUser = () => {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
   const { handleError, handleSuccess } = useFeedback();
   
   return useMutation(async (user: User) => {
     try {
       const data = await userClient.registerUser(user);
-      handleSuccess('signing.registerSuccess');
-      queryClient.invalidateQueries('user');
+      handleSuccess(t('signing.registerSuccess'));
+      // queryClient.invalidateQueries('user');
 
       return data;
     } catch(e) {
@@ -60,13 +62,18 @@ export const useRegisterUser = () => {
 
 export const useLoginUser = () => {
   const { t } = useTranslation();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
+  const { setIsLoggedIn } = useUserContext();
+  const { push } = useHistory();
   const { handleError } = useFeedback();
   
   return useMutation(async (user: Login) => {
     try {
       const data = await userClient.loginUser(user);
-      queryClient.invalidateQueries('user');
+      setIsLoggedIn(true);
+      push('/');
+
+      // queryClient.invalidateQueries('user');
 
       return data;
     } catch(e) {
@@ -83,7 +90,7 @@ export const useRecoverPassword = () => {
   return useMutation(async (email: string) => {
     try {
       const data = await userClient.recoverPassword(email);
-      handleSuccess('signing.lostPasswordSentEmail');
+      handleSuccess(t('signing.lostPasswordSentEmail'));
 
       return data;
     } catch(e) {

@@ -17,9 +17,8 @@ export const MusiciansList = () => {
       <Typography variant="h2">{t('dashboard.subtitle')}</Typography>
       <Grid container>
         {musicians && musicians.map(music => (
-          <Grid item lg={4} sm={6} xs={12}>
+          <Grid key={music.id} item lg={4} sm={6} xs={12}>
             <Card
-              key={music.id}
               className={classes.card}
               onClick={() => history.push(`/muzyk/${music.id}`)}
             >
@@ -38,6 +37,7 @@ export const MusiciansList = () => {
               )}
               {music.tags.map(tag => (
                 <Chip
+                  key={tag}
                   label={tag}
                   className={classes.tag}
                 />

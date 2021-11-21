@@ -1,6 +1,6 @@
 import breakpoints from './breakpoints';
 
-const baseFontFamily = 'Lato';
+const baseFontFamily = 'Outfit';
 
 export default {
   h1: {

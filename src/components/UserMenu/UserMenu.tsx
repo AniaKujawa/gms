@@ -10,11 +10,13 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import {  PersonAdd, Settings, ExitToApp } from '@material-ui/icons';
+import { useUserContext } from '../../context/User';
 
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { logout } = useUserContext();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -61,7 +63,7 @@ export const UserMenu = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={logout}>
           <ListItemIcon>
             <ExitToApp fontSize="small" />
           </ListItemIcon>

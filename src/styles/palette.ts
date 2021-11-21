@@ -8,8 +8,9 @@ export default {
   },
   primary: {
     main: '#3B2621',
+    light: '#a18984',
   },
   secondary: {
     main: '#FCFAFA',
-  }
+  },
 };

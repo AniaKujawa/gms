@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import {
   StarterView,
   Dashboard,
@@ -35,6 +35,7 @@ const AuthRoutes: FC = () => (
         <Dashboard />
       </DashboardLayout>
     </Route>
+    <Redirect from="/dashboard" to="/" />
   </Switch>
 );
 
