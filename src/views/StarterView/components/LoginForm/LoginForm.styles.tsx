@@ -7,9 +7,11 @@ export const useStyles = makeStyles((theme: Theme) =>
       flexWrap: 'wrap',
       flexDirection: 'column',
       maxWidth: theme.spacing(40),
+      margin: 'auto',
     },
     link: {
       cursor: 'pointer',
+      marginBottom: theme.spacing(2),
     },
   }),
 );

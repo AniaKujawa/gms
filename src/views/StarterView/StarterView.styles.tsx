@@ -15,10 +15,15 @@ export const useStyles = makeStyles((theme: Theme) =>
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-      }
+      },
     },
     card: {
-      padding: theme.spacing(4)
+      width: '100%',
+      padding: theme.spacing(4),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      textAlign: 'center',
     },
     link: {
       color: '#FFF',
