@@ -4,7 +4,8 @@ import {
   StarterView,
   Dashboard,
   DashboardPreview,
-  MusicView
+  MusicView,
+  Profile,
 } from './../views';
 import { DashboardLayout } from './../layout/DashboardLayout';
 
@@ -33,6 +34,11 @@ const AuthRoutes: FC = () => (
     <Route exact path="/">
       <DashboardLayout>
         <Dashboard />
+      </DashboardLayout>
+    </Route>
+    <Route exact path="/profile">
+      <DashboardLayout>
+        <Profile />
       </DashboardLayout>
     </Route>
     <Redirect from="/dashboard" to="/" />

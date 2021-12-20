@@ -13,10 +13,13 @@ const defaultContext = {
   logout: noop,
 };
 
+const getToken = () => storage.getItem('token');
+
 const UserContext = React.createContext<UserContextType>(defaultContext);
 
 export const UserContextProvider: FC = ({ children }) => {
-  const [ isLoggedIn, setIsLoggedIn ] = useState(defaultContext.isLoggedIn);
+  const defaultIsLoggedInValue = Boolean(getToken());
+  const [ isLoggedIn, setIsLoggedIn ] = useState(defaultIsLoggedInValue);
   const { data: user } = useGetUser();
 
   useEffect(() => {

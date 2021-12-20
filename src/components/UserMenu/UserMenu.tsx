@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   Box,
   Avatar,
@@ -9,12 +10,14 @@ import {
   IconButton,
   Tooltip,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import {  PersonAdd, Settings, ExitToApp } from '@material-ui/icons';
 import { useUserContext } from '../../context/User';
 
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const { t } = useTranslation();
   const open = Boolean(anchorEl);
   const { logout } = useUserContext();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,30 +47,30 @@ export const UserMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
-          <Avatar /> Profile
+        <MenuItem
+          component={Link}
+          to="/profile"
+        >
+          <Avatar /> {t('menu.profile')}
         </MenuItem>
-        <MenuItem>
-          <Avatar /> My account
+        <MenuItem
+          component={Link}
+          to="/my-account"
+        >
+          <Avatar /> {t('menu.account')}
         </MenuItem>
         <Divider />
-        <MenuItem>
+        {/* <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={logout}>
           <ListItemIcon>
             <ExitToApp fontSize="small" />
           </ListItemIcon>
-          Logout
+          {t('menu.logout')}
         </MenuItem>
       </Menu>
     </>
