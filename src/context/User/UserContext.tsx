@@ -8,7 +8,7 @@ import { noop } from 'lodash';
 
 const defaultContext = {
   isLoggedIn: false,
-  user: {},
+  user: null,
   setIsLoggedIn: noop,
   logout: noop,
 };

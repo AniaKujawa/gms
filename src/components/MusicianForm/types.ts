@@ -1,4 +1,4 @@
-import { Musician } from "../../types";
+import { Musician } from '../../types';
 
 export type Props = {
   musician: Musician;

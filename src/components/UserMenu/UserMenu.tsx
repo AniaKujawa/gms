@@ -19,7 +19,7 @@ export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { t } = useTranslation();
   const open = Boolean(anchorEl);
-  const { logout } = useUserContext();
+  const { logout, user } = useUserContext();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,7 +32,7 @@ export const UserMenu = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton onClick={handleClick} size="small">
-            <Avatar>M</Avatar>
+            <Avatar>{user?.username}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>

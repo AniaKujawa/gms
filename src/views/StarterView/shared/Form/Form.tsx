@@ -29,7 +29,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
         error={!!errors.email}        
         render={(
           { onChange, value }
-        )=> (
+        ) => (
           <TextField
             label={t('signing.email')}
             type='text'

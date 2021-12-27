@@ -3,7 +3,7 @@ export default [
     id: '1',
     name: 'Band',
     image_url: 'https://dbdzm869oupei.cloudfront.net/img/sticker/preview/14748.png',
-    description: 'We are cool',
+    description: '<h1>We are cool</h1>',
     tags: ['jazz', 'wedding', 'pop'],
     contact: '56789320 band@wp.pl',
   },
