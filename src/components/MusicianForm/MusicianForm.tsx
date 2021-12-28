@@ -6,6 +6,7 @@ import { TextField } from '@material-ui/core';
 
 import { RichTextEditor } from '../RichTextEditor';
 import { Props } from './types';
+import { Uploader } from './../Uploader';
 
 
 export const MusicianForm: FC<Props> = ({ musician }) => {
@@ -36,6 +37,24 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           />
         )}
       />
+      <Controller
+        name='image'
+        control={control}
+        rules={{
+          required: true,
+        }}
+        defaultValue={musician.imageUrl}
+        error={!!errors.image}        
+        render={(
+          { onChange, value }
+        ) => (
+          <Uploader
+            filename='main-image'
+            fileUrl={typeof value === 'string' ? value : URL.createObjectURL(value)}
+            setFile={onChange}
+          />
+        )}
+      />  
       <Controller
         name='description'
         control={control}
