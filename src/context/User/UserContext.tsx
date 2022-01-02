@@ -8,15 +8,18 @@ import { noop } from 'lodash';
 
 const defaultContext = {
   isLoggedIn: false,
-  user: {},
+  user: null,
   setIsLoggedIn: noop,
   logout: noop,
 };
 
+const getToken = () => storage.getItem('token');
+
 const UserContext = React.createContext<UserContextType>(defaultContext);
 
 export const UserContextProvider: FC = ({ children }) => {
-  const [ isLoggedIn, setIsLoggedIn ] = useState(defaultContext.isLoggedIn);
+  const defaultIsLoggedInValue = Boolean(getToken());
+  const [ isLoggedIn, setIsLoggedIn ] = useState(defaultIsLoggedInValue);
   const { data: user } = useGetUser();
 
   useEffect(() => {

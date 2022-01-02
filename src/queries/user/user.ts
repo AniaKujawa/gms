@@ -31,7 +31,7 @@ export const useGetUser = () => {
   
   return useQuery('user', () => {
     try {
-      const data = userClient.getUser()
+      const data = userClient.getUser();
 
       return data;
     } catch(e) {
@@ -43,6 +43,7 @@ export const useGetUser = () => {
 
 export const useRegisterUser = () => {
   const { t } = useTranslation();
+  const { push } = useHistory();
   // const queryClient = useQueryClient();
   const { handleError, handleSuccess } = useFeedback();
   
@@ -50,6 +51,7 @@ export const useRegisterUser = () => {
     try {
       const data = await userClient.registerUser(user);
       handleSuccess(t('signing.registerSuccess'));
+      push('/');
       // queryClient.invalidateQueries('user');
 
       return data;
