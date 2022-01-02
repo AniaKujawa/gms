@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
+import { Card } from '@material-ui/core';
 import { convertFromHTML, ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -31,9 +32,11 @@ export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
   };
 
   return (
-    <Editor
-      editorState={editorState}
-      onEditorStateChange={handleChange}
-    />
+    <Card>
+      <Editor
+        editorState={editorState}
+        onEditorStateChange={handleChange}
+      />
+    </Card>
   )
 };

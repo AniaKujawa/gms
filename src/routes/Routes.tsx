@@ -41,6 +41,11 @@ const AuthRoutes: FC = () => (
         <Profile />
       </DashboardLayout>
     </Route>
+    <Route exact path="/muzyk/:id">
+      <DashboardLayout>
+        <MusicView />
+      </DashboardLayout>
+    </Route>
     <Redirect from="/dashboard" to="/" />
   </Switch>
 );

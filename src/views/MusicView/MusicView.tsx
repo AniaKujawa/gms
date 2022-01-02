@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 
@@ -12,11 +13,13 @@ export const MusicView = () => {
 
   return (
     <LoadingLayout isLoading={isLoading}>
-      {musician ? (
-        <Musician musician={musician} />
-      ) : (
-        <h2>Przykro nam, nie mamy dostępu do muzyka o tym id</h2>
-      )}
+      <Container>
+        {musician ? (
+          <Musician musician={musician} />
+        ) : (
+          <h2>Przykro nam, nie mamy dostępu do muzyka o tym id</h2>
+        )}
+      </Container>
     </LoadingLayout>
   );
 };

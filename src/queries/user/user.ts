@@ -31,7 +31,7 @@ export const useGetUser = () => {
   
   return useQuery('user', () => {
     try {
-      const data = userClient.getUser()
+      const data = userClient.getUser();
 
       return data;
     } catch(e) {

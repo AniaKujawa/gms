@@ -4,5 +4,6 @@ export * from './Musician';
 export * from './MusicianForm';
 export * from './MusiciansList';
 export * from './MusicianToolbar';
+export * from './Toolbar';
 export * from './Uploader';
 export * from './Welcome';

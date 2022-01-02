@@ -1,20 +1,23 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Grid, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
+import { Toolbar } from '..';
 import { Props } from './types';
+import { useTranslation } from 'react-i18next';
 
 
 export const MusicianToolbar: FC<Props> = ({ setIsEditing }) => {
   const { t } = useTranslation();
 
- return (
-  <Grid>
-    <Button
-      onClick={() => setIsEditing(true)}
-    >
-      {t('profile.edit')}
-    </Button>
-  </Grid>
- )
+  return (
+    <Toolbar>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => setIsEditing(true)}
+      >
+        {t('profile.edit')}
+      </Button>
+    </Toolbar>
+  )
 };
