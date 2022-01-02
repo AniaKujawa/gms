@@ -26,6 +26,7 @@ const BaseRoutes: FC = () => (
         <MusicView />
       </DashboardLayout>
     </Route>
+    <Redirect from="*" to="/" />
   </Switch>
 );
 
