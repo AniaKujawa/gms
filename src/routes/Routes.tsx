@@ -48,6 +48,7 @@ const AuthRoutes: FC = () => (
       </DashboardLayout>
     </Route>
     <Redirect from="/dashboard" to="/" />
+    <Redirect from="*" to="/" />
   </Switch>
 );
 
