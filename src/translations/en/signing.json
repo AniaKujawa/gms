@@ -4,16 +4,15 @@
   "lostPassword": "Forgotten password",
   "loginButton": "Log in",
   "firstTime": "Don't have an account? Register!",
+  "firstname": "First name",
+  "lastname": "Last name",
   "errors": {
-    "blankName": "First name can not be blank",
-    "blankLastName": "Last name can not be blank",
     "blankUsername": "Username can not be blank",
     "blankEmail": "Email can not be blank",
     "invalidEmail": "Invalid email",
-    "blankPassword": "Password can not be blank"
+    "blankPassword": "Password can not be blank",
+    "minLengthPassword": "Password must be at least 6 characters"
   },
-  "firstname": "First name",
-  "lastname": "Last name",
   "username": "Username",
   "isMusicianLabel": "I am a musician",
   "register": "Register",

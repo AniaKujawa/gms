@@ -24,9 +24,6 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
       <Controller
         name='firstName'
         control={control}
-        rules={{
-          required: `${t('signing.errors.blankName')}`
-        }}
         defaultValue=''
         error={!!errors.firstName}
         render={(
@@ -44,9 +41,6 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
       <Controller
         name='lastName'
         control={control}
-        rules={{
-          required: `${t('signing.errors.blankLastName')}`
-        }}
         defaultValue=''
         error={!!errors.lastName}
         render={(
