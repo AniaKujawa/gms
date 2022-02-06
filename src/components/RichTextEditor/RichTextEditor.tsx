@@ -36,6 +36,9 @@ export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
       <Editor
         editorState={editorState}
         onEditorStateChange={handleChange}
+        toolbar={{
+          options: ['inline', 'blockType', 'list', 'colorPicker', 'emoji', 'remove', 'history'],
+        }}
       />
     </Card>
   )
