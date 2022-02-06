@@ -44,6 +44,10 @@ export const Form: FC<Props> = ({ control, errors }) => {
         control={control}
         rules={{
           required: `${t('signing.errors.blankPassword')}`,
+          minLength: {
+            value: 6,
+            message: t('signing.errors.minLengthPassword')
+          }
         }}
         defaultValue=''
         error={!!errors.password}

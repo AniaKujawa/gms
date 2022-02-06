@@ -12,5 +12,8 @@ export const useStyles = makeStyles((theme: Theme) =>
     link: {
       cursor: 'pointer',
     },
+    checkbox: {
+      marginTop: theme.spacing(),
+    },
   }),
 );

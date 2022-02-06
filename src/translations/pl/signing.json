@@ -4,17 +4,17 @@
   "lostPassword": "Zapomniałem/am hasła",
   "loginButton": "Zaloguj",
   "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
+  "firstname": "Imię",
+  "lastname": "Nazwisko",
   "errors": {
-    "blankName": "Imię nie moze być puste",
-    "blankLastName": "Nazwisko nie moze być puste",
     "blankUsername": "Nazwa nie moze być pusta",
     "blankEmail": "Email nie moze być pusty",
     "invalidEmail": "Nieprawidłowy email",
-    "blankPassword": "Hasło nie moze być puste"
+    "blankPassword": "Hasło nie moze być puste",
+    "minLengthPassword": "Hasło musi zawierać conajmniej 6 znaków"
   },
-  "firstname": "Imię",
-  "lastname": "Nazwisko",
   "username": "Nazwa",
+  "isMusicianLabel": "Jestem muzykiem",
   "register": "Zarejestruj się",
   "alreadyRegistered": "Masz juz konto? Zaloguj się!",
   "email": "Email",

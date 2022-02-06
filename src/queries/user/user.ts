@@ -44,12 +44,15 @@ export const useGetUser = () => {
 export const useRegisterUser = () => {
   const { t } = useTranslation();
   const { push } = useHistory();
+  const { setIsLoggedIn } = useUserContext();
   // const queryClient = useQueryClient();
   const { handleError, handleSuccess } = useFeedback();
   
   return useMutation(async (user: User) => {
     try {
       const data = await userClient.registerUser(user);
+
+      setIsLoggedIn(true);
       handleSuccess(t('signing.registerSuccess'));
       push('/');
       // queryClient.invalidateQueries('user');
@@ -72,6 +75,7 @@ export const useLoginUser = () => {
   return useMutation(async (user: Login) => {
     try {
       const data = await userClient.loginUser(user);
+
       setIsLoggedIn(true);
       push('/');
 
