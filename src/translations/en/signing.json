@@ -15,6 +15,7 @@
   "firstname": "First name",
   "lastname": "Last name",
   "username": "Username",
+  "isMusicianLabel": "I am a musician",
   "register": "Register",
   "alreadyRegistered": "Have you already registered? Log in",
   "email": "Email",

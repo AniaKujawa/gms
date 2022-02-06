@@ -4,6 +4,7 @@ export type User = {
   username: string;
   email: string;
   password: string;
+  musician: boolean;
 };
 
 export type Login = {

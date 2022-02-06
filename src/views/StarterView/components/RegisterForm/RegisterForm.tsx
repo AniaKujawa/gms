@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
-import { TextField, Link } from '@material-ui/core';
+import { TextField, Link, Checkbox, FormControlLabel } from '@material-ui/core';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -84,6 +84,28 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         )}
        />
       <Form control={control} errors={errors} />
+      <Controller
+        name='musician'
+        control={control}
+        defaultValue={false}
+        error={!!errors.musician}
+        render={(
+          { onChange, value }
+        )=> (
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={e => onChange(e.target.checked)}
+                value={value}
+                checked={value}
+                color="primary"
+              />
+            }
+            label={t('signing.isMusicianLabel')}
+            className={classes.checkbox}
+          />
+        )}
+       />
       <Button
         type='submit'
       >
