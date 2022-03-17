@@ -58,22 +58,22 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         )}
       />
       <Controller
-        name='username'
+        name='name'
         control={control}
         rules={{
-          required: `${t('signing.errors.blankUsername')}`
+          required: `${t('signing.errors.blankname')}`
         }}
         defaultValue=''
-        error={!!errors.username}
+        error={!!errors.name}
         render={(
           { onChange, value }
         )=> (
           <TextField
-            label={t('signing.username')}
+            label={t('signing.name')}
             type='text'
             onChange={onChange}
             value={value}
-            helperText={errors?.username?.message}
+            helperText={errors?.name?.message}
           />
         )}
        />

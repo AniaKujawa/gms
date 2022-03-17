@@ -7,13 +7,13 @@
   "firstname": "First name",
   "lastname": "Last name",
   "errors": {
-    "blankUsername": "Username can not be blank",
+    "blankname": "name can not be blank",
     "blankEmail": "Email can not be blank",
     "invalidEmail": "Invalid email",
     "blankPassword": "Password can not be blank",
     "minLengthPassword": "Password must be at least 6 characters"
   },
-  "username": "Username",
+  "name": "name",
   "isMusicianLabel": "I am a musician",
   "register": "Register",
   "alreadyRegistered": "Have you already registered? Log in",

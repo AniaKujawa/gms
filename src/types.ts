@@ -1,7 +1,7 @@
 export type User = {
   firstName: string;
   lastName: string;
-  username: string;
+  name: string;
   email: string;
   password: string;
   musician: boolean;

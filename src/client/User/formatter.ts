@@ -6,7 +6,7 @@ export const parseUser = (user: User) => ({
     last_name: user.lastName,
     email: user.email,
     password: user.password,
-    username: user.username,
+    name: user.name,
     is_musician: user.musician,
   }
 });

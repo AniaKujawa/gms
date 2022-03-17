@@ -32,7 +32,7 @@ export const UserMenu = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton onClick={handleClick} size="small">
-            <Avatar>{user?.username}</Avatar>
+            <Avatar>{user?.name}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
