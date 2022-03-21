@@ -49,7 +49,7 @@ export const UserMenu = () => {
       >
         <MenuItem
           component={Link}
-          to="/profile"
+          to="/my-bands"
         >
           <Avatar /> {t('menu.profile')}
         </MenuItem>

@@ -14,6 +14,7 @@ export const Musician: FC<Props> = ({ musician }) => {
       <Typography variant="h2">{musician.name}</Typography>
       {musician.imageUrl && (
         <Grid
+          item
           xs={3}
           className={classes.image}
         >
@@ -25,13 +26,14 @@ export const Musician: FC<Props> = ({ musician }) => {
           />
         </Grid>
       )}        
-      <Grid xs={4} className={classes.description}>
+      <Grid item xs={4} className={classes.description}>
         <Typography variant="body1">
           {musician.description}
         </Typography>
       </Grid>
       {musician.tags.map(tag => (
         <Chip
+          key={tag}
           label={tag}
           className={classes.tag}
         />

@@ -3,7 +3,7 @@ import qs from 'qs';
 
 import storage from './../utils/storage';
 
-const AUTH_KEY = 'TOKEN';
+const AUTH_KEY = 'token';
 
 class FetchService {
   serializeParams(params: URLSearchParams) {

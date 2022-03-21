@@ -1,37 +1,36 @@
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
-import { Login, User } from '../../types';
+import { Login, User, UserPayload } from '../../types';
 import storage from './../../utils/storage';
 
 import { parseUser } from './formatter';
 
 class UserClient {
-  // UNDER DEVELOPMENT
   async getUsers() {
     const data = await fetch.get({
       url: endpoints.users
     });
-    console.log(data.data);
-    return data.data
+
+    return data.data.users;
   }
 
-  // UNDER DEVELOPMENT
-  async getUser() {
+  async getUser(id: number): Promise<User> {
     const data = await fetch.get({
-      url: endpoints.users
+      url: `${endpoints.users}/${id}`
     });
-    console.log(data.data);
-    return data.data
+
+    return data.data.user;
   }
 
-  async registerUser(data: User) {
+  async registerUser(data: UserPayload) {
     const response = await fetch.postWithoutAuth({
       url: endpoints.users,
       data: parseUser(data)
     });
     storage.setItem('token', response.data.token);
+    storage.setItem('user', JSON.stringify(response.data.user));
 
-    return response.data
+    return response.data;
   }
 
   async loginUser(data: Login) {
@@ -42,8 +41,9 @@ class UserClient {
       }
     });
     storage.setItem('token', response.data.token);
+    storage.setItem('user', JSON.stringify(response.data.user));
 
-    return response.data
+    return response.data;
   }
 
   async recoverPassword(email: string) {
@@ -54,7 +54,7 @@ class UserClient {
       }
     });
 
-    return response.data
+    return response.data;
   }
 };
 

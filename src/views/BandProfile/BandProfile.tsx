@@ -6,7 +6,7 @@ import { LoadingLayout } from '../../layout/LoadingLayout';
 import { Container } from '@material-ui/core';
 
 
-export const Profile: FC = () => {
+export const BandProfile: FC = () => {
   const { data: musician, isLoading } = useGetMusician('');
   const [ isEditing, setIsEditing ] = useState(false);
 

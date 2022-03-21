@@ -1,4 +1,4 @@
-// import { endpoints } from '../../core/endpoints';
+import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
 import mockedMusicians from './../../mock/mockedMusicians';
 import { Musician } from './../../types';
@@ -17,6 +17,14 @@ class MusicianClient {
     const data = await fetch.fakeRequest({}, mockedMusicians[0]);
 
     return formatMusician(data.data)
+  }
+
+  async getMusicianBands(id: number): Promise<Musician[]> {
+    const data = await fetch.get({
+      url: `${endpoints.users}/${id}/bands`,
+    })
+
+  return formatMusicians(data.data.bands);
   }
 }
 

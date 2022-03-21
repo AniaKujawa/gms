@@ -1,0 +1,1 @@
+export { BandProfile } from './BandProfile';

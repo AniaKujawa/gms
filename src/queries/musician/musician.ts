@@ -35,3 +35,21 @@ export const useGetMusician = (id: string) => {
     }
   });
 };
+
+export const useGetMusicianBands = (id?: number) => {
+  const { t } = useTranslation();
+  const { handleError } = useFeedback();
+  
+  return useQuery(['bands', id], async () => {
+    try {
+      if(id) {
+        const data = await musicianClient.getMusicianBands(id);
+
+        return data;
+      }
+    } catch(e) {
+      console.log('Couldn\'t get all bands', e);
+      handleError(new Error(t('apiErrors.getMusiciansBands')));
+    }
+  }, { enabled: !!id });
+};
