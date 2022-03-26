@@ -49,9 +49,9 @@ export const UserMenu = () => {
       >
         <MenuItem
           component={Link}
-          to="/my-bands"
+          to="/mybands"
         >
-          <Avatar /> {t('menu.profile')}
+          <Avatar /> {t('menu.bands')}
         </MenuItem>
         <MenuItem
           component={Link}

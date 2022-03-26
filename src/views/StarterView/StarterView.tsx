@@ -40,7 +40,9 @@ export const StarterView: FC = () => {
         }
         <Card title={t('signing.checkPlatform')} className={classes.card}>
           <Button>
-            <Link className={classes.link} to='/'>{t('signing.guestContinue')}</Link>
+            <Link className={classes.link} to='/'>
+              {t('signing.guestContinue')}
+            </Link>
           </Button>
         </Card>
       </Container>

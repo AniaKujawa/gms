@@ -1,0 +1,1 @@
+export { MusicianTags } from './MusicianTags';

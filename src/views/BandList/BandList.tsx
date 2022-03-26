@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { useGetMusicianBands } from '../../queries/musician';
 import { useUserContext } from '../../context/User';
 import { Musician } from '../../components';
@@ -11,7 +12,9 @@ export const BandList: FC = () => {
     bands ? (
       <div>
         {bands.map(band => (
-          <Musician key={band.id} musician={band} />
+          <Link key={band.id} to={`mybands/${band.id}`}>
+            <Musician musician={band} />
+          </Link>
         ))}
       </div>
     ) : null

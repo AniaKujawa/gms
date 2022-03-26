@@ -1,3 +1,6 @@
 {
-  "name": "Nazwa"
+  "phoneNumber": "Numer kontaktowy",
+  "socialLinks": "Sociale",
+  "name": "Nazwa",
+  "loginToUnblockContactInfo": "Zaloguj się, aby zobaczyć informacje kontaktowe"
 }

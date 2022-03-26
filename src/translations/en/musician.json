@@ -1,3 +1,6 @@
 {
-  "name": "Name"
+  "phoneNumber": "Phone number",
+  "socialLinks": "Socials",
+  "name": "Name",
+  "loginToUnblockContactInfo": "You need to log in to see band's contact info"
 }

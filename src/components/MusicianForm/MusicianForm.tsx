@@ -11,9 +11,10 @@ import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
 
 const tags = [
-  {'title': 'jazz'},
-  {'title': 'wedding'},
-  {'title': 'pop'},
+  { title: 'jazz'},
+  { title: 'Wedding'},
+  { title: 'Disco' },
+  { title: 'pop'},
 ];
 
 
@@ -23,6 +24,8 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
   const onSubmit = (values: any) => {
     console.log(values);
   };
+
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +66,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
             ) => (
               <Uploader
                 filename='main-image'
-                fileUrl={typeof value === 'string' ? value : URL.createObjectURL(value)}
+                fileUrl={value ? (typeof value === 'string' ? value : URL.createObjectURL(value)) : ''}
                 setFile={onChange}
               />
             )}
@@ -89,7 +92,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='tags'
             control={control}
-            defaultValue={musician.tags.map(tag => ({ title: tag }) )}
+            defaultValue={musician.tags.map(tag => ({ title: tag.name }) )}
             error={!!errors.description}        
             render={(
               { onChange, value }

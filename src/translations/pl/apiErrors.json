@@ -1,6 +1,7 @@
 {
   "default": "Przepraszamy, coś poszło nie tak",
-  "getMusicians": "Nie udało się pobrać wszytskich muzyków",
+  "getMusicians": "Nie udało się pobrać wszystkich muzyków",
+  "getMusiciansBands": "Nie udało się pobrać wszystkich zespołów muzyka",
   "getUsers": "Nie udało się pobrać wszytskich uzytkowników",
   "getUser": "Nie udało się pobrać uzytkownika",
   "register": "Nie udało się zarejestrować, spróbuj ponownie później",
