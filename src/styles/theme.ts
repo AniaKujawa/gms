@@ -12,6 +12,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      containedPrimary: {
+        '&:hover': {
+          backgroundColor: palette.primary.light,
+        },
+      },
+    },
   },
 }, {
   typography,

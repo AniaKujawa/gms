@@ -1,6 +1,11 @@
 {
   "phoneNumber": "Phone number",
   "socialLinks": "Socials",
+  "errors": {
+    "blankName": "Name can't be blank"
+  },
   "name": "Name",
-  "loginToUnblockContactInfo": "You need to log in to see band's contact info"
+  "loginToUnblockContactInfo": "You need to log in to see band's contact info",
+  "createBtn": "Add band",
+  "createBandTitle": "Create new band"
 }

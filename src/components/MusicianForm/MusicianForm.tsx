@@ -5,27 +5,24 @@ import { Button, TextField, Grid } from '@material-ui/core';
 
 
 import { RichTextEditor } from '../RichTextEditor';
-import { Props } from './types';
+import { FormProps } from './types';
 import { Uploader } from './../Uploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
+import { useStyles } from './MusicianForm.styles';
 
 const tags = [
-  { title: 'jazz'},
-  { title: 'Wedding'},
-  { title: 'Disco' },
-  { title: 'pop'},
+  { name: 'jazz'},
+  { name: 'Wedding'},
+  { name: 'Disco' },
+  { name: 'pop'},
 ];
 
 
-export const MusicianForm: FC<Props> = ({ musician }) => {
+export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
   const { handleSubmit, control, errors } = useForm();
+  const classes = useStyles();
   const { t } = useTranslation();
-  const onSubmit = (values: any) => {
-    console.log(values);
-  };
-
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -35,9 +32,9 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
             name='name'
             control={control}
             rules={{
-              required: true,
+              required: `${t('musician.errors.blankName')}`
             }}
-            defaultValue={musician.name}
+            defaultValue={musician?.name || ''}
             error={!!errors.name}        
             render={(
               { onChange, value }
@@ -56,10 +53,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='image'
             control={control}
-            rules={{
-              required: true,
-            }}
-            defaultValue={musician.imageUrl}
+            defaultValue={musician?.imageUrl || ''}
             error={!!errors.image}        
             render={(
               { onChange, value }
@@ -76,7 +70,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='description'
             control={control}
-            defaultValue={musician.description}
+            defaultValue={musician?.description || ''}
             error={!!errors.description}        
             render={(
               { onChange, value }
@@ -92,7 +86,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='tags'
             control={control}
-            defaultValue={musician.tags.map(tag => ({ title: tag.name }) )}
+            defaultValue={musician?.tags?.map(tag => ({ name: tag.name }) ) || []}
             error={!!errors.description}        
             render={(
               { onChange, value }
@@ -107,6 +101,15 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
         </Grid>
       </Grid>
       <Toolbar>
+        <Button
+          type="button"
+          variant="outlined"
+          color="primary"
+          onClick={handleCancel}
+          className={classes.cancelBtn}
+        >
+          {t('translation.cancel')}
+        </Button>
         <Button
           type="submit"
           variant="contained"

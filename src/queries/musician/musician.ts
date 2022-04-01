@@ -1,7 +1,9 @@
-import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
-import { musicianClient } from "../../client/Musician";
-import { useFeedback } from "../../hooks/useFeedback";
+import { useTranslation } from 'react-i18next';
+import { useMutation, useQuery } from 'react-query';
+import { useHistory } from 'react-router-dom';
+import { musicianClient } from '../../client/Musician';
+import { useFeedback } from '../../hooks/useFeedback';
+import { Musician } from '../../types';
 
 
 export const useGetMusicians = () => {
@@ -52,4 +54,46 @@ export const useGetMusicianBands = (id?: number) => {
       handleError(new Error(t('apiErrors.getMusiciansBands')));
     }
   }, { enabled: !!id });
+};
+
+export const useCreateMusicianBand = (id?: number) => {
+  const { t } = useTranslation();
+  const { push } = useHistory(); 
+  const { handleError } = useFeedback();
+
+  return useMutation(async(musician: Musician) => {
+    try {
+      if(id) {
+        const data = await musicianClient.postMusicianBands(id, musician);
+
+        push(`/mybands/${data?.id}`)
+
+        return data;
+      }
+    } catch(e) {
+      console.log('Couldn\'t post new band', e);
+      handleError(new Error(t('apiErrors.postMusicianBand')));
+    }
+  });
+};
+
+export const useUpdateMusicianBand = (id?: number) => {
+  const { t } = useTranslation();
+  const { push } = useHistory(); 
+  const { handleError } = useFeedback();
+
+  return useMutation(async(musician: Musician) => {
+    try {
+      if(id) {
+        const data = await musicianClient.putMusicianBands(id, musician);
+
+        push(`/mybands/${data?.id}`)
+
+        return data;
+      }
+    } catch(e) {
+      console.log('Couldn\'t updateband', e);
+      handleError(new Error(t('apiErrors.putMusicianBand')));
+    }
+  });
 };

@@ -13,12 +13,16 @@ export const MusicianExtended: FC<Props> = ({ musician }) => {
   return (
     <Musician musician={musician}>
       <Box className={classes.box}>
+      {musician.phoneNumber && (
         <Typography>
-          {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
-        </Typography>
+            {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
+          </Typography>
+      )}
+      {musician.socialLinks && (
         <Typography>
-          {t('musician.socialLinks')}: {musician.socialLinks}
-        </Typography>
+        {t('musician.socialLinks')}: {musician.socialLinks}
+      </Typography>
+      )}
       </Box>
     </Musician>
   )

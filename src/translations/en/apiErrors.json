@@ -2,6 +2,8 @@
   "default": "Something went wrong",
   "getMusicians": "Couldn't get all musicians",
   "getMusiciansBands": "Couldn't get all bands of user",
+  "postMusicianBand": "Couldn't add a new band",
+  "putMusicianBand": "Couldn't update the band",
   "getUsers": "Couldn't get all users",
   "getUser": "Couldn't get a user",
   "register": "Can't register, try again later",

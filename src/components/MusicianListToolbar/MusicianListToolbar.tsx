@@ -1,22 +1,23 @@
 import React, { FC } from 'react';
 import { Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 import { Toolbar } from '..';
-import { Props } from './types';
 
 
-export const MusicianToolbar: FC<Props> = ({ setIsEditing }) => {
+export const MusicianListToolbar: FC = () => {
   const { t } = useTranslation();
+  const { push } = useHistory();
 
   return (
     <Toolbar>
       <Button
-        variant="outlined"
+        variant="contained"
         color="primary"
-        onClick={() => setIsEditing(true)}
+        onClick={() => push('mybands/create')}
       >
-        {t('profile.edit')}
+        {t('musician.createBtn')}
       </Button>
     </Toolbar>
   )

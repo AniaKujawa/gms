@@ -31,7 +31,7 @@ export const UploaderButton: FC<Props> = ({ onChange }) => {
           component="span"
           startIcon={<CloudUploadIcon />}
         >
-          {t('upload')}
+          {t('translation.upload')}
         </Button>
       </label>
    </>

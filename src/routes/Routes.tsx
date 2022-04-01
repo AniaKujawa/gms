@@ -9,6 +9,7 @@ import {
   MusicViewExtended,
   BandList,
   BandProfile,
+  BandCreation,
 } from './../views';
 import { DashboardLayout } from './../layout/DashboardLayout';
 
@@ -46,6 +47,11 @@ const AuthRoutes: FC = () => (
     <Route exact path="/mybands">
       <DashboardLayout>
         <BandList />
+      </DashboardLayout>
+    </Route>
+    <Route exact path="/mybands/create">
+      <DashboardLayout>
+        <BandCreation />
       </DashboardLayout>
     </Route>
     <Route exact path="/mybands/:id">

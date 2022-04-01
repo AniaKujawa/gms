@@ -10,7 +10,6 @@ import { MusicianImage } from '../MusicianImage';
 export const Musician: FC<Props> = ({ musician, children }) => {
   const classes = useStyles();
 
-
   return (
     <div className={classes.root}>
       <Typography variant="h2">{musician.name}</Typography>

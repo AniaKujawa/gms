@@ -1,6 +1,6 @@
 export interface Option {
   inputValue?: string;
-  title: string;
+  name: string;
 };
 
 export type Options = Option[];

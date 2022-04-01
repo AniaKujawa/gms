@@ -1,1 +1,2 @@
-export { MusicianForm } from './MusicianForm';
+export { MusicianCreateForm } from './MusicianCreateForm';
+export { MusicianUpdateForm } from './MusicianUpdateForm';

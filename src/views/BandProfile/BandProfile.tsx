@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetMusician } from '../../queries/musician';
-import { MusicianToolbar, MusicianForm, MusicianExtended } from '../../components'
+import { MusicianToolbar, MusicianUpdateForm, MusicianExtended } from '../../components'
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { Container } from '@material-ui/core';
 
@@ -18,7 +18,7 @@ export const BandProfile: FC = () => {
     <LoadingLayout isLoading={isLoading}>
       <Container>
         {isEditing && musician ? (
-          <MusicianForm musician={musician} />
+          <MusicianUpdateForm musician={musician} handleCancel={() => setIsEditing(false)} />
         ) : (   
           musician ? (
             <>

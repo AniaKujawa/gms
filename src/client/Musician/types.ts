@@ -5,7 +5,7 @@ export type MusicianAPI = {
   name: string;
   image_url: string;
   description: string;
-  tags: Tag[];
+  tags_attributes: Tag[];
   contact_name: string;
   phone_number: string;
   social_links: string[];

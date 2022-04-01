@@ -72,6 +72,13 @@ class FetchService {
     });
   }
 
+  put(options: AxiosRequestConfig): AxiosPromise {
+    return this.request({
+      ...options,
+      method: 'PUT'
+    });
+  }
+
   patch(options: AxiosRequestConfig): AxiosPromise {
     return this.request({
       ...options,
