@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import {
-  StarterView,
+  RegisterView,
+  LoginView,
   Dashboard,
   DashboardPreview,
   MusicView,
@@ -21,10 +22,10 @@ const BaseRoutes: FC = () => (
       </DashboardLayout>
     </Route>
     <Route exact path="/start">
-      <StarterView />
+      <RegisterView />
     </Route>
     <Route exact path="/start/zaloguj">
-      <StarterView isRegistered={true} />
+      <LoginView />
     </Route>
     <Route exact path="/muzyk/:id">
       <DashboardLayout>
