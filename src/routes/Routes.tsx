@@ -23,6 +23,9 @@ const BaseRoutes: FC = () => (
     <Route exact path="/start">
       <StarterView />
     </Route>
+    <Route exact path="/start/zaloguj">
+      <StarterView isRegistered={true} />
+    </Route>
     <Route exact path="/muzyk/:id">
       <DashboardLayout>
         <MusicView />

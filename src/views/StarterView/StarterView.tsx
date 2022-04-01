@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Card as MCard, Container } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -22,9 +22,12 @@ const Card: FC<CardProps> = ({ children, title, className }) => {
   )
 }
 
-export const StarterView: FC = () => {
+type Props = {
+  isRegistered?: boolean;
+};
+
+export const StarterView: FC<Props> = ({ isRegistered }) => {
   const classes = useStyles();
-  const [ isRegistered, setIsRegistered ] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -32,10 +35,10 @@ export const StarterView: FC = () => {
       <Container maxWidth='md' className={classes.root}>
         {isRegistered ? (
           <Card title={t('signing.login')} className={classes.card}>
-            <LoginForm setIsRegistered={setIsRegistered}  />
+            <LoginForm />
           </Card>) : (
           <Card title={t('signing.signup')} className={classes.card}>
-            <RegisterForm setIsRegistered={setIsRegistered} />
+            <RegisterForm />
           </Card>)
         }
         <Card title={t('signing.checkPlatform')} className={classes.card}>
