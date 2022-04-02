@@ -18,7 +18,7 @@ export const BandProfile: FC = () => {
     <LoadingLayout isLoading={isLoading}>
       <Container>
         {isEditing && musician ? (
-          <MusicianUpdateForm musician={musician} handleCancel={() => setIsEditing(false)} />
+          <MusicianUpdateForm musician={musician} endEditing={() => setIsEditing(false)} />
         ) : (   
           musician ? (
             <>

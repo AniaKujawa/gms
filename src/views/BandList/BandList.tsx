@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
 import { useGetMusicianBands } from '../../queries/musician';
-import { useUserContext } from '../../context/User';
 import { Musician } from '../../components';
 import { MusicianListToolbar } from '../../components/MusicianListToolbar';
 import { PATHS } from '../../utils/consts';
 
 export const BandList: FC = () => {
-  const { user } = useUserContext();
-  const { data: bands } = useGetMusicianBands(user?.id)
+  const { data: bands } = useGetMusicianBands()
 
   return (
     <Container>

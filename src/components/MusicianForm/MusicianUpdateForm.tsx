@@ -1,26 +1,25 @@
 import React, { FC } from 'react';
-import { useUserContext } from '../../context/User';
 import { useUpdateMusicianBand } from '../../queries/musician';
 
 import { MusicianForm } from './MusicianForm';
 import { Props } from './types';
 
 
-export const MusicianUpdateForm: FC<Props> = ({ musician, handleCancel }) => {
-  const { user } = useUserContext();
-  const { mutate } = useUpdateMusicianBand(user?.id);
-  const onSubmit = (values: any) => {
-    mutate({
+export const MusicianUpdateForm: FC<Props> = ({ musician, endEditing }) => {
+  const { mutateAsync } = useUpdateMusicianBand();
+  const onSubmit = async(values: any) => {
+    await mutateAsync({
       id: musician?.id,
       ...values
     });
+    endEditing();
   };
 
   return (
     <MusicianForm
       musician={musician}
       onSubmit={onSubmit}
-      handleCancel={handleCancel}
+      handleCancel={endEditing}
     />
   );
 };

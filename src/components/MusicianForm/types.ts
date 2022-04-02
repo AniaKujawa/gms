@@ -2,7 +2,7 @@ import { Musician } from '../../types';
 
 export type Props = {
   musician?: Musician;
-  handleCancel: () => void;
+  endEditing: () => void;
 };
 
 export type FormProps = {

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useMutation, useQuery } from 'react-query';
+import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
@@ -39,38 +39,34 @@ export const useGetMusician = (id: string) => {
   });
 };
 
-export const useGetMusicianBands = (id?: number) => {
+export const useGetMusicianBands = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery(['bands', id], async () => {
+  return useQuery('bands', async () => {
     try {
-      if(id) {
-        const data = await musicianClient.getMusicianBands(id);
+      const data = await musicianClient.getMusicianBands();
 
-        return data;
-      }
+      return data;
     } catch(e) {
       console.log('Couldn\'t get all bands', e);
       handleError(new Error(t('apiErrors.getMusiciansBands')));
     }
-  }, { enabled: !!id });
+  });
 };
 
-export const useCreateMusicianBand = (id?: number) => {
+export const useCreateMusicianBand = () => {
   const { t } = useTranslation();
   const { push } = useHistory(); 
   const { handleError } = useFeedback();
 
   return useMutation(async(musician: Musician) => {
     try {
-      if(id) {
-        const data = await musicianClient.postMusicianBands(id, musician);
+      const data = await musicianClient.postMusicianBands(musician);
 
-        push(`${PATHS.BANDS}/${data?.id}`)
+      push(`${PATHS.BANDS}/${data?.id}`);
 
-        return data;
-      }
+      return data;
     } catch(e) {
       console.log('Couldn\'t post new band', e);
       handleError(new Error(t('apiErrors.postMusicianBand')));
@@ -78,22 +74,20 @@ export const useCreateMusicianBand = (id?: number) => {
   });
 };
 
-export const useUpdateMusicianBand = (id?: number) => {
+export const useUpdateMusicianBand = () => {
   const { t } = useTranslation();
-  const { push } = useHistory(); 
+  const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
   return useMutation(async(musician: Musician) => {
     try {
-      if(id) {
-        const data = await musicianClient.putMusicianBands(id, musician);
+      await musicianClient.putMusicianBands(musician);
 
-        push(`${PATHS.BANDS}/${data?.id}`)
+      queryClient.invalidateQueries('musician');
 
-        return data;
-      }
+      return;
     } catch(e) {
-      console.log('Couldn\'t updateband', e);
+      console.log('Couldn\'t update band', e);
       handleError(new Error(t('apiErrors.putMusicianBand')));
     }
   });
