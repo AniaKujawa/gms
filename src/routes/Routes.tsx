@@ -12,6 +12,7 @@ import {
   BandCreation,
 } from './../views';
 import { DashboardLayout } from './../layout/DashboardLayout';
+import { PATHS } from './../utils/consts';
 
 import { useUserContext } from './../context/User';
 
@@ -22,13 +23,13 @@ const BaseRoutes: FC = () => (
         <DashboardPreview />
       </DashboardLayout>
     </Route>
-    <Route exact path="/start">
+    <Route exact path={PATHS.START}>
       <RegisterView />
     </Route>
-    <Route exact path="/start/zaloguj">
+    <Route exact path={PATHS.LOGIN}>
       <LoginView />
     </Route>
-    <Route exact path="/muzyk/:id">
+    <Route exact path={`${PATHS.MUSIC}/:id`}>
       <DashboardLayout>
         <MusicView />
       </DashboardLayout>
@@ -44,22 +45,22 @@ const AuthRoutes: FC = () => (
         <Dashboard />
       </DashboardLayout>
     </Route>
-    <Route exact path="/mybands">
+    <Route exact path={PATHS.BANDS}>
       <DashboardLayout>
         <BandList />
       </DashboardLayout>
     </Route>
-    <Route exact path="/mybands/create">
+    <Route exact path={PATHS.CREATE_BAND}>
       <DashboardLayout>
         <BandCreation />
       </DashboardLayout>
     </Route>
-    <Route exact path="/mybands/:id">
+    <Route exact path={`${PATHS.BANDS}/:id`}>
       <DashboardLayout>
         <BandProfile />
       </DashboardLayout>
     </Route>
-    <Route exact path="/muzyk/:id">
+    <Route exact path={`${PATHS.MUSIC}/:id`}>
       <DashboardLayout>
         <MusicViewExtended />
       </DashboardLayout>

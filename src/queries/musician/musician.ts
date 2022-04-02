@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
 import { Musician } from '../../types';
+import { PATHS } from '../../utils/consts';
 
 
 export const useGetMusicians = () => {
@@ -66,7 +67,7 @@ export const useCreateMusicianBand = (id?: number) => {
       if(id) {
         const data = await musicianClient.postMusicianBands(id, musician);
 
-        push(`/mybands/${data?.id}`)
+        push(`${PATHS.BANDS}/${data?.id}`)
 
         return data;
       }
@@ -87,7 +88,7 @@ export const useUpdateMusicianBand = (id?: number) => {
       if(id) {
         const data = await musicianClient.putMusicianBands(id, musician);
 
-        push(`/mybands/${data?.id}`)
+        push(`${PATHS.BANDS}/${data?.id}`)
 
         return data;
       }

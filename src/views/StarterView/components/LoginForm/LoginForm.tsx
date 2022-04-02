@@ -11,6 +11,7 @@ import { PasswordRecover } from './components/PasswordRecover';
 import { LoginFormProps } from './types';
 import { useStyles } from './LoginForm.styles';
 import { useLoginUser } from '../../../../queries/user';
+import { PATHS } from '../../../../utils/consts';
 
 
 export const LoginForm: FC = () => {
@@ -32,7 +33,7 @@ export const LoginForm: FC = () => {
         {t('signing.loginButton')}
       </Button>
       <Link 
-        onClick={() => push('/start')}
+        onClick={() => push(PATHS.START)}
         className={classes.link}
       >
         {t('signing.firstTime')}

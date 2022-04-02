@@ -10,6 +10,7 @@ import { useRegisterUser } from '../../../../queries/user';
 
 import { RegisterFormProps } from './types';
 import { useStyles } from './RegisterForm.styles';
+import { PATHS } from '../../../../utils/consts';
 
 export const RegisterForm: FC = () => {
   const classes = useStyles();
@@ -108,7 +109,7 @@ export const RegisterForm: FC = () => {
         {t('signing.register')}
       </Button>
       <Link
-        onClick={() => push('start/zaloguj')}
+        onClick={() => push(PATHS.LOGIN)}
         className={classes.link}
       >
         {t('signing.alreadyRegistered')}
