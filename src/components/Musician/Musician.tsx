@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Typography, Grid } from '@material-ui/core';
+import parse from 'html-react-parser';
 
 import { MusicianTags } from './../MusicianTags';
 import { Props } from './types';
@@ -25,7 +26,7 @@ export const Musician: FC<Props> = ({ musician, children }) => {
       </Grid>      
       <Grid item xs={4} className={classes.description}>
         <Typography variant="body1">
-          {musician.description}
+          {parse(musician.description || '')}
         </Typography>
       </Grid>
       <MusicianTags tags={musician.tags} />
