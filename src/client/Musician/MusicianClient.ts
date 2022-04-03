@@ -1,6 +1,6 @@
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
-import { Musician } from './../../types';
+import { Musician, Tag } from './../../types';
 
 import { formatMusicians, formatMusician, formatApiMusician } from './formatter';
 
@@ -45,6 +45,14 @@ class MusicianClient {
     });
 
   return;
+  }
+
+  async getTags(): Promise<Tag[]> {
+    const data = await fetch.get({
+      url: endpoints.tags,
+    });
+
+  return data.data.tags;
   }
 }
 

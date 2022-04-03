@@ -5,4 +5,5 @@ export const endpoints = {
   signIn: `${BASE_URL}/profile/sign_in`,
   bands: `${BASE_URL}/bands`,
   userBands: `${BASE_URL}/profile/bands`,
+  tags: `${BASE_URL}/tags`,
 };

@@ -92,3 +92,19 @@ export const useUpdateMusicianBand = () => {
     }
   });
 };
+
+export const useGetTags = () => {
+  const { t } = useTranslation();
+  const { handleError } = useFeedback();
+  
+  return useQuery('tags', async () => {
+    try {
+      const data = await musicianClient.getTags();
+
+      return data;
+    } catch(e) {
+      console.log('Couldn\'t get all tags', e);
+      handleError(new Error(t('apiErrors.getTags')));
+    }
+  });
+};

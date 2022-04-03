@@ -10,17 +10,12 @@ import { Uploader } from './../Uploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
 import { useStyles } from './MusicianForm.styles';
-
-const tags = [
-  { name: 'jazz'},
-  { name: 'Wedding'},
-  { name: 'Disco' },
-  { name: 'pop'},
-];
+import { useGetTags } from '../../queries/musician';
 
 
 export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
   const { handleSubmit, control, errors } = useForm();
+  const { data: tags } = useGetTags();
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -93,7 +88,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             ) => (
               <Autocomplete
                 onChange={onChange}
-                options={tags}
+                options={tags || []}
                 value={value}
               />
             )}
