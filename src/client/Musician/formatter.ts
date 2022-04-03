@@ -3,6 +3,7 @@ import { MusicianAPI } from './types';
 
 export const formatMusician = (musician: MusicianAPI) => ({
   id: musician.id,
+  active: musician.active,
   name: musician.name,
   description: musician.description,
   tags: musician.tags,
@@ -18,6 +19,7 @@ export const formatMusicians = (musicians: MusicianAPI[]) => {
 
 export const formatApiMusician = (musician: Musician) => ({
   id: musician.id,
+  active: musician.active,
   name: musician.name,
   image_url: musician.imageUrl,
   description: musician.description,

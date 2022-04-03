@@ -1,9 +1,11 @@
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
     red: Palette['primary'];
+    danger: Palette['primary'];
   }
   interface PaletteOptions {
     red: PaletteOptions['primary'];
+    danger: PaletteOptions['primary'];
   }
 };
 
@@ -24,5 +26,11 @@ export default {
   },
   red: {
     light: '#C0726D',
+  },
+  danger: {
+    main: '#C70039',
+  },
+  success: {
+    main: '#3D794D',
   },
 };

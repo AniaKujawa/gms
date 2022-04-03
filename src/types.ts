@@ -29,6 +29,7 @@ export type Tag = {
 
 export type Musician = {
   id: string;
+  active: boolean;
   name: string;
   imageUrl: string;
   description: string;
