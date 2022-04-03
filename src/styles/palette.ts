@@ -1,3 +1,12 @@
+declare module '@material-ui/core/styles/createPalette' {
+  interface Palette {
+    red: Palette['primary'];
+  }
+  interface PaletteOptions {
+    red: PaletteOptions['primary'];
+  }
+};
+
 export default {
   black: {
     main: '#333',
@@ -12,5 +21,8 @@ export default {
   },
   secondary: {
     main: '#FCFAFA',
+  },
+  red: {
+    light: '#C0726D',
   },
 };

@@ -1,5 +1,6 @@
 {
   "joinUs": "Join us",
-  "upload": "",
-  "defaultSuccess": "Success!"
+  "upload": "Upload",
+  "defaultSuccess": "Success!",
+  "cancel": "Cancel"
 }

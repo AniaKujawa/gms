@@ -1,1 +1,2 @@
-export { StarterView } from './StarterView';
+export { RegisterView } from './RegisterView';
+export { LoginView } from './LoginView';

@@ -26,7 +26,7 @@ export const Autocomplete: FC<Props> = ({ onChange, value, options }) => {
         if(params.inputValue !== '') {
           filtered.push({
             inputValue: params.inputValue,
-            title: `Add "${params.inputValue}"`,
+            name: `Add "${params.inputValue}"`,
           });
         }
 
@@ -41,21 +41,21 @@ export const Autocomplete: FC<Props> = ({ onChange, value, options }) => {
           return option.inputValue;
         }
 
-        return option.title;
+        return option.name;
       }}
       onChange={( e, updatedOptions) => {
         const lastEl = updatedOptions[updatedOptions.length - 1];
 
         if(lastEl && lastEl.inputValue) {
-          onChange([ ...value, { title: lastEl.inputValue }])
+          onChange([ ...value, { name: lastEl.inputValue }])
         } else {
           onChange(updatedOptions)
         }      
       }}
       getOptionSelected={(option, value) => (
-        option.title === value.title
+        option.name === value.name
       )}
-      renderOption={(option) => option.title}
+      renderOption={(option) => option.name}
     />
   );
 };

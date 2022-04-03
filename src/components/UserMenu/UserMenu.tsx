@@ -13,6 +13,7 @@ import {
 import { Link } from 'react-router-dom';
 import {  PersonAdd, Settings, ExitToApp } from '@material-ui/icons';
 import { useUserContext } from '../../context/User';
+import { PATHS } from '../../utils/consts';
 
 
 export const UserMenu = () => {
@@ -49,13 +50,13 @@ export const UserMenu = () => {
       >
         <MenuItem
           component={Link}
-          to="/profile"
+          to={PATHS.BANDS}
         >
-          <Avatar /> {t('menu.profile')}
+          <Avatar /> {t('menu.bands')}
         </MenuItem>
         <MenuItem
           component={Link}
-          to="/my-account"
+          to={PATHS.PROFILE}
         >
           <Avatar /> {t('menu.account')}
         </MenuItem>

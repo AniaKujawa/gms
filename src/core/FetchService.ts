@@ -3,7 +3,7 @@ import qs from 'qs';
 
 import storage from './../utils/storage';
 
-const AUTH_KEY = 'TOKEN';
+const AUTH_KEY = 'token';
 
 class FetchService {
   serializeParams(params: URLSearchParams) {
@@ -69,6 +69,13 @@ class FetchService {
     return this.requestWithoutAuth({
       ...options,
       method: 'POST'
+    });
+  }
+
+  put(options: AxiosRequestConfig): AxiosPromise {
+    return this.request({
+      ...options,
+      method: 'PUT'
     });
   }
 

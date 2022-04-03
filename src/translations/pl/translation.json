@@ -1,5 +1,6 @@
 {
   "joinUs": "Dołącz do nas",
-  "upload": "",
-  "defaultSuccess": "Udało się!"
+  "upload": "Dodaj",
+  "defaultSuccess": "Udało się!",
+  "cancel": "Anuluj"
 }

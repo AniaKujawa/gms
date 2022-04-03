@@ -2,17 +2,20 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Link, Checkbox, FormControlLabel } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
 import { useRegisterUser } from '../../../../queries/user';
 
-import { RegisterFormProps, Props } from './types';
+import { RegisterFormProps } from './types';
 import { useStyles } from './RegisterForm.styles';
+import { PATHS } from '../../../../utils/consts';
 
-export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
+export const RegisterForm: FC = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const { push } = useHistory();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
@@ -106,7 +109,7 @@ export const RegisterForm: FC<Props> = ({ setIsRegistered }) => {
         {t('signing.register')}
       </Button>
       <Link
-        onClick={() => setIsRegistered(true)}
+        onClick={() => push(PATHS.LOGIN)}
         className={classes.link}
       >
         {t('signing.alreadyRegistered')}

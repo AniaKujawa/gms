@@ -13,7 +13,7 @@ export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
   const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
-    if(!updated) {
+    if(!updated && html) {
       const blocksFromHtml = convertFromHTML(html);
       const contentState = ContentState.createFromBlockArray(
         blocksFromHtml.contentBlocks,

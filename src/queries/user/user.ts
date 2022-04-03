@@ -1,12 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router";
 import { userClient } from "../../client/User";
-import { Login, User } from '../../types';
+import { Login, UserPayload } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
 import { useUserContext } from "../../context/User";
 
-  // UNDER DEVELOPMENT
 export const useGetUsers = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
@@ -24,38 +23,38 @@ export const useGetUsers = () => {
 };
 
 
-  // UNDER DEVELOPMENT
-export const useGetUser = () => {
+export const useGetUser = (id: number) => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery('user', () => {
+  return useQuery(['user', id], async() => {
     try {
-      const data = userClient.getUser();
+      const data = await userClient.getUser(id);
 
       return data;
     } catch(e) {
       console.log('Couldn\'t get the user', e);
       handleError(new Error(t('apiErrors.getUser')));
     }
-  }, { retry: false });
+  }, {     
+    refetchOnWindowFocus: false,
+    enabled: !!id,
+  });
 };
 
 export const useRegisterUser = () => {
   const { t } = useTranslation();
   const { push } = useHistory();
   const { setIsLoggedIn } = useUserContext();
-  // const queryClient = useQueryClient();
   const { handleError, handleSuccess } = useFeedback();
   
-  return useMutation(async (user: User) => {
+  return useMutation(async(user: UserPayload) => {
     try {
       const data = await userClient.registerUser(user);
 
       setIsLoggedIn(true);
       handleSuccess(t('signing.registerSuccess'));
       push('/');
-      // queryClient.invalidateQueries('user');
 
       return data;
     } catch(e) {
@@ -67,7 +66,6 @@ export const useRegisterUser = () => {
 
 export const useLoginUser = () => {
   const { t } = useTranslation();
-  // const queryClient = useQueryClient();
   const { setIsLoggedIn } = useUserContext();
   const { push } = useHistory();
   const { handleError } = useFeedback();
@@ -78,8 +76,6 @@ export const useLoginUser = () => {
 
       setIsLoggedIn(true);
       push('/');
-
-      // queryClient.invalidateQueries('user');
 
       return data;
     } catch(e) {

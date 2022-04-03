@@ -14,17 +14,18 @@ const defaultContext = {
 };
 
 const getToken = () => storage.getItem('token');
+const getUser = () => JSON.parse(storage.getItem('user') || '{}');
 
 const UserContext = React.createContext<UserContextType>(defaultContext);
 
 export const UserContextProvider: FC = ({ children }) => {
   const defaultIsLoggedInValue = Boolean(getToken());
+  const userId = Number(getUser().id);
   const [ isLoggedIn, setIsLoggedIn ] = useState(defaultIsLoggedInValue);
-  const { data: user } = useGetUser();
+  const { data: user } = useGetUser(userId);
 
   useEffect(() => {
-    if(user?.data) {
-      storage.setItem('token', user.data);
+    if(user?.id) {
       setIsLoggedIn(true);
     }
   }, [user, setIsLoggedIn]);
@@ -32,6 +33,7 @@ export const UserContextProvider: FC = ({ children }) => {
   const logout = () => {
     setIsLoggedIn(false);
     storage.removeItem('token');
+    storage.removeItem('user');
   };
 
   return (

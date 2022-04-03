@@ -6,7 +6,3 @@ export type RegisterFormProps = {
   password: string;
   musician: boolean;
 };
-
-export type Props = {
-  setIsRegistered: React.Dispatch<React.SetStateAction<boolean>>;
-};

@@ -1,0 +1,1 @@
+export { MusicianImage } from './MusicianImage';

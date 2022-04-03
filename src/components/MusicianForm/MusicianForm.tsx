@@ -5,24 +5,19 @@ import { Button, TextField, Grid } from '@material-ui/core';
 
 
 import { RichTextEditor } from '../RichTextEditor';
-import { Props } from './types';
+import { FormProps } from './types';
 import { Uploader } from './../Uploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
-
-const tags = [
-  {'title': 'jazz'},
-  {'title': 'wedding'},
-  {'title': 'pop'},
-];
+import { useStyles } from './MusicianForm.styles';
+import { useGetTags } from '../../queries/musician';
 
 
-export const MusicianForm: FC<Props> = ({ musician }) => {
+export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
   const { handleSubmit, control, errors } = useForm();
+  const { data: tags } = useGetTags();
+  const classes = useStyles();
   const { t } = useTranslation();
-  const onSubmit = (values: any) => {
-    console.log(values);
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -32,9 +27,9 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
             name='name'
             control={control}
             rules={{
-              required: true,
+              required: `${t('musician.errors.blankName')}`
             }}
-            defaultValue={musician.name}
+            defaultValue={musician?.name || ''}
             error={!!errors.name}        
             render={(
               { onChange, value }
@@ -53,17 +48,14 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='image'
             control={control}
-            rules={{
-              required: true,
-            }}
-            defaultValue={musician.imageUrl}
+            defaultValue={musician?.imageUrl || ''}
             error={!!errors.image}        
             render={(
               { onChange, value }
             ) => (
               <Uploader
                 filename='main-image'
-                fileUrl={typeof value === 'string' ? value : URL.createObjectURL(value)}
+                fileUrl={value ? (typeof value === 'string' ? value : URL.createObjectURL(value)) : ''}
                 setFile={onChange}
               />
             )}
@@ -73,7 +65,7 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='description'
             control={control}
-            defaultValue={musician.description}
+            defaultValue={musician?.description || ''}
             error={!!errors.description}        
             render={(
               { onChange, value }
@@ -89,14 +81,14 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
           <Controller
             name='tags'
             control={control}
-            defaultValue={musician.tags.map(tag => ({ title: tag }) )}
+            defaultValue={musician?.tags?.map(tag => ({ name: tag.name }) ) || []}
             error={!!errors.description}        
             render={(
               { onChange, value }
             ) => (
               <Autocomplete
                 onChange={onChange}
-                options={tags}
+                options={tags || []}
                 value={value}
               />
             )}
@@ -104,6 +96,15 @@ export const MusicianForm: FC<Props> = ({ musician }) => {
         </Grid>
       </Grid>
       <Toolbar>
+        <Button
+          type="button"
+          variant="outlined"
+          color="primary"
+          onClick={handleCancel}
+          className={classes.cancelBtn}
+        >
+          {t('translation.cancel')}
+        </Button>
         <Button
           type="submit"
           variant="contained"

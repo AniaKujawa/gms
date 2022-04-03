@@ -1,3 +1,11 @@
 {
-  "name": "Nazwa"
+  "phoneNumber": "Numer kontaktowy",
+  "socialLinks": "Sociale",
+  "errors": {
+    "blankName": "Nazwa nie moze być pusta"
+  },
+  "name": "Nazwa",
+  "loginToUnblockContactInfo": "Zaloguj się, aby zobaczyć informacje kontaktowe",
+  "createBtn": "Dodaj zespół",
+  "createBandTitle": "Stwórz nowy zespół"
 }

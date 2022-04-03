@@ -1,6 +1,6 @@
-import { User } from "../../types";
+import { UserPayload } from "../../types";
 
-export const parseUser = (user: User) => ({
+export const parseUser = (user: UserPayload) => ({
   user: {
     first_name: user.firstName,
     last_name: user.lastName,

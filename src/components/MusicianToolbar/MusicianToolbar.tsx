@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import { Toolbar } from '..';
 import { Props } from './types';
-import { useTranslation } from 'react-i18next';
 
 
 export const MusicianToolbar: FC<Props> = ({ setIsEditing }) => {
