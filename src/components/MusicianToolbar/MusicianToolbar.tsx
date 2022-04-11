@@ -1,8 +1,9 @@
-import React, { FC, useCallback } from 'react';
-import { Button } from '@material-ui/core';
+import React, { FC, useCallback, useState } from 'react';
+import { Box, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 import { Toolbar } from '..';
+import { Modal } from './../Modal';
 import { Props } from './types';
 import { useActivateMusicianBand, useDeactivateMusicianBand } from '../../queries/musician';
 
@@ -13,14 +14,22 @@ export const MusicianToolbar: FC<Props> = ({ setIsEditing, musician }) => {
   const { t } = useTranslation();
   const { mutate: activate } = useActivateMusicianBand();
   const { mutate: deactivate } = useDeactivateMusicianBand();
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
   const classes = useStyles({ active: musician.active });
+
+  const closeModal = () => setIsModalOpen(false);
 
   const handleActivation = useCallback(() => {
     if(musician.active) {
-      return deactivate(musician.id);
+      return setIsModalOpen(true);
     }
     return activate(musician.id);
-  }, [musician, deactivate, activate]);
+  }, [musician, activate]);
+
+  const handleDeactivation = useCallback(() => {
+    deactivate(musician.id);
+    return setIsModalOpen(false);
+  }, [musician, deactivate]);
 
   return (
     <Toolbar>
@@ -39,6 +48,31 @@ export const MusicianToolbar: FC<Props> = ({ setIsEditing, musician }) => {
       >
         {t('profile.edit')}
       </Button>
+
+      <Modal
+        open={isModalOpen}
+        handleClose={closeModal}
+        title={t('profile.deactivationModalTitle')}
+        description={t('profile.deactivationModalSubtitle')}
+      >
+        <Box className={classes.modalActions}>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={closeModal}
+          >
+            {t('translation.cancel')}
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.deactivationBtn}
+            onClick={handleDeactivation}
+          >
+            {t('profile.deactivate')}
+          </Button>
+        </Box>
+      </Modal>
+
     </Toolbar>
-  )
+  );
 };
