@@ -2,5 +2,7 @@
   "save": "Zapisz",
   "deactivate": "Deaktywuj",
   "activate": "Opublikuj",
-  "edit": "Edytuj"
+  "edit": "Edytuj",
+  "deactivationModalTitle": "Jesteś pewnien, ze chcesz deaktywować zespół?",
+  "deactivationModalSubtitle": "Nie będzie on juz dostępny w publicznej wyszukiwarce, ale nadal będziesz mógł nim zarządzać w zakładce 'moje zespoły'."
 }
