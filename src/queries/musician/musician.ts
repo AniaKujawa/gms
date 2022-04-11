@@ -93,6 +93,44 @@ export const useUpdateMusicianBand = () => {
   });
 };
 
+export const useActivateMusicianBand = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  const { handleError } = useFeedback();
+
+  return useMutation(async(id: string) => {
+    try {
+      await musicianClient.activateMusicianBands(id);
+
+      queryClient.invalidateQueries('musician');
+
+      return;
+    } catch(e) {
+      console.log('Couldn\'t activate band', e);
+      handleError(new Error(t('apiErrors.activateBand')));
+    }
+  });
+};
+
+export const useDeactivateMusicianBand = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  const { handleError } = useFeedback();
+
+  return useMutation(async(id: string) => {
+    try {
+      await musicianClient.deactivateMusicianBands(id);
+
+      queryClient.invalidateQueries('musician');
+
+      return;
+    } catch(e) {
+      console.log('Couldn\'t update band', e);
+      handleError(new Error(t('apiErrors.deactivateBand')));
+    }
+  });
+};
+
 export const useGetTags = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();

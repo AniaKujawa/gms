@@ -22,7 +22,7 @@ export const BandProfile: FC = () => {
         ) : (   
           musician ? (
             <>
-              <MusicianToolbar setIsEditing={setIsEditing} />
+              <MusicianToolbar musician={musician} setIsEditing={setIsEditing} />
               <MusicianExtended musician={musician} />
             </>
           ) : (

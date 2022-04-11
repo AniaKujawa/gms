@@ -47,6 +47,22 @@ class MusicianClient {
   return;
   }
 
+  async activateMusicianBands(id: string): Promise<void> {
+    await fetch.put({
+      url: `${endpoints.userBands}/${id}/activation`,
+    });
+
+  return;
+  }
+
+  async deactivateMusicianBands(id: string): Promise<void> {
+    await fetch.put({
+      url: `${endpoints.userBands}/${id}/deactivation`,
+    });
+
+  return;
+  }
+
   async getTags(): Promise<Tag[]> {
     const data = await fetch.get({
       url: endpoints.tags,

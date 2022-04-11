@@ -10,3 +10,4 @@ export * from './MusicianTags';
 export * from './Toolbar';
 export * from './Uploader';
 export * from './Welcome';
+export * from './Modal';
