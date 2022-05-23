@@ -3,7 +3,7 @@ import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
-import { Musician } from '../../types';
+import { Musician, MusicianImages } from '../../types';
 import { PATHS } from '../../utils/consts';
 
 
@@ -89,6 +89,44 @@ export const useUpdateMusicianBand = () => {
     } catch(e) {
       console.log('Couldn\'t update band', e);
       handleError(new Error(t('apiErrors.putMusicianBand')));
+    }
+  });
+};
+
+export const useAddMusicianImages = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  const { handleError } = useFeedback();
+
+  return useMutation(async(images: MusicianImages) => {
+    try {
+      await musicianClient.postMusicianImages(images);
+
+      queryClient.invalidateQueries('musician');
+
+      return;
+    } catch(e) {
+      console.log('Couldn\'t update images', e);
+      handleError(new Error(t('apiErrors.postMusicianImages')));
+    }
+  });
+};
+
+export const useDeleteMusicianImage = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  const { handleError } = useFeedback();
+
+  return useMutation(async({ musicianId, imageId } : { musicianId: string, imageId: string }) => {
+    try {
+      await musicianClient.deleteMusicianImage(musicianId, imageId);
+
+      queryClient.invalidateQueries('musician');
+
+      return;
+    } catch(e) {
+      console.log('Couldn\'t delete image', e);
+      handleError(new Error(t('apiErrors.deleteMusicianImage')));
     }
   });
 };

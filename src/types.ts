@@ -39,4 +39,9 @@ export type Musician = {
   socialLinks: string[];
 };
 
+export type MusicianImages = {
+  id: string;
+  images: string[];
+};
+
 export type MaybeNoop<T> = T | (() => any);

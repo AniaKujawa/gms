@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 type Props = {
-  onChange: (file: Blob) => void;
+  onChange: (file: File) => void;
 };
 
 export const UploaderButton: FC<Props> = ({ onChange }) => {

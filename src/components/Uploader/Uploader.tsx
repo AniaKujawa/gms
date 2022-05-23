@@ -3,6 +3,9 @@ import { Box } from '@material-ui/core';
 
 import { ImagePreview } from './../ImagePreview';
 import { UploaderButton } from './UploaderButton';
+import { Image } from '../MultipleUploader/types';
+import { useDeleteMusicianImage } from '../../queries/musician';
+
 
 type Props = {
   filename: string;
@@ -12,6 +15,8 @@ type Props = {
 
 export const Uploader: FC<Props> = ({ filename, setFile, fileUrl }) => {
   const [ imageUrl, setImageUrl ] = useState(fileUrl || '');
+  const { mutate: mutateDeletion } = useDeleteMusicianImage();
+
   const handleFileChange = (file: Blob) => {
     if(file) {
       setFile(file);
@@ -19,9 +24,23 @@ export const Uploader: FC<Props> = ({ filename, setFile, fileUrl }) => {
     }
   };
 
+  const handleDelete = (image: Image) => {
+    setImageUrl('');
+  };
+
+  const handleServerDelete = (item: Image) => {
+    mutateDeletion({ musicianId: '4', imageId: item.id });
+  };
+
   return (
     <Box>
-      {imageUrl && <ImagePreview imageUrl={imageUrl} imageName={filename} />}
+      {imageUrl && (
+      <ImagePreview
+        image={{ url: fileUrl, id: filename}}
+        handleDelete={handleDelete}
+        handleServerDelete={handleServerDelete}
+      />
+      )}
       <UploaderButton onChange={handleFileChange} />
     </Box>
   )

@@ -1,6 +1,6 @@
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
-import { Musician, Tag } from './../../types';
+import { Musician, Tag, MusicianImages } from './../../types';
 
 import { formatMusicians, formatMusician, formatApiMusician } from './formatter';
 
@@ -26,7 +26,7 @@ class MusicianClient {
       url: endpoints.userBands,
     });
 
-  return formatMusicians(data.data.bands);
+    return formatMusicians(data.data.bands);
   }
 
   async postMusicianBands(values: Musician): Promise<Musician> {
@@ -35,7 +35,7 @@ class MusicianClient {
       data: formatApiMusician(values),
     });
 
-  return formatMusician(data.data.band);
+    return formatMusician(data.data.band);
   }
 
   async putMusicianBands(values: Musician): Promise<void> {
@@ -44,7 +44,7 @@ class MusicianClient {
       data: formatApiMusician(values),
     });
 
-  return;
+    return;
   }
 
   async activateMusicianBands(id: string): Promise<void> {
@@ -52,7 +52,29 @@ class MusicianClient {
       url: `${endpoints.userBands}/${id}/activation`,
     });
 
-  return;
+    return;
+  }
+
+  async postMusicianImages(values: MusicianImages): Promise<Musician> {
+    const data = new FormData();
+    values.images.map(img => data.append('images[]', img));
+    console.log(data, 'nkndjlsn', values);
+
+    const result = await fetch.post({
+      url: `${endpoints.userBands}/${values.id}/images`,
+      headers: { 'Content-Type': 'multipart/form-data' },
+      data,
+    });
+
+    return formatMusician(result.data.band);
+  }
+
+  async deleteMusicianImage(musicianId: string, imageId: string): Promise<void> {
+    await fetch.delete({
+      url: `${endpoints.userBands}/${musicianId}/images/${imageId}`,
+    });
+
+    return;
   }
 
   async deactivateMusicianBands(id: string): Promise<void> {
@@ -60,7 +82,7 @@ class MusicianClient {
       url: `${endpoints.userBands}/${id}/deactivation`,
     });
 
-  return;
+    return;
   }
 
   async getTags(): Promise<Tag[]> {
@@ -68,7 +90,7 @@ class MusicianClient {
       url: endpoints.tags,
     });
 
-  return data.data.tags;
+    return data.data.tags;
   }
 }
 

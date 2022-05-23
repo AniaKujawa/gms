@@ -1,7 +1,7 @@
 import { Musician } from '../../types';
 
 export type Props = {
-  musician?: Musician;
+  musician: Musician;
   endEditing: () => void;
 };
 
