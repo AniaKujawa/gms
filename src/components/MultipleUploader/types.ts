@@ -4,7 +4,7 @@ export type Image = {
   saved?: boolean;
 }
 
-export type File = Image | { id: string; url: Blob };
+export type File = Image | { id: string; url: Blob, saved?: boolean };
 
 export type Props = {
   values: Image[];

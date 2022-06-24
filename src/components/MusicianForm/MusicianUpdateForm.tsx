@@ -17,7 +17,7 @@ export const MusicianUpdateForm: FC<Props> = ({ musician, endEditing }) => {
     if(values.images) {
       await addImages({
         id: musician.id,
-        images: [ ...values.images.map((file: File) => file.url) ],
+        images: [ ...values.images.filter((img: File) => !img.saved).map((file: File) => file.url) ],
       })
     }
     endEditing();

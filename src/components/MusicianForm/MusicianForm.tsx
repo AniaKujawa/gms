@@ -66,7 +66,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
           <Controller
             name='images'
             control={control}
-            defaultValue={[]}
+            defaultValue={musician?.images || []}
             error={!!errors.images}        
             render={(
               { onChange, value }

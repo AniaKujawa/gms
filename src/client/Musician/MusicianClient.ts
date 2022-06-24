@@ -58,7 +58,6 @@ class MusicianClient {
   async postMusicianImages(values: MusicianImages): Promise<Musician> {
     const data = new FormData();
     values.images.map(img => data.append('images[]', img));
-    console.log(data, 'nkndjlsn', values);
 
     const result = await fetch.post({
       url: `${endpoints.userBands}/${values.id}/images`,
