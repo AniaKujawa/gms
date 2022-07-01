@@ -1,10 +1,10 @@
 import { Musician } from '../../types';
-import { Image, File } from './../MultipleUploader/types';
+import { ImageFile } from './../MultipleUploader/types';
 
 export type Props = {
   musician?: Musician;
-  values: Image[];
-  setValues: (values: File[]) => void;
+  values: ImageFile[];
+  setValues: (values: ImageFile[]) => void;
 };
 
 export type ModalProps = {

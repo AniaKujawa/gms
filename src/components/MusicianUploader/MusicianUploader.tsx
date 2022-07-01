@@ -1,6 +1,9 @@
 import React, { FC, useState } from 'react';
+import { Grid } from '@material-ui/core';
+
 import { MultipleUploader } from '../MultipleUploader';
 import { useDeleteMusicianImage } from '../../queries/musician';
+import { ImagePreview } from '../ImagePreview';
 
 import { Props } from './types';
 import { Image } from '../MultipleUploader/types';
@@ -29,17 +32,24 @@ export const MusicianUploader: FC<Props> = ({ musician, values, setValues }) => 
   };
 
   return (
-    <>
+    <Grid container spacing={2} alignItems="center">
+      {musician?.images.map(img => (
+        <Grid item key={img.id}>
+          <ImagePreview
+            image={img}
+            handleDelete={handleOpenDeletionModal}
+          />
+        </Grid>
+      ))}
       <MultipleUploader
         values={values}
         setValues={setValues}
-        handleServerDelete={handleOpenDeletionModal}
       />
       <DeletingModal
          isModalOpen={isModalOpen}
          handleClose={handleClose} 
          handleDelete={handleImageDelete}
       />
-    </>
+    </Grid>
   )
 }

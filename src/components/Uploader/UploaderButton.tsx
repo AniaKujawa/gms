@@ -17,7 +17,7 @@ export const UploaderButton: FC<Props> = ({ onChange }) => {
 
  return (
    <>
-    <input
+      <input
         accept="image/*"
         style={{ display: 'none' }}
         id="button-file"

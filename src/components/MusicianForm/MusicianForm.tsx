@@ -6,7 +6,6 @@ import { Button, TextField, Grid } from '@material-ui/core';
 
 import { RichTextEditor } from '../RichTextEditor';
 import { FormProps } from './types';
-// import { Uploader } from './../Uploader';
 import { MusicianUploader } from './../MusicianUploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
@@ -45,28 +44,11 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             )}
           />
         </Grid>
-        {/* <Grid item>
-          <Controller
-            name='image'
-            control={control}
-            defaultValue={musician?.imageUrl || ''}
-            error={!!errors.image}        
-            render={(
-              { onChange, value }
-            ) => (
-              <Uploader
-                filename='main-image'
-                fileUrl={value ? (typeof value === 'string' ? value : URL.createObjectURL(value)) : ''}
-                setFile={onChange}
-              />
-            )}
-          />
-        </Grid> */}
         <Grid item>
           <Controller
             name='images'
             control={control}
-            defaultValue={musician?.images || []}
+            defaultValue={[]}
             error={!!errors.images}        
             render={(
               { onChange, value }

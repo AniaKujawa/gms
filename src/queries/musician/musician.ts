@@ -1,10 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
-import { useHistory } from 'react-router-dom';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
 import { Musician, MusicianImages } from '../../types';
-import { PATHS } from '../../utils/consts';
 
 
 export const useGetMusicians = () => {
@@ -57,14 +55,11 @@ export const useGetMusicianBands = () => {
 
 export const useCreateMusicianBand = () => {
   const { t } = useTranslation();
-  const { push } = useHistory(); 
   const { handleError } = useFeedback();
 
   return useMutation(async(musician: Musician) => {
     try {
       const data = await musicianClient.postMusicianBands(musician);
-
-      push(`${PATHS.BANDS}/${data?.id}`);
 
       return data;
     } catch(e) {
