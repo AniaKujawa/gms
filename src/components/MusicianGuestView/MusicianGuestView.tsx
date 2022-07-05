@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { Musician } from ".."
 import { PATHS } from '../../utils/consts';
 
-import { useStyles } from './MusicanGuest.styles';
+import { useStyles } from './MusicanGuestView.styles';
 import { Props } from './types';
 
-export const MusicianGuest: FC<Props> = ({ musician }) => {
+export const MusicianGuestView: FC<Props> = ({ musician }) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
