@@ -11,7 +11,7 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import {  PersonAdd, Settings, ExitToApp } from '@material-ui/icons';
+import { ExitToApp } from '@material-ui/icons';
 import { useUserContext } from '../../context/User';
 import { PATHS } from '../../utils/consts';
 
@@ -61,12 +61,6 @@ export const UserMenu = () => {
           <Avatar /> {t('menu.account')}
         </MenuItem>
         <Divider />
-        {/* <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem> */}
         <MenuItem onClick={logout}>
           <ListItemIcon>
             <ExitToApp fontSize="small" />

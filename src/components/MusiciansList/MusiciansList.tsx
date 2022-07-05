@@ -31,7 +31,7 @@ export const MusiciansList = () => {
                 >
                   <MusicianImage
                     title={music.name}
-                    imageUrl={music.imageUrl}
+                    imageUrl={music.images[0]?.url}
                   />
                 </Grid>
               <MusicianTags tags={music.tags} />

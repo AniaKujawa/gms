@@ -27,16 +27,27 @@ export type Tag = {
   name: string;
 };
 
+export type Image = {
+  id: string;
+  url: string;
+}
+
 export type Musician = {
   id: string;
   active: boolean;
   name: string;
   imageUrl: string;
   description: string;
+  images: Image[];
   tags: Tag[];
   contactName: string;
   phoneNumber: string;
   socialLinks: string[];
+};
+
+export type MusicianImages = {
+  id: string;
+  images: string[];
 };
 
 export type MaybeNoop<T> = T | (() => any);

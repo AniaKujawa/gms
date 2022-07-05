@@ -1,0 +1,1 @@
+export { MultipleUploader } from './MultipleUploader';

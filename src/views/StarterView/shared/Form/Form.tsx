@@ -5,10 +5,9 @@ import { Input, InputLabel, InputAdornment, IconButton, TextField, FormHelperTex
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import { Props } from './Form.types';
-import { useStyles } from './Form.styles';
+
 
 export const Form: FC<Props> = ({ control, errors }) => {
-  const classes = useStyles();
   const [ showPassword, setShowPassword ] = useState(false);
   const { t } = useTranslation();
 

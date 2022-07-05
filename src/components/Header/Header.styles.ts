@@ -1,6 +1,6 @@
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles((theme: any) =>
+export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       height: 60,
@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme: any) =>
       backgroundColor: theme.palette.black.main,
       position: 'sticky',
       top: 0,
+      zIndex: 2,
     },
   }),
 );

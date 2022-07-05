@@ -2,9 +2,16 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
+    box: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    img: {
       maxWidth: 400,
       height: 'auto',
     },
+    btn: {
+      alignSelf: 'end',
+    }
   }),
 );

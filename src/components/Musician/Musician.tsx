@@ -21,7 +21,7 @@ export const Musician: FC<Props> = ({ musician, children }) => {
       >
         <MusicianImage
           title={musician.name}
-          imageUrl={musician.imageUrl}
+          imageUrl={musician.images[0]?.url}
         />
       </Grid>      
       <Grid item xs={4} className={classes.description}>

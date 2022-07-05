@@ -1,4 +1,6 @@
+import { Image } from '../MultipleUploader/types';
+
 export type Props = {
-  imageUrl: string;
-  imageName: string;
+  image: Image;
+  handleDelete: (image: Image) => void;
 };

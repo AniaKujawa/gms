@@ -65,7 +65,6 @@ const AuthRoutes: FC = () => (
         <MusicViewExtended />
       </DashboardLayout>
     </Route>
-    <Redirect from="/dashboard" to="/" />
     <Redirect from="*" to="/" />
   </Switch>
 );

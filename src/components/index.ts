@@ -2,7 +2,7 @@ export * from './Header';
 export * from './ImagePreview';
 export * from './Musician';
 export * from './MusicianExtended';
-export * from './MusicianGuest';
+export * from './MusicianGuestView';
 export * from './MusicianForm';
 export * from './MusiciansList';
 export * from './MusicianToolbar';
