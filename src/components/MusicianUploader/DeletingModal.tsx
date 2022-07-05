@@ -35,5 +35,5 @@ export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handle
         </Button>
       </Box>
     </Modal>
-  )
-}
+  );
+};

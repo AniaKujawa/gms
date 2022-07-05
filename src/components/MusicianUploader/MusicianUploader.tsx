@@ -51,5 +51,5 @@ export const MusicianUploader: FC<Props> = ({ musician, values, setValues }) => 
          handleDelete={handleImageDelete}
       />
     </Grid>
-  )
-}
+  );
+};

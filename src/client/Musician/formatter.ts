@@ -8,7 +8,7 @@ export const formatMusician = (musician: MusicianAPI) => ({
   description: musician.description,
   tags: musician.tags,
   imageUrl: musician.image_url,
-  images: musician.images.map(image => ({ ...image, saved: true })),
+  images: musician.images,
   phoneNumber: musician.phone_number,
   contactName: musician.contact_name,
   socialLinks: musician.social_links,
