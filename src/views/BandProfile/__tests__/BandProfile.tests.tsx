@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { QueryClientProvider } from 'react-query';
 import { unmountComponentAtNode } from 'react-dom';
 import { QueryClient } from 'react-query';
@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 
+import { musicianClient } from '../../../client/Musician';
 import { theme } from '../../../styles/theme';
 import { PATHS } from '../../../utils/consts';
 import { MusicianExtended, MusicianToolbar } from '../../../components';
@@ -100,17 +101,18 @@ describe('Band profile page', () => {
 
     history.push(`${PATHS.BANDS}/2`);
 
-    queryClient.setQueryData(['musician', '2'], undefined);
+    jest.spyOn(musicianClient, 'getMusician').mockImplementation(id => Promise.reject());
 
-    const { getByText } = render(
-      <Router history={history}>
-        <BandProfile />
-      </Router>,
-      { container, wrapper }
-    )
+    await act(async() => {
+      render(
+        <Router history={history}>
+          <BandProfile />
+        </Router>,
+        { container, wrapper }
+      );
+    });
 
-    const header = getByText(`You profile couldn't be displayed. Contact our service.`);
-
-    expect(header).toBeInTheDocument();
+    expect(container).toHaveTextContent(`You profile couldn't be displayed. Contact our service`);
   });
+
 });
