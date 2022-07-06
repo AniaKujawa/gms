@@ -4,13 +4,14 @@ import { QueryClientProvider } from 'react-query';
 import { unmountComponentAtNode } from 'react-dom';
 import { QueryClient } from 'react-query';
 import { ThemeProvider } from '@material-ui/core';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history'
 
 import { theme } from '../../../styles/theme';
 import { PATHS } from '../../../utils/consts';
 import { MusicianExtended, MusicianToolbar } from '../../../components';
 import { musician as mockedMusician } from '../../../mocks/musician';
 import { BandProfile } from '..';
-import { renderWithRouterMatch } from '../../../utils/helpers/testWithRouter';
 
 
 let container: HTMLDivElement;
@@ -27,8 +28,14 @@ afterEach(() => {
   }
 });
 
-const queryClient = new QueryClient();
-queryClient.getQueryData = jest.fn;
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      retry: false,
+    },
+  }, 
+});
 
 const wrapper: FC = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -88,14 +95,22 @@ describe('Band profile page', () => {
     expect(buttonLabel).toBeInTheDocument();
   });
 
-  it('display message when musician not found in api', () => {
-    const { getByRole } = renderWithRouterMatch(
-      <BandProfile />,
-      { path: `${PATHS.BANDS}/:id`, route: `${PATHS.BANDS}/2` },
+  it('display message when musician not found in api', async() => {
+    const history = createMemoryHistory();
+
+    history.push(`${PATHS.BANDS}/2`);
+
+    queryClient.setQueryData(['musician', '2'], undefined);
+
+    const { getByText } = render(
+      <Router history={history}>
+        <BandProfile />
+      </Router>,
       { container, wrapper }
-    );
-    const header = getByRole('generic');
-  
-    expect(header).toHaveTextContent(`You profile couldn't be displayed. Contact our service.`);
+    )
+
+    const header = getByText(`You profile couldn't be displayed. Contact our service.`);
+
+    expect(header).toBeInTheDocument();
   });
 });
