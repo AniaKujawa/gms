@@ -14,14 +14,14 @@ export const MusicianExtended: FC<Props> = ({ musician }) => {
     <Musician musician={musician}>
       <Box className={classes.box}>
       {musician.phoneNumber && (
-        <Typography>
-            {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
-          </Typography>
+        <Typography data-testid="contact">
+          {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
+        </Typography>
       )}
       {musician.socialLinks && (
-        <Typography>
-        {t('musician.socialLinks')}: {musician.socialLinks}
-      </Typography>
+        <Typography data-testid="socialLinks">
+          {t('musician.socialLinks')}: {musician.socialLinks}
+        </Typography>
       )}
       </Box>
     </Musician>

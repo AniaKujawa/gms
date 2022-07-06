@@ -31,7 +31,7 @@ export const useGetMusician = (id: string) => {
 
       return data;
     } catch(e) {
-      console.log('Couldn\'t get all musicians', e);
+      console.log('Couldn\'t get musician', e);
       handleError(new Error(t('apiErrors.getMusicians')));
     }
   });
