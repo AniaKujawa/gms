@@ -30,7 +30,14 @@ export type Tag = {
 export type Image = {
   id: string;
   url: string;
-}
+};
+
+export type SocialLinks = {
+  fb?: string;
+  yt?: string;
+  inst?: string;
+  tiktok?: string;
+};
 
 export type Musician = {
   id: string;
@@ -42,7 +49,7 @@ export type Musician = {
   tags: Tag[];
   contactName: string;
   phoneNumber: string;
-  socialLinks: string[];
+  socialLinks: SocialLinks;
 };
 
 export type MusicianImages = {
