@@ -11,6 +11,7 @@ export const MusicianUpdateForm: FC<Props> = ({ musician, endEditing }) => {
   const { mutateAsync: addImages } = useAddMusicianImages();
 
   const onSubmit = async(values: any) => {
+    console.log(values);
     await mutateAsync({
       id: musician?.id,
       ...values

@@ -1,4 +1,4 @@
-import { Tag, Image } from '../../types';
+import { Tag, Image, SocialLinks } from '../../types';
 
 export type MusicianAPI = {
   id: string;
@@ -10,5 +10,5 @@ export type MusicianAPI = {
   tags: Tag[];
   contact_name: string;
   phone_number: string;
-  social_links: string[];
+  social_links: SocialLinks;
 };

@@ -3,7 +3,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button, TextField, Grid } from '@material-ui/core';
 
-
 import { RichTextEditor } from '../RichTextEditor';
 import { FormProps } from './types';
 import { MusicianUploader } from './../MusicianUploader';
@@ -94,7 +93,84 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             )}
           />
         </Grid>
+        <Grid item>
+          <Controller
+            name="socialLinks.fb"
+            control={control}
+            defaultValue={musician?.socialLinks?.fb || ''}
+            error={!!errors.fb}
+            render={(
+              { onChange, value }
+            ) => (
+              <TextField
+                label="Facebook"
+                type='text'
+                onChange={onChange}
+                value={value}
+                helperText={errors?.fb?.message}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item>
+          <Controller
+            name="socialLinks.yt"
+            control={control}
+            defaultValue={musician?.socialLinks?.yt || ''}
+            error={!!errors.yt}
+            render={(
+              { onChange, value }
+            ) => (
+              <TextField
+                label="Youtube"
+                type='text'
+                onChange={onChange}
+                value={value}
+                helperText={errors?.yt?.message}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item>
+          <Controller
+            name="socialLinks.inst"
+            control={control}
+            defaultValue={musician?.socialLinks?.inst || ''}
+            error={!!errors.inst}
+            render={(
+              { onChange, value }
+            ) => (
+              <TextField
+                label="Instagram"
+                type='text'
+                onChange={onChange}
+                value={value}
+                helperText={errors?.inst?.message}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item>
+          <Controller
+            name="socialLinks.tiktok"
+            control={control}
+            defaultValue={musician?.socialLinks?.tiktok || ''}
+            error={!!errors.tiktok}
+            render={(
+              { onChange, value }
+            ) => (
+              <TextField
+                label="Tiktok"
+                type='text'
+                onChange={onChange}
+                value={value}
+                helperText={errors?.tiktok?.message}
+              />
+            )}
+          />
+        </Grid>
       </Grid>
+
       <Toolbar>
         <Button
           type="button"
