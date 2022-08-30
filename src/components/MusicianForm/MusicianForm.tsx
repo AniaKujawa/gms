@@ -94,80 +94,89 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
           />
         </Grid>
         <Grid item>
-          <Controller
-            name="socialLinks.fb"
-            control={control}
-            defaultValue={musician?.socialLinks?.fb || ''}
-            error={!!errors.fb}
-            render={(
-              { onChange, value }
-            ) => (
-              <TextField
-                label="Facebook"
-                type='text'
-                onChange={onChange}
-                value={value}
-                helperText={errors?.fb?.message}
+          <h3>{t('musician.socials')}</h3>
+          <Grid container spacing={4}>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.fb"
+                control={control}
+                defaultValue={musician?.socialLinks?.fb || ''}
+                error={!!errors.fb}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Facebook"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors?.fb?.message}
+                  />
+                )}
               />
-            )}
-          />
-        </Grid>
-        <Grid item>
-          <Controller
-            name="socialLinks.yt"
-            control={control}
-            defaultValue={musician?.socialLinks?.yt || ''}
-            error={!!errors.yt}
-            render={(
-              { onChange, value }
-            ) => (
-              <TextField
-                label="Youtube"
-                type='text'
-                onChange={onChange}
-                value={value}
-                helperText={errors?.yt?.message}
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.yt"
+                control={control}
+                defaultValue={musician?.socialLinks?.yt || ''}
+                error={!!errors.yt}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Youtube"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors?.yt?.message}
+                  />
+                )}
               />
-            )}
-          />
-        </Grid>
-        <Grid item>
-          <Controller
-            name="socialLinks.inst"
-            control={control}
-            defaultValue={musician?.socialLinks?.inst || ''}
-            error={!!errors.inst}
-            render={(
-              { onChange, value }
-            ) => (
-              <TextField
-                label="Instagram"
-                type='text'
-                onChange={onChange}
-                value={value}
-                helperText={errors?.inst?.message}
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.inst"
+                control={control}
+                defaultValue={musician?.socialLinks?.inst || ''}
+                error={!!errors.inst}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Instagram"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors?.inst?.message}
+                  />
+                )}
               />
-            )}
-          />
-        </Grid>
-        <Grid item>
-          <Controller
-            name="socialLinks.tiktok"
-            control={control}
-            defaultValue={musician?.socialLinks?.tiktok || ''}
-            error={!!errors.tiktok}
-            render={(
-              { onChange, value }
-            ) => (
-              <TextField
-                label="Tiktok"
-                type='text'
-                onChange={onChange}
-                value={value}
-                helperText={errors?.tiktok?.message}
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.tiktok"
+                control={control}
+                defaultValue={musician?.socialLinks?.tiktok || ''}
+                error={!!errors.tiktok}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Tiktok"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors?.tiktok?.message}
+                  />
+                )}
               />
-            )}
-          />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
 

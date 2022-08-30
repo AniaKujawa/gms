@@ -10,6 +10,7 @@ import {
   BandList,
   BandProfile,
   BandCreation,
+  BandUpdate,
 } from './../views';
 import { DashboardLayout } from './../layout/DashboardLayout';
 import { PATHS } from './../utils/consts';
@@ -58,6 +59,11 @@ const AuthRoutes: FC = () => (
     <Route exact path={`${PATHS.BANDS}/:id`}>
       <DashboardLayout>
         <BandProfile />
+      </DashboardLayout>
+    </Route>
+    <Route exact path={`${PATHS.BANDS_EDIT}/:id`}>
+      <DashboardLayout>
+        <BandUpdate />
       </DashboardLayout>
     </Route>
     <Route exact path={`${PATHS.MUSIC}/:id`}>

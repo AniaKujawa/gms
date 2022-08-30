@@ -16,7 +16,7 @@ export const MusicianCreateForm: FC = () => {
   const onSubmit = async(values: any) => {
     const musician = await mutateAsync(values);
 
-    if(values.images && musician) {
+    if(values.images.length && musician) {
       await addImages({
         id: musician.id,
         images: [ ...values.images.map((file: ImageFile) => file.url) ],
