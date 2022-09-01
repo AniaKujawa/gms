@@ -5,7 +5,12 @@
     "blankName": "Name can't be blank"
   },
   "name": "Name",
+  "socials": "Social media",
+  "urlValidation": "Must be valid url",
   "loginToUnblockContactInfo": "You need to log in to see band's contact info",
   "createBtn": "Add band",
+  "deleteImgTitle": "Delete image",
+  "deleteImgSubtitle": "Are you sure you want to delete the image?",
+  "deleteImgBtn": "Yese",
   "createBandTitle": "Create new band"
 }
