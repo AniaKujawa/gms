@@ -10,6 +10,7 @@ import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
 import { useStyles } from './MusicianForm.styles';
 import { useGetTags } from '../../queries/musician';
+import { URL_REGEX } from '../../utils/musicianForm';
 
 
 export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
@@ -99,9 +100,12 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             <Grid item md={6}>
               <Controller
                 name="socialLinks.fb"
+                rules={{
+                  pattern: URL_REGEX
+                }}
                 control={control}
                 defaultValue={musician?.socialLinks?.fb || ''}
-                error={!!errors.fb}
+                error={!!errors.socialLinks?.fb}
                 render={(
                   { onChange, value }
                 ) => (
@@ -111,7 +115,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors?.fb?.message}
+                    helperText={errors.socialLinks?.fb ? t('musician.urlValidation') : null}
                   />
                 )}
               />
@@ -119,9 +123,12 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             <Grid item md={6}>
               <Controller
                 name="socialLinks.yt"
+                rules={{
+                  pattern: URL_REGEX
+                }}
                 control={control}
                 defaultValue={musician?.socialLinks?.yt || ''}
-                error={!!errors.yt}
+                error={!!errors.socialLinks?.yt}
                 render={(
                   { onChange, value }
                 ) => (
@@ -131,7 +138,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors?.yt?.message}
+                    helperText={errors.socialLinks?.yt ? t('musician.urlValidation') : null}
                   />
                 )}
               />
@@ -139,9 +146,13 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             <Grid item md={6}>
               <Controller
                 name="socialLinks.inst"
+                rules={{
+                  pattern: URL_REGEX
+                }}
+                type="url"
                 control={control}
                 defaultValue={musician?.socialLinks?.inst || ''}
-                error={!!errors.inst}
+                error={!!errors.socialLinks?.inst}
                 render={(
                   { onChange, value }
                 ) => (
@@ -151,7 +162,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors?.inst?.message}
+                    helperText={errors.socialLinks?.inst ? t('musician.urlValidation') : null}
                   />
                 )}
               />
@@ -159,19 +170,22 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             <Grid item md={6}>
               <Controller
                 name="socialLinks.tiktok"
+                rules={{
+                  pattern: URL_REGEX
+                }}
                 control={control}
                 defaultValue={musician?.socialLinks?.tiktok || ''}
-                error={!!errors.tiktok}
+                error={!!errors.socialLinks?.tiktok}
                 render={(
                   { onChange, value }
                 ) => (
                   <TextField
                     fullWidth
                     label="Tiktok"
-                    type='text'
+                    type="url"
                     onChange={onChange}
                     value={value}
-                    helperText={errors?.tiktok?.message}
+                    helperText={errors.socialLinks?.tiktok ? t('musician.urlValidation') : null}
                   />
                 )}
               />
