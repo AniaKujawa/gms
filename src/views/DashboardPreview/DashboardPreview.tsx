@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { MusiciansList } from './../../components';
 import { Container  } from '@material-ui/core';
 
@@ -6,11 +6,13 @@ import { Welcome } from './../../components';
 
 
 export const DashboardPreview: FC = () => {
+  const [ searchValue, setSearchValue ] = useState('');
+
   return (
     <>
-      <Welcome />
+      <Welcome setSearchValue={setSearchValue} />
       <Container>
-        <MusiciansList />
+        <MusiciansList search={searchValue} />
       </Container>
     </>
   )

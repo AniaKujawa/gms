@@ -1,12 +1,14 @@
 import React from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography, Grid } from '@material-ui/core';
 
 import { useGetMusicians } from '../../queries/musician';
 import { MusicianCard } from './MusicianCard';
+import { ListProps } from './types';
 
-export const MusiciansList = () => {
-  const { data: musicians } = useGetMusicians();
+export const MusiciansList: FC<ListProps> = ({ search }) => {
+  const { data: musicians } = useGetMusicians(search);
   const { t } = useTranslation();
 
   return (

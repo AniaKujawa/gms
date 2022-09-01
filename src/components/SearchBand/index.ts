@@ -1,0 +1,1 @@
+export { SearchBand } from './SearchBand';
