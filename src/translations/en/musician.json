@@ -7,5 +7,8 @@
   "name": "Name",
   "loginToUnblockContactInfo": "You need to log in to see band's contact info",
   "createBtn": "Add band",
+  "deleteImgTitle": "",
+  "deleteImgSubtitle": "",
+  "deleteImgBtn": "",
   "createBandTitle": "Create new band"
 }

@@ -4,6 +4,8 @@
   "getMusiciansBands": "Couldn't get all bands of user",
   "postMusicianBand": "Couldn't add a new band",
   "putMusicianBand": "Couldn't update the band",
+  "postMusicianImages": "",
+  "deleteMusicianImage": "",
   "activateBand": "Couldn't activate the band",
   "deactivateBand": "Couldn't deactivate the band",
   "getTags": "Couldn't get all tags",

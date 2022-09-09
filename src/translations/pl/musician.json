@@ -7,5 +7,8 @@
   "name": "Nazwa",
   "loginToUnblockContactInfo": "Zaloguj się, aby zobaczyć informacje kontaktowe",
   "createBtn": "Dodaj zespół",
+  "deleteImgTitle": "",
+  "deleteImgSubtitle": "",
+  "deleteImgBtn": "",
   "createBandTitle": "Stwórz nowy zespół"
 }
