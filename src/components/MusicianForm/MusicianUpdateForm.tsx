@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAddMusicianImages, useUpdateMusicianBand } from '../../queries/musician';
 
 import { ImageFile } from './../MultipleUploader/types';
@@ -6,8 +7,9 @@ import { MusicianForm } from './MusicianForm';
 import { Props } from './types';
 
 
-export const MusicianUpdateForm: FC<Props> = ({ musician, endEditing }) => {
+export const MusicianUpdateForm: FC<Props> = ({ musician }) => {
   const { mutateAsync } = useUpdateMusicianBand();
+  const { goBack } = useHistory();
   const { mutateAsync: addImages } = useAddMusicianImages();
 
   const onSubmit = async(values: any) => {
@@ -15,20 +17,21 @@ export const MusicianUpdateForm: FC<Props> = ({ musician, endEditing }) => {
       id: musician?.id,
       ...values
     });
-    if(values.images) {
+    if(values.images.length) {
       await addImages({
         id: musician.id,
         images: [ ...values.images.map((file: ImageFile) => file.url) ],
       })
     }
-    endEditing();
+
+    goBack();
   };
 
   return (
     <MusicianForm
       musician={musician}
       onSubmit={onSubmit}
-      handleCancel={endEditing}
+      handleCancel={goBack}
     />
   );
 };

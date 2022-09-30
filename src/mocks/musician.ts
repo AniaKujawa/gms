@@ -9,6 +9,8 @@ export const musician: Musician = {
   description: 'cos',
   contactName: 'Ela',
   images: [],
-  socialLinks: [],
+  socialLinks: {
+    fb: '',
+  },
   phoneNumber: '567577889',
 };

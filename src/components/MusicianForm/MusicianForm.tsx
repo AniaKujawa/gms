@@ -3,7 +3,6 @@ import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Button, TextField, Grid } from '@material-ui/core';
 
-
 import { RichTextEditor } from '../RichTextEditor';
 import { FormProps } from './types';
 import { MusicianUploader } from './../MusicianUploader';
@@ -11,6 +10,7 @@ import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
 import { useStyles } from './MusicianForm.styles';
 import { useGetTags } from '../../queries/musician';
+import { URL_REGEX } from '../../utils/musicianForm';
 
 
 export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
@@ -94,7 +94,106 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             )}
           />
         </Grid>
+        <Grid item>
+          <h3>{t('musician.socials')}</h3>
+          <Grid container spacing={4}>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.fb"
+                rules={{
+                  pattern: URL_REGEX
+                }}
+                control={control}
+                defaultValue={musician?.socialLinks?.fb || ''}
+                error={!!errors.socialLinks?.fb}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Facebook"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors.socialLinks?.fb ? t('musician.urlValidation') : null}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.yt"
+                rules={{
+                  pattern: URL_REGEX
+                }}
+                control={control}
+                defaultValue={musician?.socialLinks?.yt || ''}
+                error={!!errors.socialLinks?.yt}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Youtube"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors.socialLinks?.yt ? t('musician.urlValidation') : null}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.inst"
+                rules={{
+                  pattern: URL_REGEX
+                }}
+                type="url"
+                control={control}
+                defaultValue={musician?.socialLinks?.inst || ''}
+                error={!!errors.socialLinks?.inst}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Instagram"
+                    type='text'
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors.socialLinks?.inst ? t('musician.urlValidation') : null}
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item md={6}>
+              <Controller
+                name="socialLinks.tiktok"
+                rules={{
+                  pattern: URL_REGEX
+                }}
+                control={control}
+                defaultValue={musician?.socialLinks?.tiktok || ''}
+                error={!!errors.socialLinks?.tiktok}
+                render={(
+                  { onChange, value }
+                ) => (
+                  <TextField
+                    fullWidth
+                    label="Tiktok"
+                    type="url"
+                    onChange={onChange}
+                    value={value}
+                    helperText={errors.socialLinks?.tiktok ? t('musician.urlValidation') : null}
+                  />
+                )}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
+
       <Toolbar>
         <Button
           type="button"
