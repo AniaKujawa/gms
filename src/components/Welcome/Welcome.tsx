@@ -4,11 +4,11 @@ import { Typography, Box } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 import { useStyles } from './Welcome.styles';
-import { Props } from './types';
 import { SearchBand } from '../SearchBand';
+import { PopularTags } from '../PopularTags';
 
 
-export const Welcome: FC<Props> = ({ setSearchValue }) => {
+export const Welcome: FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -17,7 +17,8 @@ export const Welcome: FC<Props> = ({ setSearchValue }) => {
       <Typography variant="h1" color="secondary">
         {t('dashboard.title')}
       </Typography>
-      <SearchBand setSearchValue={setSearchValue} />
+      <SearchBand />
+      <PopularTags />
     </Box>
   )
 }

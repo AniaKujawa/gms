@@ -18,6 +18,11 @@ export const theme = createTheme({
           backgroundColor: palette.primary.light,
         },
       },
+      containedSecondary: {
+        '&:hover': {
+          backgroundColor: palette.secondary.hover,
+        },
+      },
     },
   },
 }, {

@@ -4,17 +4,18 @@ import { useTranslation } from 'react-i18next';
 
 import { useDebounce } from './../../hooks/useDebounce';
 import { useStyles } from './SearchBand.styles';
-import { Props } from './types'; 
+import { useBandsSearch } from '../../hooks/useBandsSearch';
 
-export const SearchBand: FC<Props> = ({ setSearchValue }) => {
+export const SearchBand: FC = () => {
     const { t } = useTranslation();
-    const [ value, setValue ] = useState<string>('');
+    const { search, handleSearchChange } = useBandsSearch();
+    const [ value, setValue ] = useState<string>(search);
     const debouncedSearch = useDebounce(value, 1000);
     const classes = useStyles();
 
     useEffect(() => {
-        setSearchValue(debouncedSearch);
-    }, [debouncedSearch, setSearchValue]);
+        handleSearchChange(debouncedSearch);
+    }, [debouncedSearch, handleSearchChange]);
 
     return (
         <div className={classes.container}>
@@ -22,9 +23,10 @@ export const SearchBand: FC<Props> = ({ setSearchValue }) => {
                 fullWidth
                 type="search"
                 placeholder={t('dashboard.searchBandPlaceholder')}
+                value={value}
                 onChange={e => setValue(e.target.value)}
                 variant="outlined"
             />
         </div>
     )
-    }
+}
