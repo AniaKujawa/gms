@@ -27,6 +27,7 @@ export default {
   },
   secondary: {
     main: '#FCFAFA',
+    hover: '#F3EED9'
   },
   red: {
     light: '#C0726D',

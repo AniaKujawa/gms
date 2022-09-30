@@ -5,10 +5,12 @@ import { Typography, Grid } from '@material-ui/core';
 
 import { useGetMusicians } from '../../queries/musician';
 import { MusicianCard } from './MusicianCard';
-import { ListProps } from './types';
+import { useBandsQuery } from '../../hooks/useBandsQuery';
 
-export const MusiciansList: FC<ListProps> = ({ search }) => {
-  const { data: musicians } = useGetMusicians(search);
+
+export const MusiciansList: FC = () => {
+  const { query } = useBandsQuery();
+  const { data: musicians } = useGetMusicians(query);
   const { t } = useTranslation();
 
   return (

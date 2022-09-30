@@ -1,19 +1,18 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { MusiciansList } from './../../components';
 import { Container  } from '@material-ui/core';
 
 import { Welcome } from './../../components';
+import { SearchedTagsContextProvider } from '../../context/SearchedTags';
 
 
 export const DashboardPreview: FC = () => {
-  const [ searchValue, setSearchValue ] = useState('');
-
   return (
-    <>
-      <Welcome setSearchValue={setSearchValue} />
+    <SearchedTagsContextProvider>
+      <Welcome />
       <Container>
-        <MusiciansList search={searchValue} />
+        <MusiciansList />
       </Container>
-    </>
+    </SearchedTagsContextProvider>
   )
 };
