@@ -5,13 +5,13 @@ import { useFeedback } from '../../hooks/useFeedback';
 import { Musician, MusicianImages } from '../../types';
 
 
-export const useGetMusicians = () => {
+export const useGetMusicians = (search: string) => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery('musicians', async () => {
+  return useQuery(['musicians', search], async() => {
     try {
-      const data = await musicianClient.getMusicians();
+      const data = await musicianClient.getMusicians(search);
 
       return data;
     } catch(e) {
@@ -25,7 +25,7 @@ export const useGetMusician = (id: string) => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery(['musician', id], async () => {
+  return useQuery(['musician', id], async() => {
     try {
       const data = await musicianClient.getMusician(id);
 
@@ -41,7 +41,7 @@ export const useGetMusicianBands = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery('bands', async () => {
+  return useQuery('bands', async() => {
     try {
       const data = await musicianClient.getMusicianBands();
 
@@ -168,7 +168,7 @@ export const useGetTags = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useQuery('tags', async () => {
+  return useQuery('tags', async() => {
     try {
       const data = await musicianClient.getTags();
 

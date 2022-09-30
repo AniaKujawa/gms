@@ -5,9 +5,10 @@ import { Musician, Tag, MusicianImages } from './../../types';
 import { formatMusicians, formatMusician, formatApiMusician } from './formatter';
 
 class MusicianClient {
-  async getMusicians(): Promise<Musician[]> {
+  async getMusicians(search: string): Promise<Musician[]> {
     const data = await fetch.get({
       url: endpoints.bands,
+      params: { search },
     });
 
     return formatMusicians(data.data.bands)

@@ -4,6 +4,8 @@
   "getMusiciansBands": "Nie udało się pobrać wszystkich zespołów muzyka",
   "postMusicianBand": "Nie udało się dodać nowego zespołu",
   "putMusicianBand": "Nie udało się edytować zespołu, spróbuj ponownie później",
+  "postMusicianImages": "",
+  "deleteMusicianImage": "",
   "activateBand": "Nie udało się aktywować zespołu, spróbuj ponownie później",
   "deactivateBand": "Nie udało się deaktywować zespołu, spróbuj ponownie później",
   "getTags": "Nie udało się pobrać wszystkich tagów",

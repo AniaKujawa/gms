@@ -11,6 +11,8 @@ export const useStyles = makeStyles(() =>
       height: 600,
       display: 'flex',
       alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
       padding: theme.spacing(2),
       marginBottom: theme.spacing(2.5),
     },

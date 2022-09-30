@@ -6,4 +6,5 @@ export const endpoints = {
   bands: `${BASE_URL}/bands`,
   userBands: `${BASE_URL}/profile/bands`,
   tags: `${BASE_URL}/tags`,
+  search: `${BASE_URL}/search`,
 };
