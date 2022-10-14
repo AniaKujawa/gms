@@ -21,7 +21,7 @@ export const LoginForm: FC = () => {
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
-  const { mutate } = useLoginUser();
+  const { mutate, isLoading } = useLoginUser();
   const onSubmit = (data: LoginFormProps) => mutate(data);
 
   return (
@@ -29,10 +29,11 @@ export const LoginForm: FC = () => {
       <Form control={control} errors={errors} />
       <Button
         type='submit'
+        disabled={isLoading}
       >
-        {t('signing.loginButton')}
+        {isLoading ? t('loading') : t('signing.loginButton')}
       </Button>
-      <Link 
+      <Link
         onClick={() => push(PATHS.START)}
         className={classes.link}
       >

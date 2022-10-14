@@ -19,7 +19,7 @@ export const RegisterForm: FC = () => {
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
-  const { mutate } = useRegisterUser();
+  const { mutate, isLoading } = useRegisterUser();
   const onSubmit = (data: RegisterFormProps) => mutate(data);
 
   return (
@@ -105,8 +105,9 @@ export const RegisterForm: FC = () => {
        />
       <Button
         type='submit'
+        disabled={isLoading}
       >
-        {t('signing.register')}
+        {isLoading ? t('loading') : t('signing.register')}
       </Button>
       <Link
         onClick={() => push(PATHS.LOGIN)}
