@@ -1,3 +1,4 @@
+export * from './Avatar';
 export * from './Header';
 export * from './ImagePreview';
 export * from './Musician';

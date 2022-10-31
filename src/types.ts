@@ -4,8 +4,8 @@ export type User = {
   lastName: string;
   name: string;
   email: string;
-  password: string;
   musician: boolean;
+  avatar: string;
 };
 
 export type UserPayload = {

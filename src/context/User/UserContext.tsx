@@ -9,6 +9,7 @@ import { noop } from 'lodash';
 const defaultContext = {
   isLoggedIn: false,
   user: null,
+  isLoading: false,
   setIsLoggedIn: noop,
   logout: noop,
 };
@@ -22,7 +23,7 @@ export const UserContextProvider: FC = ({ children }) => {
   const defaultIsLoggedInValue = Boolean(getToken());
   const userId = Number(getUser().id);
   const [ isLoggedIn, setIsLoggedIn ] = useState(defaultIsLoggedInValue);
-  const { data: user } = useGetUser(userId);
+  const { data: user, isLoading } = useGetUser(userId);
 
   useEffect(() => {
     if(user?.id) {
@@ -40,6 +41,7 @@ export const UserContextProvider: FC = ({ children }) => {
     <UserContext.Provider value={{
       isLoggedIn,
       user,
+      isLoading,
       setIsLoggedIn,
       logout,
     }}>
