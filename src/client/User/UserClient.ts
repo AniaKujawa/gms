@@ -3,7 +3,7 @@ import fetch from '../../core/FetchService';
 import { Login, User, UserPayload } from '../../types';
 import storage from './../../utils/storage';
 
-import { parseUser } from './formatter';
+import { parseUser, formatUserData } from './formatter';
 
 class UserClient {
   async getUsers() {
@@ -19,7 +19,7 @@ class UserClient {
       url: `${endpoints.users}/${id}`
     });
 
-    return data.data.user;
+    return formatUserData(data.data.user);
   }
 
   async registerUser(data: UserPayload) {
