@@ -1,1 +1,1 @@
-export const URL_REGEX = /^(ftp|http|https):\/\/[^ "]+$/;
+export const URL_REGEX = /^((ftp|http|https):\/\/)|www\.[^ "]+$/;
