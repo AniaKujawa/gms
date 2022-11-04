@@ -101,3 +101,20 @@ export const useRecoverPassword = () => {
     }
   });
 };
+
+export const useUploadAvatar = () => {
+  const { t } = useTranslation();
+  const { handleError, handleSuccess } = useFeedback();
+  
+  return useMutation(async (avatar: File) => {
+    try {
+      const data = await userClient.uploadAvatar(avatar);
+      handleSuccess(t('profile.uploadAvatar'));
+
+      return data;
+    } catch(e) {
+      console.log(`Can't upload avatar`, e);
+      handleError(new Error(t('apiErrors.uploadAvatar')));
+    }
+  });
+};

@@ -9,6 +9,7 @@ export * from './MusiciansList';
 export * from './MusicianToolbar';
 export * from './MusicianTags';
 export * from './Toolbar';
+export * from './Tooltip'
 export * from './Uploader';
 export * from './Welcome';
 export * from './Modal';

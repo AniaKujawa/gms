@@ -56,6 +56,19 @@ class UserClient {
 
     return response.data;
   }
+
+  async uploadAvatar(avatar: File) {
+    const data = new FormData();
+    data.append('avatar', avatar);
+
+    const response = await fetch.post({
+      url: endpoints.avatar, 
+      headers: { 'Content-Type': 'multipart/form-data' },
+      data,
+    });
+
+    return response.data;
+  }
 };
 
 export const userClient = new UserClient();

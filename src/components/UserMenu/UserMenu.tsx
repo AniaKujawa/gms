@@ -6,11 +6,11 @@ import {
   MenuItem,
   Divider,
   IconButton,
-  Tooltip,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
 
+import { Tooltip } from '../Tooltip';
 import { useUserContext } from '../../context/User';
 import { PATHS } from '../../utils/consts';
 import { Avatar } from '../Avatar';

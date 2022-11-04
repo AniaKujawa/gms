@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { useUserContext } from '../../context/User';
-import { Avatar } from './../../components';
+import { AvatarUploader } from '../../components';
 
 import { useStyles } from './UserProfile.styles';
 
@@ -22,9 +22,7 @@ export const UserProfile: FC = () => {
         { 
           user?.id ? (
             <Card variant="outlined" className={classes.card}>
-              <Avatar className={classes.avatar} src={user.avatar}>
-                {user.name}
-              </Avatar>
+              <AvatarUploader url={user.avatar} name={user.name} />
               <Grid container direction='column'>
                 <div className={classes.names}>
                   {user.firstName} {user.lastName}
