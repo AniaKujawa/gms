@@ -27,7 +27,8 @@ export default {
   },
   secondary: {
     main: '#FCFAFA',
-    hover: '#F3EED9'
+    hover: '#F3EED9',
+    contrastText: '#3B2621',
   },
   red: {
     light: '#C0726D',

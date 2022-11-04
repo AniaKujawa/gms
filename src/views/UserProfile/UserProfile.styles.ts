@@ -14,9 +14,4 @@ export const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
   },
-  avatar: {
-    margin: 'auto',
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-  },
 }));

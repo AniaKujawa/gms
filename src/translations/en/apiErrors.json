@@ -13,5 +13,6 @@
   "getUser": "Couldn't get a user",
   "register": "Can't register, try again later",
   "login": "Can't login, try again later",
-  "passwordRecovery": "Something went wrong, please try later"
+  "passwordRecovery": "Something went wrong, please try later",
+  "uploadAvatar": "Couldn't add avatar. Avatar must be one of type: .jpg, .jpeg, .png and have size lesser than 5mb."
 }
