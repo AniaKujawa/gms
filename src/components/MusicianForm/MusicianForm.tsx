@@ -182,7 +182,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                   <TextField
                     fullWidth
                     label="Tiktok"
-                    type="url"
+                    type="text"
                     onChange={onChange}
                     value={value}
                     helperText={errors.socialLinks?.tiktok ? t('musician.urlValidation') : null}
