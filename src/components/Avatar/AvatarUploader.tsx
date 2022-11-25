@@ -32,7 +32,7 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
         onChange={handleFileChange}
       />
       <Tooltip
-        title={t('profile.uploadAvatar') || 'Click to upload new photo'}
+        title={t('profile.uploadAvatarTooltip') || 'Click to upload new photo'}
       >
         <label htmlFor="button-file">
           <Avatar className={classes.avatar} src={url}>
