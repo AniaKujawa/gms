@@ -7,7 +7,7 @@ import { Props } from './types';
 export const MusicianImage: FC<Props> = ({ title, imageUrl }) => {
   return (
     <CardMedia
-      width='400px'
+      height={300}
       component="img"
       alt={title}
       image={imageUrl ? imageUrl : imagePlaceholder}
