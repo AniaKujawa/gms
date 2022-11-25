@@ -16,7 +16,8 @@ export const Musician: FC<Props> = ({ musician, children }) => {
       <Typography variant="h2">{musician.name}</Typography>
       <Grid
         item
-        xs={3}
+        md={6}
+        lg={4}
         className={classes.image}
       >
         <MusicianImage
@@ -24,7 +25,7 @@ export const Musician: FC<Props> = ({ musician, children }) => {
           imageUrl={musician.images[0]?.url}
         />
       </Grid>      
-      <Grid item xs={4} className={classes.description}>
+      <Grid item md={6} lg={4} className={classes.description}>
         <Typography variant="body1">
           {parse(musician.description || '')}
         </Typography>
