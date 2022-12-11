@@ -11,5 +11,6 @@ export * from './MusicianTags';
 export * from './Toolbar';
 export * from './Tooltip'
 export * from './Uploader';
+export * from './UserForm';
 export * from './Welcome';
 export * from './Modal';

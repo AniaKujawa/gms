@@ -1,0 +1,1 @@
+export { UserProfileUpdate } from './UserProfileUpdate';

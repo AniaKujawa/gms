@@ -12,6 +12,14 @@ export const parseUser = (user: UserPayload) => ({
   }
 });
 
+export const parseUpdateUser = (user: Pick<UserPayload, 'firstName' | 'lastName' | 'name'>) => ({
+  user: {
+    first_name: user.firstName,
+    last_name: user.lastName,
+    name: user.name,
+  }
+})
+
 export const formatUserData = (user: UserAPI) => ({
   id: user.id,
   name: user.name,

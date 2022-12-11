@@ -117,3 +117,19 @@ export const useUploadAvatar = () => {
     }
   });
 };
+
+export const useUpdateUser = () => {
+  const { t } = useTranslation();
+  const { handleError } = useFeedback();
+  
+  return useMutation(async (user: Pick<UserPayload, 'firstName' | 'lastName' | 'name'>) => {
+    try {
+      const data = userClient.updateUser(user)
+
+      return data;
+    } catch(e) {
+      console.log('Couldn\'t update user', e);
+      handleError(new Error(t('apiErrors.updateUser')));
+    }
+  });
+};

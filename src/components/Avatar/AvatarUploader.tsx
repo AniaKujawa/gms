@@ -23,7 +23,7 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
   }
 
  return (
-   <>
+   <div className={classes.wrapper}>
       <input
         accept="image/*"
         style={{ display: 'none' }}
@@ -40,6 +40,6 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
           </Avatar>
         </label>
       </Tooltip>
-   </>
+   </div>
  );
 };
