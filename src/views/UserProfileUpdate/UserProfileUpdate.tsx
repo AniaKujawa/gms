@@ -20,20 +20,20 @@ export const UserProfileUpdate: FC = () => {
     <LoadingLayout isLoading={isLoading}>
       <Container>
         { 
-          // user?.id ? (
+          user?.id ? (
             <Card variant="outlined" className={classes.card}>
-              {/* <AvatarUploader url={user.avatar} name={user.name} /> */}
+              <AvatarUploader url={user.avatar} name={user.name} />
               <Grid container direction='column'>
                 <UserForm user={user} />
                 <div className={classes.userInfo}>
                   {t('profile.registerAsMusician')}
-                  {/* {user.musician ? <CheckBoxIcon /> : <ClearIcon />} */}
+                  {user.musician ? <CheckBoxIcon /> : <ClearIcon />}
                 </div>
               </Grid>
             </Card>
-          // ) : (
-          //   <h2>You profile couldn't be displayed. Contact our service.</h2>
-          // )
+          ) : (
+            <h2>You profile couldn't be displayed. Contact our service.</h2>
+          )
         }
       </Container>
     </LoadingLayout>

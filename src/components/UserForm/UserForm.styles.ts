@@ -6,4 +6,12 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  buttons: {
+    marginTop: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  submitBtn: {
+    marginLeft: theme.spacing(),
+  }
 }));

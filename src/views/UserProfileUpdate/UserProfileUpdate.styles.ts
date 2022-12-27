@@ -5,6 +5,9 @@ export const useStyles = makeStyles((theme: Theme) => ({
     padding: theme.spacing(),
     maxWidth: 600,
     margin: theme.spacing(3, 0),
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
   },
   names: {
     margin: theme.spacing(1, 0),

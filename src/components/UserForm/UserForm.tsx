@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Box } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useUpdateUser } from '../../queries/user';
 
 import { UpdateUser } from './type';
 import { useStyles } from './UserForm.styles';
 import { User } from '../../types';
+import { PATHS } from '../../utils/consts';
 
 type Props = {
   user: User;
@@ -82,12 +83,25 @@ export const UserForm: FC<Props> = ({ user }) => {
           />
         )}
        />
-      <Button
-        type='submit'
-        disabled={isLoading}
-      >
-        {isLoading ? t('loading') : t('profile.save')}
-      </Button>
+       <Box className={classes.buttons}>
+        <Button
+          variant="outlined"
+          disabled={isLoading}            
+          color="primary"
+          onClick={() => push(PATHS.PROFILE)}
+        >
+          {t('translation.cancel')}
+        </Button>
+        <Button
+          type='submit'
+          disabled={isLoading}
+          variant="contained"
+          color="primary"
+          className={classes.submitBtn}
+        >
+          {isLoading ? t('loading') : t('profile.save')}
+        </Button>
+       </Box>
     </form>
   )
 };

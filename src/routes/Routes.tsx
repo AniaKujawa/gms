@@ -37,11 +37,6 @@ const BaseRoutes: FC = () => (
         <MusicView />
       </DashboardLayout>
     </Route>
-    <Route exact path={PATHS.PROFILE_EDIT}>
-      <DashboardLayout>
-        <UserProfileUpdate />
-      </DashboardLayout>
-    </Route>
     <Redirect from="*" to="/" />
   </Switch>
 );
@@ -80,7 +75,7 @@ const AuthRoutes: FC = () => (
     </Route>
     <Route exact path={PATHS.PROFILE_EDIT}>
       <DashboardLayout>
-        <UserProfile />
+        <UserProfileUpdate />
       </DashboardLayout>
     </Route>
     <Route exact path={`${PATHS.MUSIC}/:id`}>
