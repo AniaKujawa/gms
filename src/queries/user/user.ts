@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router";
 import { userClient } from "../../client/User";
-import { Login, UserPayload } from '../../types';
+import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
 import { useUserContext } from "../../context/User";
 
@@ -122,7 +122,7 @@ export const useUpdateUser = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
   
-  return useMutation(async (user: Pick<UserPayload, 'firstName' | 'lastName' | 'name'>) => {
+  return useMutation(async (user: UpdateUser) => {
     try {
       const data = userClient.updateUser(user)
 

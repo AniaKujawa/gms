@@ -5,9 +5,8 @@ import { TextField, Button, Box } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useUpdateUser } from '../../queries/user';
 
-import { UpdateUser } from './type';
 import { useStyles } from './UserForm.styles';
-import { User } from '../../types';
+import { User, UpdateUser } from '../../types';
 import { PATHS } from '../../utils/consts';
 
 type Props = {

@@ -1,6 +1,6 @@
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
-import { Login, User, UserPayload } from '../../types';
+import { Login, UpdateUser, User, UserPayload } from '../../types';
 import storage from './../../utils/storage';
 
 import { parseUser, formatUserData, parseUpdateUser } from './formatter';
@@ -70,7 +70,7 @@ class UserClient {
     return response.data;
   }
 
-  async updateUser(user: Pick<UserPayload, 'firstName' | 'lastName' | 'name'>): Promise<User> {
+  async updateUser(user: UpdateUser): Promise<User> {
     const response = await fetch.put({
       url: `${endpoints.profile}`,
       data: parseUpdateUser(user),

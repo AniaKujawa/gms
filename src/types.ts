@@ -8,6 +8,8 @@ export type User = {
   avatar: string;
 };
 
+export type UpdateUser = Pick<User, 'firstName' | 'lastName' | 'name'>;
+
 export type UserPayload = {
   firstName: string;
   lastName: string;

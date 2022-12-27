@@ -1,4 +1,4 @@
-import { UserPayload } from "../../types";
+import { UpdateUser, UserPayload } from "../../types";
 import { UserAPI } from "./types";
 
 export const parseUser = (user: UserPayload) => ({
@@ -12,7 +12,7 @@ export const parseUser = (user: UserPayload) => ({
   }
 });
 
-export const parseUpdateUser = (user: Pick<UserPayload, 'firstName' | 'lastName' | 'name'>) => ({
+export const parseUpdateUser = (user: UpdateUser) => ({
   user: {
     first_name: user.firstName,
     last_name: user.lastName,
