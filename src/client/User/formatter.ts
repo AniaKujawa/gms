@@ -1,4 +1,4 @@
-import { UserPayload } from "../../types";
+import { UpdateUser, UserPayload } from "../../types";
 import { UserAPI } from "./types";
 
 export const parseUser = (user: UserPayload) => ({
@@ -11,6 +11,14 @@ export const parseUser = (user: UserPayload) => ({
     is_musician: user.musician,
   }
 });
+
+export const parseUpdateUser = (user: UpdateUser) => ({
+  user: {
+    first_name: user.firstName,
+    last_name: user.lastName,
+    name: user.name,
+  }
+})
 
 export const formatUserData = (user: UserAPI) => ({
   id: user.id,

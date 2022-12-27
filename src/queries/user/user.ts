@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useMutation, useQuery } from "react-query";
 import { useHistory } from "react-router";
 import { userClient } from "../../client/User";
-import { Login, UserPayload } from '../../types';
+import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
 import { useUserContext } from "../../context/User";
 
@@ -114,6 +114,22 @@ export const useUploadAvatar = () => {
     } catch(e) {
       console.log(`Can't upload avatar`, e);
       handleError(new Error(t('apiErrors.uploadAvatar')));
+    }
+  });
+};
+
+export const useUpdateUser = () => {
+  const { t } = useTranslation();
+  const { handleError } = useFeedback();
+  
+  return useMutation(async (user: UpdateUser) => {
+    try {
+      const data = userClient.updateUser(user)
+
+      return data;
+    } catch(e) {
+      console.log('Couldn\'t update user', e);
+      handleError(new Error(t('apiErrors.updateUser')));
     }
   });
 };

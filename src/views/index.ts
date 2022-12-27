@@ -6,3 +6,5 @@ export * from './BandProfile';
 export * from './BandUpdate';
 export * from './BandList';
 export * from './BandCreation';
+export * from './UserProfile';
+export * from './UserProfileUpdate';

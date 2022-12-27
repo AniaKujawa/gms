@@ -6,4 +6,5 @@ export const PATHS = {
   BANDS_EDIT: '/mojezespoly/edytuj',
   CREATE_BAND: '/mojezespoly/nowy',
   PROFILE: '/profil',
+  PROFILE_EDIT: '/profil/edytuj',
 };

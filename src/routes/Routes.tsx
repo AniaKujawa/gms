@@ -11,12 +11,13 @@ import {
   BandProfile,
   BandCreation,
   BandUpdate,
+  UserProfile,
+  UserProfileUpdate
 } from './../views';
 import { DashboardLayout } from './../layout/DashboardLayout';
 import { PATHS } from './../utils/consts';
 
 import { useUserContext } from './../context/User';
-import { UserProfile } from '../views/UserProfile';
 
 const BaseRoutes: FC = () => (
   <Switch>
@@ -70,6 +71,11 @@ const AuthRoutes: FC = () => (
     <Route exact path={PATHS.PROFILE}>
       <DashboardLayout>
         <UserProfile />
+      </DashboardLayout>
+    </Route>
+    <Route exact path={PATHS.PROFILE_EDIT}>
+      <DashboardLayout>
+        <UserProfileUpdate />
       </DashboardLayout>
     </Route>
     <Route exact path={`${PATHS.MUSIC}/:id`}>
