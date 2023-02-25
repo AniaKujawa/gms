@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useCreateMusicianBand, useAddMusicianImages } from '../../queries/musician';
 import { PATHS } from '../../utils/consts';
 import { ImageFile } from './../MultipleUploader/types';
@@ -9,7 +9,7 @@ import { MusicianForm } from './MusicianForm';
 
 
 export const MusicianCreateForm: FC = () => {
-  const { goBack, push } = useHistory();
+  const { back, push } = useRouter();
   const { mutateAsync } = useCreateMusicianBand();
   const { mutateAsync: addImages } = useAddMusicianImages();
 
@@ -29,7 +29,7 @@ export const MusicianCreateForm: FC = () => {
   return (
     <MusicianForm
       onSubmit={onSubmit}
-      handleCancel={goBack}
+      handleCancel={back}
     />
   );
 };

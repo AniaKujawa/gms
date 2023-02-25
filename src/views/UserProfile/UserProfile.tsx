@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Card, Container, Grid } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { useUserContext } from '../../context/User';

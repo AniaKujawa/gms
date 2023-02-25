@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Icon } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { UserMenu } from '../UserMenu';
 import { UnloggedMenu } from '../UnloggedMenu';
@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <Grid container className={classes.root}>
-      <Link to='/'>
+      <Link href='/'>
         <Icon component='img' height='100%' src='violin.svg' />
       </Link>
       {isLoggedIn ? <UserMenu /> : <UnloggedMenu />}

@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { Card } from './shared/Card';
 import { LoginForm } from './components/LoginForm';
 import { StarterView } from './StarterView';
 
 export const LoginView: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('signing');
 
   return (
     <StarterView>
-      <Card title={t('signing.login')}>
+      <Card title={t('login')}>
         <LoginForm />
       </Card>
     </StarterView>

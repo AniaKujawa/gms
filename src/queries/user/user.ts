@@ -1,6 +1,6 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useMutation, useQuery } from "react-query";
-import { useHistory } from "react-router";
+import { useRouter } from 'next/router';
 import { userClient } from "../../client/User";
 import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
@@ -44,7 +44,7 @@ export const useGetUser = (id: number) => {
 
 export const useRegisterUser = () => {
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const { push } = useRouter();
   const { setIsLoggedIn } = useUserContext();
   const { handleError, handleSuccess } = useFeedback();
   
@@ -67,7 +67,7 @@ export const useRegisterUser = () => {
 export const useLoginUser = () => {
   const { t } = useTranslation();
   const { setIsLoggedIn } = useUserContext();
-  const { push } = useHistory();
+  const { push } = useRouter();
   const { handleError } = useFeedback();
   
   return useMutation(async (user: Login) => {

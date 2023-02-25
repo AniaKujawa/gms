@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { useUploadAvatar } from '../../queries/user';
 import { Tooltip } from '../../components';

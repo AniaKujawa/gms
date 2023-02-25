@@ -1,7 +1,7 @@
 import { Typography, Box } from '@material-ui/core';
 import { isEmpty } from 'lodash';
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Musician } from '..';
 import { SocialLinks } from '../SocialLinks';
 

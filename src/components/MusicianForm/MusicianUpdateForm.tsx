@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useAddMusicianImages, useUpdateMusicianBand } from '../../queries/musician';
 
 import { ImageFile } from './../MultipleUploader/types';
@@ -9,7 +9,7 @@ import { Props } from './types';
 
 export const MusicianUpdateForm: FC<Props> = ({ musician }) => {
   const { mutateAsync } = useUpdateMusicianBand();
-  const { goBack } = useHistory();
+  const { back } = useRouter();
   const { mutateAsync: addImages } = useAddMusicianImages();
 
   const onSubmit = async(values: any) => {
@@ -24,14 +24,14 @@ export const MusicianUpdateForm: FC<Props> = ({ musician }) => {
       })
     }
 
-    goBack();
+    back();
   };
 
   return (
     <MusicianForm
       musician={musician}
       onSubmit={onSubmit}
-      handleCancel={goBack}
+      handleCancel={back}
     />
   );
 };

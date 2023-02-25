@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -16,8 +16,8 @@ import { PATHS } from '../../../../utils/consts';
 
 export const LoginForm: FC = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
-  const { push } = useHistory();
+  const { t } = useTranslation('signing');
+  const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
@@ -31,13 +31,13 @@ export const LoginForm: FC = () => {
         type='submit'
         disabled={isLoading}
       >
-        {isLoading ? t('loading') : t('signing.loginButton')}
+        {isLoading ? t('loading') : t('loginButton')}
       </Button>
       <Link
         onClick={() => push(PATHS.START)}
         className={classes.link}
       >
-        {t('signing.firstTime')}
+        {t('firstTime')}
       </Link>
       <PasswordRecover control={control} emailErrors={errors.email} />
     </form>

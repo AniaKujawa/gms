@@ -1,0 +1,26 @@
+{
+  "login": "Log in",
+  "registerSuccess": "You've successfully registered!",
+  "lostPasswordSentEmail": "Email has been send.",
+  "lostPassword": "Forgotten password",
+  "loginButton": "Log in",
+  "firstTime": "Don't have an account? Register!",
+  "firstname": "First name",
+  "lastname": "Last name",
+  "errors": {
+    "blankname": "Name can not be blank",
+    "blankEmail": "Email can not be blank",
+    "invalidEmail": "Invalid email",
+    "blankPassword": "Password can not be blank",
+    "minLengthPassword": "Password must be at least 6 characters"
+  },
+  "name": "name",
+  "isMusicianLabel": "I am a musician",
+  "register": "Register",
+  "alreadyRegistered": "Have you already registered? Log in",
+  "signup": "Sign up",
+  "email": "Email",
+  "password": "Password",
+  "checkPlatform": "Check our platform",
+  "guestContinue": "Continue as a guest"
+}

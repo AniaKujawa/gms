@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router'
 import { useUrlQuery } from './useUrlQuery';
 
 interface HookApi {
@@ -9,8 +9,7 @@ interface HookApi {
 
 export const useBandsSearch = (): HookApi => {
   const query = useUrlQuery();
-  const { pathname } = useLocation();
-  const { push } = useHistory();
+  const { push, pathname } = useRouter();
   const [ search, setSearch ] = useState(query.get('search') || '');
 
   const handleSearchChange = useCallback((search: string) => {

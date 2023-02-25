@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';

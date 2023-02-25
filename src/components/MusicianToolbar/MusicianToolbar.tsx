@@ -1,8 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Box, Button } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-
+import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import { Toolbar } from '..';
 import { Modal } from './../Modal';
@@ -15,7 +14,7 @@ import { useStyles } from './MusicianToolbar.styles';
 
 export const MusicianToolbar: FC<Props> = ({ musician }) => {
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const { push } = useRouter();
   const { mutate: activate } = useActivateMusicianBand();
   const { mutate: deactivate } = useDeactivateMusicianBand();
   const [ isModalOpen, setIsModalOpen ] = useState(false);

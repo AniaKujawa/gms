@@ -1,7 +1,7 @@
 
 import React, { FC } from 'react';
 import { Typography, Box } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { useStyles } from './Welcome.styles';
 import { SearchBand } from '../SearchBand';

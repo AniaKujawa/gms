@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { Card, Typography, Grid } from '@material-ui/core';
 
 import { PATHS } from '../../utils/consts';
@@ -10,12 +10,12 @@ import { Props } from './types';
 
 export const MusicianCard: FC<Props> = ({ musician }) => {
   const classes = useStyles();
-  const history = useHistory();
+  const { push } = useRouter();
 
   return (
     <Card
       className={classes.card}
-      onClick={() => history.push(`${PATHS.MUSIC}/${musician.id}`)}
+      onClick={() => push(`${PATHS.MUSIC}/${musician.id}`)}
     >
       <Typography variant="h3">{musician.name}</Typography>
         <Grid

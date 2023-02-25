@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Link } from 'react-router-dom';
 import { Button, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { PATHS } from '../../utils/consts';

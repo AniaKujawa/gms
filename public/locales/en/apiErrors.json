@@ -1,0 +1,18 @@
+{
+  "default": "Something went wrong",
+  "getMusicians": "Couldn't get all musicians",
+  "getMusiciansBands": "Couldn't get all bands of user",
+  "postMusicianBand": "Couldn't add a new band",
+  "putMusicianBand": "Couldn't update the band",
+  "postMusicianImages": "Couldn't add images",
+  "deleteMusicianImage": "Couldn't delete the image",
+  "activateBand": "Couldn't activate the band",
+  "deactivateBand": "Couldn't deactivate the band",
+  "getTags": "Couldn't get all tags",
+  "getUsers": "Couldn't get all users",
+  "getUser": "Couldn't get a user",
+  "register": "Can't register, try again later",
+  "login": "Can't login, try again later",
+  "passwordRecovery": "Something went wrong, please try later",
+  "uploadAvatar": "Couldn't add avatar. Avatar must be one of type: .jpg, .jpeg, .png and have size lesser than 5mb."
+}

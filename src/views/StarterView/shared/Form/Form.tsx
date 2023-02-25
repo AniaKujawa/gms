@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Controller } from 'react-hook-form';
 import { Input, InputLabel, InputAdornment, IconButton, TextField, FormHelperText, FormControl } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
@@ -9,7 +9,7 @@ import { Props } from './Form.types';
 
 export const Form: FC<Props> = ({ control, errors }) => {
   const [ showPassword, setShowPassword ] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useTranslation('signing');
 
   return (
     <>
@@ -17,11 +17,11 @@ export const Form: FC<Props> = ({ control, errors }) => {
         name='email'
         control={control}
         rules={{
-          required: `${t('signing.errors.blankEmail')}`,
+          required: `${t('errors.blankEmail')}`,
           pattern: {
             value:
               /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-            message: `${t('signing.errors.invalidEmail')}`,
+            message: `${t('errors.invalidEmail')}`,
           }
         }}
         defaultValue=''
@@ -30,7 +30,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
           { onChange, value }
         ) => (
           <TextField
-            label={t('signing.email')}
+            label={t('email')}
             type='text'
             onChange={onChange}
             value={value}
@@ -42,10 +42,10 @@ export const Form: FC<Props> = ({ control, errors }) => {
         name='password'
         control={control}
         rules={{
-          required: `${t('signing.errors.blankPassword')}`,
+          required: `${t('errors.blankPassword')}`,
           minLength: {
             value: 6,
-            message: t('signing.errors.minLengthPassword')
+            message: t('errors.minLengthPassword')
           }
         }}
         defaultValue=''
@@ -54,7 +54,7 @@ export const Form: FC<Props> = ({ control, errors }) => {
           { onChange, value }
         )=> (
           <FormControl>
-            <InputLabel htmlFor="password">{t('signing.password')}</InputLabel>
+            <InputLabel htmlFor="password">{t('password')}</InputLabel>
             <Input
               type={showPassword ? 'text' : 'password'}
               id='password'

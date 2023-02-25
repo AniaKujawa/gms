@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Box } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useUpdateUser } from '../../queries/user';
 
 import { useStyles } from './UserForm.styles';
@@ -16,7 +16,7 @@ type Props = {
 export const UserForm: FC<Props> = ({ user }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<UpdateUser>({
     mode: 'onChange',
     defaultValues: user

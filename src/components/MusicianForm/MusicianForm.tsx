@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Button, TextField, Grid } from '@material-ui/core';
 
 import { RichTextEditor } from '../RichTextEditor';

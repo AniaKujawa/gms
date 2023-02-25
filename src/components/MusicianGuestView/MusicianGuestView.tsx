@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import { Musician } from ".."
 import { PATHS } from '../../utils/consts';
 
@@ -16,7 +16,7 @@ export const MusicianGuestView: FC<Props> = ({ musician }) => {
     <Musician musician={musician}>
       <Box className={classes.box}>
         <Link
-          to={PATHS.START}
+          href={PATHS.START}
         >
           {t('musician.loginToUnblockContactInfo')}
         </Link>

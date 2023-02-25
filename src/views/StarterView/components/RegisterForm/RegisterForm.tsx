@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Link, Checkbox, FormControlLabel } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -14,8 +14,8 @@ import { PATHS } from '../../../../utils/consts';
 
 export const RegisterForm: FC = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
-  const { push } = useHistory();
+  const { t } = useTranslation('signing');
+  const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
@@ -33,7 +33,7 @@ export const RegisterForm: FC = () => {
           { onChange, value }
         )=> (
           <TextField
-            label={t('signing.firstname')}
+            label={t('firstname')}
             type='text'
             onChange={onChange}
             value={value}
@@ -51,7 +51,7 @@ export const RegisterForm: FC = () => {
         )=> (
           <>
             <TextField
-              label={t('signing.lastname')}
+              label={t('lastname')}
               type='text'
               onChange={onChange}
               value={value}
@@ -64,7 +64,7 @@ export const RegisterForm: FC = () => {
         name='name'
         control={control}
         rules={{
-          required: `${t('signing.errors.blankname')}`
+          required: `${t('errors.blankname')}`
         }}
         defaultValue=''
         error={!!errors.name}
@@ -72,7 +72,7 @@ export const RegisterForm: FC = () => {
           { onChange, value }
         )=> (
           <TextField
-            label={t('signing.name')}
+            label={t('name')}
             type='text'
             onChange={onChange}
             value={value}
@@ -98,7 +98,7 @@ export const RegisterForm: FC = () => {
                 color="primary"
               />
             }
-            label={t('signing.isMusicianLabel')}
+            label={t('isMusicianLabel')}
             className={classes.checkbox}
           />
         )}
@@ -107,13 +107,13 @@ export const RegisterForm: FC = () => {
         type='submit'
         disabled={isLoading}
       >
-        {isLoading ? t('loading') : t('signing.register')}
+        {isLoading ? t('loading') : t('register')}
       </Button>
       <Link
         onClick={() => push(PATHS.LOGIN)}
         className={classes.link}
       >
-        {t('signing.alreadyRegistered')}
+        {t('alreadyRegistered')}
       </Link>
     </form>
   )

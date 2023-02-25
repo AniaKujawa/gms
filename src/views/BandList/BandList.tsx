@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link'
 import { Container } from '@material-ui/core';
 
 import { useGetMusicianBands } from '../../queries/musician';
@@ -16,7 +16,7 @@ export const BandList: FC = () => {
       {bands && (
         <div>
           {bands.map(band => (
-            <Link key={band.id} to={`${PATHS.BANDS}/${band.id}`}>
+            <Link key={band.id} href={`${PATHS.BANDS}/${band.id}`}>
               <MusicianMinimumInfo musician={band} />
             </Link>
           ))}

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Typography, Container } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 import { MusicianCreateForm } from '../../components';
 

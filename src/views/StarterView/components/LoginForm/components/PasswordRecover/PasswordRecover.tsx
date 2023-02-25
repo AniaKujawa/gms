@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Link } from '@material-ui/core';
 
 import { useRecoverPassword } from '../../../../../../queries/user';
