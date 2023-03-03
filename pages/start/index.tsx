@@ -1,4 +1,4 @@
-import { RegisterView } from './../src/views/StarterView';
+import { RegisterView } from '../../src/views/StarterView';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { GetStaticProps } from 'next';
 
@@ -8,7 +8,7 @@ export const getStaticProps: GetStaticProps<{}> = async ({
   locale
 }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? 'en', [
+    ...(await serverSideTranslations(locale ?? 'pl', [
       'signing',
     ])),
   },

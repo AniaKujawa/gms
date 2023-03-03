@@ -11,11 +11,11 @@ import { useBandsQuery } from '../../hooks/useBandsQuery';
 export const MusiciansList: FC = () => {
   const { query } = useBandsQuery();
   const { data: musicians } = useGetMusicians(query);
-  const { t } = useTranslation();
+  const { t } = useTranslation('dashboard');
 
   return (
     <>
-      <Typography variant="h2">{t('dashboard.subtitle')}</Typography>
+      <Typography variant="h2">{t('subtitle')}</Typography>
       <Grid container>
         {musicians && musicians.map(music => (
           <Grid item key={music.id} lg={4} sm={6} xs={12}>

@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import { Button, TextField, Grid } from '@material-ui/core';
+import dynamic from 'next/dynamic';
 
-import { RichTextEditor } from '../RichTextEditor';
+// import { RichTextEditor } from '../RichTextEditor';
+import { Props } from '../RichTextEditor/types';
 import { FormProps } from './types';
 import { MusicianUploader } from './../MusicianUploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
@@ -18,6 +20,10 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
   const { data: tags } = useGetTags();
   const classes = useStyles();
   const { t } = useTranslation();
+
+  const RichTextEditor = dynamic<Props>(() => import('../RichTextEditor').then(mod => mod.RichTextEditor), {
+    ssr: false,
+  })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

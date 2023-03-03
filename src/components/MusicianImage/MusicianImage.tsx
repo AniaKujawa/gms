@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { CardMedia } from '@material-ui/core';
 
-import imagePlaceholder from './../../assets/bcg.jpg';
 import { Props } from './types';
+
+const imagePlaceholder = '/images/bcg.jpg';
 
 export const MusicianImage: FC<Props> = ({ title, imageUrl }) => {
   return (

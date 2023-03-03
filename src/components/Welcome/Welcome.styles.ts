@@ -1,6 +1,7 @@
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { theme } from '../../styles/theme';
-import bcg from './../../assets/bcg.jpg';
+
+const bcg = '/images/bcg.jpg';
 
 export const useStyles = makeStyles(() =>
   createStyles({

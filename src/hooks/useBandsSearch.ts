@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
-import { useUrlQuery } from './useUrlQuery';
+import { useRouter } from 'next/router';
+import { debounce, DebouncedFunc } from 'lodash';
 
 interface HookApi {
-  search: string;
-  handleSearchChange: (search: string) => void;
+  value: string | string[];
+  setSearchValue: (search: string) => void;
+  delayedSearch: DebouncedFunc<(search: string) => Promise<boolean> | undefined>;
 }
 
 export const useBandsSearch = (): HookApi => {
-  const query = useUrlQuery();
-  const { push, pathname } = useRouter();
-  const [ search, setSearch ] = useState(query.get('search') || '');
+  const { push, pathname, query } = useRouter();
+  const [ value, setSearchValue ] = useState(query.search || '');
 
   const handleSearchChange = useCallback((search: string) => {
     if(search) {
@@ -19,12 +19,18 @@ export const useBandsSearch = (): HookApi => {
     push(pathname);
   }, [pathname, push]);
 
+  const delayedSearch = useCallback(
+    debounce(handleSearchChange, 500),
+    []
+  );
+
   useEffect(() => {
-    setSearch(query.get('search') || '');
+    setSearchValue(query.search || '');
   }, [query]);
 
   return {
-    search,
-    handleSearchChange
+    value,
+    setSearchValue,
+    delayedSearch
   }
 };

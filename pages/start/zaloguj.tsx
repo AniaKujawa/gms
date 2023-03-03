@@ -1,17 +1,17 @@
-import { Dashboard } from './../src/views/Dashboard';
+import { LoginView } from './../../src/views/StarterView';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { GetStaticProps } from 'next';
 
-<Dashboard />
+<LoginView />
 
 export const getStaticProps: GetStaticProps<{}> = async ({
   locale
 }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', [
-      'dashboard',
+      'signing',
     ])),
   },
 })
 
-export default Dashboard;
+export default LoginView;

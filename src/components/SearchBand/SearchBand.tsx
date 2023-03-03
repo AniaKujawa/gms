@@ -1,30 +1,29 @@
-import React, { useEffect, useState, FC } from 'react';
+import React, { FC } from 'react';
 import { TextField } from '@material-ui/core'
 import { useTranslation } from 'next-i18next';
 
-import { useDebounce } from './../../hooks/useDebounce';
 import { useStyles } from './SearchBand.styles';
 import { useBandsSearch } from '../../hooks/useBandsSearch';
 
 export const SearchBand: FC = () => {
-    const { t } = useTranslation();
-    const { search, handleSearchChange } = useBandsSearch();
-    const [ value, setValue ] = useState<string>(search);
-    const debouncedSearch = useDebounce(value, 1000);
+    const { t } = useTranslation('dashboard');
+    const { value, delayedSearch, setSearchValue} = useBandsSearch();
     const classes = useStyles();
 
-    useEffect(() => {
-        handleSearchChange(debouncedSearch);
-    }, [debouncedSearch, handleSearchChange]);
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setSearchValue(value);
+        delayedSearch(value);
+      };
 
     return (
         <div className={classes.container}>
             <TextField
                 fullWidth
                 type="search"
-                placeholder={t('dashboard.searchBandPlaceholder')}
+                placeholder={t('searchBandPlaceholder')}
                 value={value}
-                onChange={e => setValue(e.target.value)}
+                onChange={handleInputChange}
                 variant="outlined"
             />
         </div>

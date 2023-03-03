@@ -7,7 +7,7 @@ import {
   Divider,
   IconButton,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
 
 import { Tooltip } from '../Tooltip';
@@ -20,7 +20,7 @@ import { useStyles } from './UserMenu.styles';
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { t } = useTranslation();
+  const { t } = useTranslation('menu');
   const classes = useStyles();
   const open = Boolean(anchorEl);
   const { logout, user } = useUserContext();
@@ -55,18 +55,18 @@ export const UserMenu = () => {
           component={Link}
           to={PATHS.BANDS}
         >
-          <LibraryMusic className={classes.icon} /> {t('menu.bands')}
+          <LibraryMusic className={classes.icon} /> {t('bands')}
         </MenuItem>
         <MenuItem
           component={Link}
           to={PATHS.PROFILE}
         >
-          <AccountBox className={classes.icon} /> {t('menu.account')}
+          <AccountBox className={classes.icon} /> {t('account')}
         </MenuItem>
         <Divider />
         <MenuItem onClick={logout}>
           <ExitToApp className={classes.icon} fontSize="small" />
-          {t('menu.logout')}
+          {t('logout')}
         </MenuItem>
       </Menu>
     </>

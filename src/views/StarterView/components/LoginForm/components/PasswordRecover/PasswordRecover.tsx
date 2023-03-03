@@ -11,7 +11,7 @@ import { Props } from './types';
 
 export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation('signing');
   const { handleError } = useFeedback();
 
   const { mutate } = useRecoverPassword();
@@ -20,7 +20,7 @@ export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
     const email = control.getValues('email');
 
     if(!email || emailErrors) {
-      return handleError(new Error('signing.errors.badEmailWhenLostPassword'));
+      return handleError(new Error('errors.badEmailWhenLostPassword'));
     };
 
     mutate(email);    
@@ -31,7 +31,7 @@ export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
       onClick={handleLostPassword}
       className={classes.link}
     >
-      {t('signing.lostPassword')}
+      {t('lostPassword')}
     </Link>
   );
 };

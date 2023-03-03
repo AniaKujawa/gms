@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Button, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { PATHS } from '../../utils/consts';
 
@@ -8,9 +8,9 @@ import { MobileUnloggedMenu } from './MobileUnloggedMenu';
 import { useStyles } from './UnloggedMenu.styles';
 
 export const UnloggedMenu = () => {
-  const { t } = useTranslation();
   const theme = useTheme();
   const isWide = useMediaQuery(theme.breakpoints.up('sm'));
+  const { t } = useTranslation(['signing', 'translation']);
   const classes = useStyles();
 
   return isWide ? (
@@ -19,21 +19,21 @@ export const UnloggedMenu = () => {
         component={Link}
         color="secondary"
         variant="text"
-        to={PATHS.LOGIN}
+        href={PATHS.LOGIN}
         className={classes.leftButton}
       >
         <Typography color="secondary" >
-          {t('signing.login')}
+          {t('signing:login')}
         </Typography>
       </Button>
       <Button
         component={Link}
         color="secondary"
         variant="outlined"
-        to={PATHS.START}
+        href={PATHS.START}
       >
         <Typography color="secondary" >
-          {t('translation.joinUs')}
+          {t('translation:joinUs')}
         </Typography>
       </Button>
     </Grid >
