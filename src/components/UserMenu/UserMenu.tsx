@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { 
+import {
   Box,
   Menu,
   MenuItem,
@@ -53,13 +53,13 @@ export const UserMenu = () => {
       >
         <MenuItem
           component={Link}
-          to={PATHS.BANDS}
+          href={PATHS.BANDS}
         >
           <LibraryMusic className={classes.icon} /> {t('bands')}
         </MenuItem>
         <MenuItem
           component={Link}
-          to={PATHS.PROFILE}
+          href={PATHS.PROFILE}
         >
           <AccountBox className={classes.icon} /> {t('account')}
         </MenuItem>

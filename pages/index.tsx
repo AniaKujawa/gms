@@ -1,17 +1,22 @@
 import { Dashboard } from './../src/views/Dashboard';
+import { DashboardLayout } from './../src/layout/DashboardLayout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { GetStaticProps } from 'next';
 
-<Dashboard />
+const DashboardView = () => (
+  <DashboardLayout>
+    <Dashboard />
+  </DashboardLayout>
+)
 
 export const getStaticProps: GetStaticProps<{}> = async ({
   locale
 }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', [
-      'dashboard',
+      'dashboard', 'signing', 'translation', 'menu'
     ])),
   },
 })
 
-export default Dashboard;
+export default DashboardView;
