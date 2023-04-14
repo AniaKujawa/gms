@@ -1,8 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Header } from '../components';
 
+interface Props {
+  children: ReactNode;
+}
 
-export const DashboardLayout: FC = ({ children }) => (
+export const DashboardLayout: FC<Props> = ({ children }) => (
   <>
     <Header />
     {children}

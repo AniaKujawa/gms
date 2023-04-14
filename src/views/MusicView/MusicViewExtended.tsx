@@ -1,6 +1,6 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
-import { useRouteMatch } from 'react-router';
+import { useRouter } from 'next/router';
 
 import { MusicianExtended } from '../../components';
 import { LoadingLayout } from '../../layout/LoadingLayout';
@@ -8,8 +8,8 @@ import { useGetMusician } from '../../queries/musician';
 
 
 export const MusicViewExtended = () => {
-  const { params } = useRouteMatch<{ id: string }>();
-  const { data: musician, isLoading } = useGetMusician(params.id);
+  const router = useRouter();
+  const { data: musician, isLoading } = useGetMusician(router.query.id);
 
   return (
     <LoadingLayout isLoading={isLoading}>

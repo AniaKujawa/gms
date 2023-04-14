@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { useGetMusician } from '../../queries/musician';
 import { MusicianToolbar, MusicianExtended } from '../../components'
@@ -10,13 +10,14 @@ import { Params } from './types';
 
 
 export const BandProfile: FC = () => {
-  const { id } = useParams<Params>();
+  const router = useRouter();
+  const { id } = router.query;
   const { data: musician, isLoading } = useGetMusician(id);
 
   return (
     <LoadingLayout isLoading={isLoading}>
       <Container>
-        { 
+        {
           musician ? (
             <>
               <MusicianToolbar musician={musician} />
