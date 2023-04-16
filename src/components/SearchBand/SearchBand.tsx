@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core'
 import { useTranslation } from 'next-i18next';
 
@@ -7,14 +7,19 @@ import { useBandsSearch } from '../../hooks/useBandsSearch';
 
 export const SearchBand: FC = () => {
     const { t } = useTranslation('dashboard');
-    const { value, delayedSearch, setSearchValue} = useBandsSearch();
+    const { value, delayedSearch } = useBandsSearch();
+    const [searchInput, setSearchInput] = useState(value);
     const classes = useStyles();
+
+    useEffect(() => {
+        setSearchInput(value);
+    }, [value]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
-        setSearchValue(value);
+        setSearchInput(value);
         delayedSearch(value);
-      };
+    };
 
     return (
         <div className={classes.container}>
@@ -22,7 +27,7 @@ export const SearchBand: FC = () => {
                 fullWidth
                 type="search"
                 placeholder={t('searchBandPlaceholder')}
-                value={value}
+                value={searchInput}
                 onChange={handleInputChange}
                 variant="outlined"
             />

@@ -9,7 +9,7 @@ import { useGetMusician } from '../../queries/musician';
 
 export const MusicView = () => {
   const router = useRouter();
-  const { data: musician, isLoading } = useGetMusician(router.query.id);
+  const { data: musician, isLoading } = useGetMusician(router.query?.id?.toString() || '');
 
   return (
     <LoadingLayout isLoading={isLoading}>

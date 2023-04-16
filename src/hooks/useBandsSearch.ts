@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { debounce, DebouncedFunc } from 'lodash';
+import { debounce, DebouncedFunc, isArray } from 'lodash';
 
 interface HookApi {
-  value: string | string[];
+  value: string;
   setSearchValue: (search: string) => void;
   delayedSearch: DebouncedFunc<(search: string) => Promise<boolean> | undefined>;
 }
 
+const getQueryString = (query: string[] | string | undefined) => {
+  if (!query) return '';
+  return isArray(query) ? query[0] : query;
+}
 export const useBandsSearch = (): HookApi => {
   const { push, pathname, query } = useRouter();
-  const [ value, setSearchValue ] = useState(query.search || '');
+  const [value, setSearchValue] = useState(getQueryString(query.search));
 
   const handleSearchChange = useCallback((search: string) => {
-    if(search) {
+    if (search) {
       return push(`${pathname}?search=${search}`);
     }
     push(pathname);
@@ -25,7 +29,7 @@ export const useBandsSearch = (): HookApi => {
   );
 
   useEffect(() => {
-    setSearchValue(query.search || '');
+    setSearchValue(getQueryString(query.search));
   }, [query]);
 
   return {

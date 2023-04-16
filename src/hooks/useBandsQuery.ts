@@ -3,7 +3,7 @@ import { useSearchedTagsContext } from '../context/SearchedTags';
 import { useBandsSearch } from './useBandsSearch';
 
 export const useBandsQuery = () => {
-  const { search } = useBandsSearch();
+  const { value: search } = useBandsSearch();
   const { tags } = useSearchedTagsContext();
 
   const query = useMemo(() => {
