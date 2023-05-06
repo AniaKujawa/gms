@@ -12,6 +12,7 @@ const getQueryString = (query: string[] | string | undefined) => {
   if (!query) return '';
   return isArray(query) ? query[0] : query;
 }
+
 export const useBandsSearch = (): HookApi => {
   const { push, pathname, query } = useRouter();
   const [value, setSearchValue] = useState(getQueryString(query.search));

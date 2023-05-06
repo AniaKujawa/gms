@@ -6,13 +6,11 @@ import { MusicianToolbar, MusicianExtended } from '../../components'
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { Container } from '@material-ui/core';
 
-import { Params } from './types';
-
 
 export const BandProfile: FC = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data: musician, isLoading } = useGetMusician(id);
+  const { data: musician, isLoading } = useGetMusician(id?.toString() || '');
 
   return (
     <LoadingLayout isLoading={isLoading}>

@@ -1,15 +1,12 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { render, act } from '@testing-library/react';
 import { QueryClientProvider } from 'react-query';
 import { unmountComponentAtNode } from 'react-dom';
 import { QueryClient } from 'react-query';
 import { ThemeProvider } from '@material-ui/core';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history'
 
 import { musicianClient } from '../../../client/Musician';
 import { theme } from '../../../styles/theme';
-import { PATHS } from '../../../utils/consts';
 import { MusicianExtended, MusicianToolbar } from '../../../components';
 import { musician as mockedMusician } from '../../../mocks/musician';
 import { BandProfile } from '..';
@@ -23,7 +20,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  if(container) {
+  if (container) {
     unmountComponentAtNode(container);
     container.remove();
   }
@@ -35,10 +32,16 @@ const queryClient = new QueryClient({
       staleTime: Infinity,
       retry: false,
     },
-  }, 
+  },
 });
 
-const wrapper: FC = ({ children }) => (
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    query: { id: '2' },
+  })
+}))
+
+const wrapper = ({ children }: { children?: ReactNode }) => (
   <ThemeProvider theme={theme}>
     <QueryClientProvider client={queryClient}>
       {children}
@@ -54,8 +57,8 @@ describe('Band profile page', () => {
       { container, wrapper }
     );
     const bandName = getByRole('heading');
-    const contact= getByTestId('contact');
-  
+    const contact = getByTestId('contact');
+
     expect(bandName).toHaveTextContent('Super band');
     expect(contact).toHaveTextContent('Ela');
     expect(getByText('jazz')).toBeInTheDocument();
@@ -68,7 +71,7 @@ describe('Band profile page', () => {
       { container, wrapper }
     );
     const image = getByRole('img');
-  
+
     expect(image.src).toContain('bcg.jpg');
   });
 
@@ -78,7 +81,7 @@ describe('Band profile page', () => {
       { container, wrapper }
     );
     const buttonLabel = getByText(/profile.deactivate/i);
-  
+
     expect(buttonLabel).toBeInTheDocument();
   });
 
@@ -92,22 +95,16 @@ describe('Band profile page', () => {
       { container, wrapper }
     );
     const buttonLabel = getByText(/profile.activate/i);
-  
+
     expect(buttonLabel).toBeInTheDocument();
   });
 
-  it('display message when musician not found in api', async() => {
-    const history = createMemoryHistory();
-
-    history.push(`${PATHS.BANDS}/2`);
-
+  it('display message when musician not found in api', async () => {
     jest.spyOn(musicianClient, 'getMusician').mockImplementation(id => Promise.reject());
 
-    await act(async() => {
+    await act(async () => {
       render(
-        <Router history={history}>
-          <BandProfile />
-        </Router>,
+        <BandProfile />,
         { container, wrapper }
       );
     });

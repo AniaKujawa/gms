@@ -17,7 +17,7 @@ export const MusicianExtended: FC<Props> = ({ musician }) => {
       <Box className={classes.box}>
         {musician.phoneNumber && (
           <Typography data-testid="contact">
-            {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
+            <>{t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}</>
           </Typography>
         )}
         {!isEmpty(musician.socialLinks) && (

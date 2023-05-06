@@ -1,17 +1,15 @@
 import React, { FC } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { useGetMusician } from '../../queries/musician';
 import { MusicianUpdateForm } from '../../components'
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { Container } from '@material-ui/core';
 
-import { Params } from './types';
-
 
 export const BandUpdate: FC = () => {
-  const { id } = useParams<Params>();
-  const { data: musician, isLoading } = useGetMusician(id);
+  const router = useRouter();
+  const { data: musician, isLoading } = useGetMusician(router.query?.id?.toString() || '');
 
   return (
     <LoadingLayout isLoading={isLoading}>
