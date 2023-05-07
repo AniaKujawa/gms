@@ -7,7 +7,7 @@ export const SocialLinks = ({ socials }: Props) => {
   return (
     <>
       {Object.entries(socials).map(([social, link]) => (
-        <SocialLink key={social} social={social} link={link} />
+        link && (<SocialLink key={social} social={social} link={link} />)
       ))}
     </>
   );

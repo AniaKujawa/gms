@@ -6,7 +6,7 @@
   },
   "name": "Nazwa",
   "socials": "Social media",
-  "urlValidation": "Podaj poprawny url",
+  "urlValidation": "Podaj poprawny url (z http)",
   "loginToUnblockContactInfo": "Zaloguj się, aby zobaczyć informacje kontaktowe",
   "createBtn": "Dodaj zespół",
   "deleteImgTitle": "Usuwanie",

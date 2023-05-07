@@ -6,7 +6,7 @@
   },
   "name": "Name",
   "socials": "Social media",
-  "urlValidation": "Must be valid url",
+  "urlValidation": "Must be valid url starting with http",
   "loginToUnblockContactInfo": "You need to log in to see band's contact info",
   "createBtn": "Add band",
   "deleteImgTitle": "Delete image",

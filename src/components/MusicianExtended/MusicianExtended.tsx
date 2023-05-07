@@ -8,11 +8,6 @@ import { SocialLinks } from '../SocialLinks';
 import { useStyles } from './MusicianExtended.styles';
 import { Props } from './types';
 
-const mockedSocials = {
-  fb: 'https://facebook.com',
-  inst: 'https://instagram.com',
-}
-
 export const MusicianExtended: FC<Props> = ({ musician }) => {
   const { t } = useTranslation();
   const classes = useStyles();
@@ -20,16 +15,14 @@ export const MusicianExtended: FC<Props> = ({ musician }) => {
   return (
     <Musician musician={musician}>
       <Box className={classes.box}>
-      {musician.phoneNumber && (
-        <Typography data-testid="contact">
-          {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
-        </Typography>
-      )}
-      {!isEmpty(musician.socialLinks) && (
-        <Typography data-testid="socialLinks">
-          <SocialLinks socials={mockedSocials} />
-        </Typography>
-      )}
+        {musician.phoneNumber && (
+          <Typography data-testid="contact">
+            {t('musician.phoneNumber')}: {musician.contactName} - {musician.phoneNumber}
+          </Typography>
+        )}
+        {!isEmpty(musician.socialLinks) && (
+          <SocialLinks socials={musician.socialLinks} />
+        )}
       </Box>
     </Musician>
   )
