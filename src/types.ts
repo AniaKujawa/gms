@@ -41,6 +41,8 @@ export type SocialLinks = {
   tiktok?: string;
 };
 
+export type SocialKeys = keyof SocialLinks;
+
 export type Musician = {
   id: string;
   active: boolean;

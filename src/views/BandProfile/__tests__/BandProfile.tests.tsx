@@ -74,7 +74,7 @@ describe('Band profile page', () => {
 
   it('shows deactivate button when musician is active', () => {
     const { getByText } = render(
-      <MusicianToolbar musician={mockedMusician} setIsEditing={jest.fn()} />,
+      <MusicianToolbar musician={mockedMusician} />,
       { container, wrapper }
     );
     const buttonLabel = getByText(/profile.deactivate/i);
@@ -88,7 +88,7 @@ describe('Band profile page', () => {
       active: false,
     }
     const { getByText } = render(
-      <MusicianToolbar musician={deactivatedMusician} setIsEditing={jest.fn()} />,
+      <MusicianToolbar musician={deactivatedMusician} />,
       { container, wrapper }
     );
     const buttonLabel = getByText(/profile.activate/i);

@@ -13,7 +13,7 @@ export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
   const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
-    if(!updated && html) {
+    if (!updated && html) {
       const blocksFromHtml = convertFromHTML(html);
       const contentState = ContentState.createFromBlockArray(
         blocksFromHtml.contentBlocks,
@@ -38,6 +38,9 @@ export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
         onEditorStateChange={handleChange}
         toolbar={{
           options: ['inline', 'blockType', 'list', 'colorPicker', 'emoji', 'remove', 'history'],
+        }}
+        wrapperStyle={{
+          height: 200
         }}
       />
     </Card>
