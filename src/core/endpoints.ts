@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_API_URL || 'https://gdziemojeskrzypce-api.herokuapp.com';
+const BASE_URL = process.env.REACT_APP_API_URL || 'https://weathered-mountain-3287.fly.dev';
 
 export const endpoints = {
   users: `${BASE_URL}/users`,
