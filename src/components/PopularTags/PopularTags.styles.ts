@@ -5,6 +5,10 @@ export const useStyles = makeStyles<Theme>(theme => ({
   list: {
     display: 'flex',
     listStyle: 'none',
-    margin: theme.spacing(1, 0),
+    flexWrap: 'wrap',
+    margin: 0,
+    rowGap: theme.spacing(1.5),
+    justifyContent: 'center',
+    padding: theme.spacing(1, 2),
   },
 }));

@@ -12,7 +12,7 @@ export const PopularTags = () => {
   return (
     data ? (
       <ul className={styles.list}>
-        {data.map(tag => (
+        {data.slice(0, 5).map(tag => (
           <PopularTag key={tag.id} tag={tag} />
         ))}
       </ul>
