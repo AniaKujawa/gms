@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
 import { useGetMusicianBands } from '../../queries/musician';
-import { Musician } from '../../components';
+import { MusicianMinimumInfo } from '../../components';
 import { MusicianListToolbar } from '../../components/MusicianListToolbar';
 import { PATHS } from '../../utils/consts';
 
@@ -17,7 +17,7 @@ export const BandList: FC = () => {
         <div>
           {bands.map(band => (
             <Link key={band.id} to={`${PATHS.BANDS}/${band.id}`}>
-              <Musician musician={band} />
+              <MusicianMinimumInfo musician={band} />
             </Link>
           ))}
         </div>
