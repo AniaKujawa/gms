@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles<Theme>(theme => ({
   link: {
-    marginRight: theme.spacing(),
-    width: 16,
-    height: 16,
+    margin: theme.spacing(2, 2, 0, 0),
+    width: 24,
+    height: 24,
     color: theme.palette.primary.light,
   },
 }));

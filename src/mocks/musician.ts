@@ -5,12 +5,15 @@ export const musician: Musician = {
   active: true,
   name: 'Super band',
   imageUrl: '',
-  tags: [ { id: 2, name: 'jazz' }, { id: 45, name: 'folklor' }],
+  tags: [{ id: 2, name: 'jazz' }, { id: 45, name: 'folklor' }],
   description: 'cos',
   contactName: 'Ela',
   images: [],
   socialLinks: {
-    fb: '',
+    fb: 'https://www.facebook.com',
+    yt: 'https://www.youtube.com',
+    inst: 'https://www.instagram.com',
+    tiktok: 'https://www.tiktok.com',
   },
   phoneNumber: '567577889',
 };

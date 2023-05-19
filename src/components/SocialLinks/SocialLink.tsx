@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTiktok, faInstagram, faYoutube  } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTiktok, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 import { SocialLinkProps } from './types';
 import { useStyles } from './SociaLinks.styles';
