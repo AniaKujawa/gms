@@ -18,7 +18,7 @@ export const Header = () => {
       <Link to='/'>
         <Icon component='img' height='100%' src='violin.svg' />
       </Link>
-      {isLoggedIn ? <UserMenu /> : <UnloggedMenu/>}
+      {isLoggedIn ? <UserMenu /> : <UnloggedMenu />}
     </Grid>
   )
 };
