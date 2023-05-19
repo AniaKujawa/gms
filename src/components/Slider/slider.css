@@ -4,12 +4,12 @@
   --organic-arrow-thickness: 12px;
   --organic-arrow-border-radius: 16px;
   --organic-arrow-height: 40px;
-  --organic-arrow-color: #4d9d89;
+  --organic-arrow-color: #985746bf;
   --control-button-width: 14%;
   --control-button-height: 35%;
   --control-button-background: transparent;
-  --control-bullet-color: #0095a9;
-  --control-bullet-active-color: #007f90;
+  --control-bullet-color: #c58b8b46;
+  --control-bullet-active-color: #a05b5b6e;
   --loader-bar-color: transparent;
   --loader-bar-height: 1px;
 }
