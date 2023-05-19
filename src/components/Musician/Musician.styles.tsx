@@ -16,5 +16,8 @@ export const useStyles = makeStyles((theme: Theme) =>
     description: {
       marginBottom: theme.spacing(1.5),
     },
+    slider: {
+      margin: theme.spacing(3, 0, 6),
+    },
   }),
 );

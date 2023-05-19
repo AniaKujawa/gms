@@ -1,4 +1,6 @@
 import { Musician } from '../types';
+import imagePlaceholder from './../assets/bcg.jpg';
+
 
 export const musician: Musician = {
   id: '2',
@@ -8,7 +10,17 @@ export const musician: Musician = {
   tags: [{ id: 2, name: 'jazz' }, { id: 45, name: 'folklor' }],
   description: 'cos',
   contactName: 'Ela',
-  images: [],
+  images: [{
+    id: '1',
+    url: imagePlaceholder,
+  }, {
+    id: '2',
+    url: imagePlaceholder,
+  }, {
+    id: '3',
+    url: imagePlaceholder,
+  }
+  ],
   socialLinks: {
     fb: 'https://www.facebook.com',
     yt: 'https://www.youtube.com',
