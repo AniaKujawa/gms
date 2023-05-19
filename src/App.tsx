@@ -10,7 +10,7 @@ import { FeedbackContextProvider } from './context/Feedback';
 import { client } from './client/UserQuery';
 import { Routes } from './routes';
 import { FeedbackAlert } from './shared/components/Feedback';
-import { GlobalLoader } from './views/GlobalLoader';
+import { Loader } from './components';
 
 const providers: FC[] = [
   FeedbackContextProvider,
@@ -23,7 +23,7 @@ const App: FC = () => {
       <QueryClientProvider client={client}>
         <PipeProviders components={providers}>
           <BrowserRouter>
-            <Suspense fallback={<GlobalLoader />}>
+            <Suspense fallback={<Loader />}>
               <Routes />
               <FeedbackAlert />
             </Suspense>

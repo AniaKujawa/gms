@@ -14,5 +14,6 @@
   "register": "Nie udało się zarejestrować, spróbuj ponownie później",
   "login": "Nie udało się zalogować, spróbuj ponownie później",
   "passwordRecovery": "Nie udało się wysłać maila na podany adres, spróbuj ponownie później",
-  "uploadAvatar": "Nie udało się dodać avatara, spróbuj ponownie później. Avatar musi być obrazkiem typu .jpg, .jpeg, .png i ważyć mniej niż 5mb."
+  "uploadAvatar": "Nie udało się dodać avatara, spróbuj ponownie później. Avatar musi być obrazkiem typu .jpg, .jpeg, .png i ważyć mniej niż 5mb.",
+  "updateUser": "Nie udało się zaktualizować informacji o uytkowniku"
 }

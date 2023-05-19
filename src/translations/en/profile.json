@@ -1,5 +1,5 @@
 {
-  "uploadAvatar": "Click to upload new avatar",
+  "uploadAvatarTooltip": "Click to upload new avatar",
   "save": "Save",
   "deactivate": "Deactivate",
   "activate": "Activate",

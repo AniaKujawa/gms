@@ -19,7 +19,7 @@ export const UserProfile: FC = () => {
   return (
     <LoadingLayout isLoading={isLoading}>
       <Container>
-        { 
+        {
           user?.id ? (
             <Card variant="outlined" className={classes.card}>
               <AvatarUploader url={user.avatar} name={user.name} />

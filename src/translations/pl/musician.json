@@ -1,6 +1,5 @@
 {
   "phoneNumber": "Numer kontaktowy",
-  "socialLinks": "Sociale",
   "errors": {
     "blankName": "Nazwa nie moze być pusta"
   },

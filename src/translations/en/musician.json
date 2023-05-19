@@ -1,6 +1,5 @@
 {
   "phoneNumber": "Phone number",
-  "socialLinks": "Socials",
   "errors": {
     "blankName": "Name can't be blank"
   },

@@ -14,3 +14,4 @@ export * from './Uploader';
 export * from './UserForm';
 export * from './Welcome';
 export * from './Modal';
+export * from './Loader';

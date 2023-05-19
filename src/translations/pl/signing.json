@@ -1,10 +1,5 @@
 {
   "login": "Zaloguj się",
-  "registerSuccess": "Udało ci się zarejestrować!",
-  "lostPasswordSentEmail": "Wysłaliśmy maila do dozyskania hasła.",
-  "lostPassword": "Zapomniałem/am hasła",
-  "loginButton": "Zaloguj",
-  "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
   "firstname": "Imię",
   "lastname": "Nazwisko",
   "errors": {
@@ -15,6 +10,11 @@
     "minLengthPassword": "Hasło musi zawierać conajmniej 6 znaków"
   },
   "name": "Nazwa",
+  "registerSuccess": "Udało ci się zarejestrować!",
+  "lostPasswordSentEmail": "Wysłaliśmy maila do dozyskania hasła.",
+  "lostPassword": "Zapomniałem/am hasła",
+  "loginButton": "Zaloguj",
+  "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
   "isMusicianLabel": "Jestem muzykiem",
   "register": "Zarejestruj się",
   "alreadyRegistered": "Masz juz konto? Zaloguj się!",

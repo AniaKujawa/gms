@@ -1,10 +1,5 @@
 {
   "login": "Log in",
-  "registerSuccess": "You've successfully registered!",
-  "lostPasswordSentEmail": "Email has been send.",
-  "lostPassword": "Forgotten password",
-  "loginButton": "Log in",
-  "firstTime": "Don't have an account? Register!",
   "firstname": "First name",
   "lastname": "Last name",
   "errors": {
@@ -15,6 +10,11 @@
     "minLengthPassword": "Password must be at least 6 characters"
   },
   "name": "name",
+  "registerSuccess": "You've successfully registered!",
+  "lostPasswordSentEmail": "Email has been send.",
+  "lostPassword": "Forgotten password",
+  "loginButton": "Log in",
+  "firstTime": "Don't have an account? Register!",
   "isMusicianLabel": "I am a musician",
   "register": "Register",
   "alreadyRegistered": "Have you already registered? Log in",

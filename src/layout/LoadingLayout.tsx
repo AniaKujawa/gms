@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { GlobalLoader } from '../views/GlobalLoader';
+import { Loader } from '../components';
 
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 
 export const LoadingLayout: FC<Props> = ({ children, isLoading }) => (
   isLoading ? (
-    <GlobalLoader/>
+    <Loader />
   ) : (
     <>
       {children}
