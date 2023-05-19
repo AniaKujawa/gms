@@ -7,6 +7,7 @@ module.exports = {
     // },
     defaultLocale: 'pl',
     locales: ['pl', 'en'],
+    localeDetection: false,
     // namespaceSeparator: '.',
     // output: 'src/translations/$LOCALE/$NAMESPACE.json',
     // input: [

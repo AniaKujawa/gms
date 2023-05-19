@@ -12,5 +12,13 @@ export const useStyles = makeStyles((theme: Theme) =>
       top: 0,
       zIndex: 2,
     },
+    menu: {
+      columnGap: theme.spacing(2),
+      width: 'auto',
+    },
+    languageToggle: {
+      cursor: 'pointer',
+      width: 30,
+    }
   }),
 );
