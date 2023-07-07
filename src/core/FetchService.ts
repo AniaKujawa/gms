@@ -25,7 +25,7 @@ class FetchService {
   auth(options: AxiosRequestConfig) {
     const token = storage.getItem(AUTH_KEY);
 
-    if(token) {
+    if (token) {
       return {
         ...options,
         headers: {
@@ -53,6 +53,13 @@ class FetchService {
 
   get(options: AxiosRequestConfig): AxiosPromise {
     return this.request({
+      ...options,
+      method: 'GET'
+    });
+  }
+
+  getWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
+    return this.requestWithoutAuth({
       ...options,
       method: 'GET'
     });

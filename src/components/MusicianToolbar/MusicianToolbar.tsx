@@ -13,17 +13,17 @@ import { useStyles } from './MusicianToolbar.styles';
 
 
 export const MusicianToolbar: FC<Props> = ({ musician }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['profile', 'translation']);
   const { push } = useRouter();
   const { mutate: activate } = useActivateMusicianBand();
   const { mutate: deactivate } = useDeactivateMusicianBand();
-  const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const classes = useStyles({ active: musician.active });
 
   const closeModal = () => setIsModalOpen(false);
 
   const handleActivation = useCallback(() => {
-    if(musician.active) {
+    if (musician.active) {
       return setIsModalOpen(true);
     }
     return activate(musician.id);
@@ -42,21 +42,21 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
         className={classes.activationBtn}
         onClick={handleActivation}
       >
-        {musician.active ? t('profile.deactivate') : t('profile.activate')}
+        {musician.active ? t('deactivate') : t('activate')}
       </Button>
       <Button
         variant="outlined"
         color="primary"
         onClick={() => push(`${PATHS.BANDS_EDIT}/${musician.id}`)}
       >
-        {t('profile.edit')}
+        {t('edit')}
       </Button>
 
       <Modal
         open={isModalOpen}
         handleClose={closeModal}
-        title={t('profile.deactivationModalTitle')}
-        description={t('profile.deactivationModalSubtitle')}
+        title={t('deactivationModalTitle')}
+        description={t('deactivationModalSubtitle')}
       >
         <Box className={classes.modalActions}>
           <Button
@@ -64,14 +64,14 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
             color="primary"
             onClick={closeModal}
           >
-            {t('translation.cancel')}
+            {t('cancel')}
           </Button>
           <Button
             variant="contained"
             className={classes.deactivationBtn}
             onClick={handleDeactivation}
           >
-            {t('profile.deactivate')}
+            {t('deactivate')}
           </Button>
         </Box>
       </Modal>

@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import { signIn } from "next-auth/react";
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -22,7 +23,8 @@ export const LoginForm: FC = () => {
     mode: 'onChange',
   });
   const { mutate, isLoading } = useLoginUser();
-  const onSubmit = (data: LoginFormProps) => mutate(data);
+  // const onSubmit = (data: LoginFormProps) => signIn(undefined, { callbackUrl: '/foo' });
+  const onSubmit = (data: LoginFormProps) => signIn("credentials", data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>

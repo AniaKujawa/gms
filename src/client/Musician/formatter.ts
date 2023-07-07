@@ -7,7 +7,7 @@ export const formatMusician = (musician: MusicianAPI) => ({
   name: musician.name,
   description: musician.description,
   tags: musician.tags,
-  imageUrl: musician.image_url,
+  imageUrl: musician.image_url || null,
   images: musician.images,
   phoneNumber: musician.phone_number,
   contactName: musician.contact_name,

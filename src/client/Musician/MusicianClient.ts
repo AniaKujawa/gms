@@ -22,6 +22,14 @@ class MusicianClient {
     return formatMusician(data.data.band)
   }
 
+  async getServerMusician(id: string): Promise<Musician> {
+    const data = await fetch.getWithoutAuth({
+      url: `${endpoints.bands}/${id}`,
+    });
+
+    return formatMusician(data.data.band)
+  }
+
   async getMusicianBands(): Promise<Musician[]> {
     const data = await fetch.get({
       url: endpoints.userBands,

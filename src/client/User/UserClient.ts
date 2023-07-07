@@ -40,8 +40,8 @@ class UserClient {
         user: data
       }
     });
-    storage.setItem('token', response.data.token);
-    storage.setItem('user', JSON.stringify(response.data.user));
+    // storage.setItem('token', response.data.token);
+    // storage.setItem('user', JSON.stringify(response.data.user));
 
     return response.data;
   }
@@ -62,7 +62,7 @@ class UserClient {
     data.append('avatar', avatar);
 
     const response = await fetch.post({
-      url: endpoints.avatar, 
+      url: endpoints.avatar,
       headers: { 'Content-Type': 'multipart/form-data' },
       data,
     });

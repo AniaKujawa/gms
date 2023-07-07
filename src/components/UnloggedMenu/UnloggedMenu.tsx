@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { Button, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { signIn } from "next-auth/react";
 import { PATHS } from '../../utils/consts';
 
 import { MobileUnloggedMenu } from './MobileUnloggedMenu';
@@ -16,10 +17,11 @@ export const UnloggedMenu = () => {
   return isWide ? (
     <Grid>
       <Button
-        component={Link}
+        // component={Link}
         color="secondary"
         variant="text"
-        href={PATHS.LOGIN}
+        // href={PATHS.LOGIN}
+        onClick={() => signIn(undefined, { callbackUrl: '/' })}
         className={classes.leftButton}
       >
         <Typography color="secondary" >
