@@ -12,7 +12,6 @@ export const authOptions = {
         password: { label: "password", type: "password" }
       },
       async authorize(credentials) {
-        console.log(credentials);
         if (credentials) {
           const token = await userClient.loginUser(credentials);
 
@@ -22,6 +21,7 @@ export const authOptions = {
       }
     })
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/start/zaloguj',
   },

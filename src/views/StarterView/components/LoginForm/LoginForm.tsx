@@ -23,8 +23,7 @@ export const LoginForm: FC = () => {
     mode: 'onChange',
   });
   const { mutate, isLoading } = useLoginUser();
-  // const onSubmit = (data: LoginFormProps) => signIn(undefined, { callbackUrl: '/foo' });
-  const onSubmit = (data: LoginFormProps) => signIn("credentials", data);
+  const onSubmit = (data: LoginFormProps) => signIn("credentials", { ...data, callbackUrl: '/' });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>

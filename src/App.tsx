@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@material-ui/core';
-import React, { FC, Suspense } from 'react';
+import React, { FC, ReactNode, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 
@@ -11,10 +11,12 @@ import { client } from './client/UserQuery';
 import { Routes } from './routes';
 import { FeedbackAlert } from './shared/components/Feedback';
 import { Loader } from './components';
+import { SessionProvider } from 'next-auth/react';
 
-const providers: FC[] = [
+const providers: FC<{ children: ReactNode }>[] = [
   FeedbackContextProvider,
-  UserContextProvider
+  // UserContextProvider
+  SessionProvider
 ];
 
 const App: FC = () => {

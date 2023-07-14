@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 type Props = {
-  components: FC[];
+  components: FC<{ children: ReactNode }>[];
+  children: ReactNode;
 };
 
 export const PipeProviders: FC<Props> = ({ components = [], children }) => {

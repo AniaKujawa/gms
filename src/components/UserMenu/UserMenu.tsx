@@ -8,10 +8,10 @@ import {
   IconButton,
 } from '@material-ui/core';
 import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
 import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
 
 import { Tooltip } from '../Tooltip';
-import { useUserContext } from '../../context/User';
 import { PATHS } from '../../utils/consts';
 import { Avatar } from '../Avatar';
 
@@ -23,7 +23,7 @@ export const UserMenu = () => {
   const { t } = useTranslation('menu');
   const classes = useStyles();
   const open = Boolean(anchorEl);
-  const { logout, user } = useUserContext();
+  const { data } = useSession();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -36,7 +36,7 @@ export const UserMenu = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton onClick={handleClick} size="small">
-            <Avatar>{user?.name}</Avatar>
+            <Avatar>{data?.user?.name}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -64,7 +64,7 @@ export const UserMenu = () => {
           <AccountBox className={classes.icon} /> {t('account')}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={logout}>
+        <MenuItem onClick={signOut}>
           <ExitToApp className={classes.icon} fontSize="small" />
           {t('logout')}
         </MenuItem>
