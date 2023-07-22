@@ -1,25 +1,33 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
+import { getSession } from 'next-auth/react';
 
 import { UserProfile } from '../../src/views/UserProfile';
-import { CheckAuthorization } from '../../src/routes/CheckAuthorization';
 import { DashboardLayout } from './../../src/layout/DashboardLayout';
 
 const UserProfileView = () =>
-  <CheckAuthorization>
-    <DashboardLayout>
-      <UserProfile />
-    </DashboardLayout>
-  </CheckAuthorization>
+  <DashboardLayout>
+    <UserProfile />
+  </DashboardLayout>
 
-export const getStaticProps: GetStaticProps<{}> = async ({
-  locale
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'pl', [
-      'signing',
-    ])),
-  },
-})
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/start/zaloguj',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale ?? 'pl', [
+        'profile', 'signing', 'translation'
+      ])),
+    },
+  };
+}
 
 export default UserProfileView;

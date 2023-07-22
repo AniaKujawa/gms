@@ -5,17 +5,18 @@ import { userClient } from "../../client/User";
 import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
 import { useUserContext } from "../../context/User";
+import { useAuth } from "../auth";
 
 export const useGetUsers = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
-  
+
   return useQuery('users', () => {
     try {
       const data = userClient.getUsers()
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log('Couldn\'t get all users', e);
       handleError(new Error(t('apiErrors.getUsers')));
     }
@@ -23,22 +24,23 @@ export const useGetUsers = () => {
 };
 
 
-export const useGetUser = (id: number) => {
+export const useGetUser = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
-  
-  return useQuery(['user', id], async() => {
+  const { enabled, headers } = useAuth();
+
+  return useQuery('user', async () => {
     try {
-      const data = await userClient.getUser(id);
+      const data = await userClient.getUser({ headers });
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log('Couldn\'t get the user', e);
       handleError(new Error(t('apiErrors.getUser')));
     }
-  }, {     
+  }, {
     refetchOnWindowFocus: false,
-    enabled: !!id,
+    enabled,
   });
 };
 
@@ -47,8 +49,8 @@ export const useRegisterUser = () => {
   const { push } = useRouter();
   const { setIsLoggedIn } = useUserContext();
   const { handleError, handleSuccess } = useFeedback();
-  
-  return useMutation(async(user: UserPayload) => {
+
+  return useMutation(async (user: UserPayload) => {
     try {
       const data = await userClient.registerUser(user);
 
@@ -57,7 +59,7 @@ export const useRegisterUser = () => {
       push('/');
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log(`Can't register user`, e);
       handleError(new Error(t('apiErrors.register')));
     }
@@ -69,7 +71,7 @@ export const useLoginUser = () => {
   const { setIsLoggedIn } = useUserContext();
   const { push } = useRouter();
   const { handleError } = useFeedback();
-  
+
   return useMutation(async (user: Login) => {
     try {
       const data = await userClient.loginUser(user);
@@ -78,7 +80,7 @@ export const useLoginUser = () => {
       push('/');
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log(`Can't login`, e);
       handleError(new Error(t('apiErrors.login')));
     }
@@ -88,14 +90,14 @@ export const useLoginUser = () => {
 export const useRecoverPassword = () => {
   const { t } = useTranslation();
   const { handleError, handleSuccess } = useFeedback();
-  
+
   return useMutation(async (email: string) => {
     try {
       const data = await userClient.recoverPassword(email);
       handleSuccess(t('signing.lostPasswordSentEmail'));
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log(`Can't recover password`, e);
       handleError(new Error(t('apiErrors.passwordRecovery')));
     }
@@ -105,13 +107,13 @@ export const useRecoverPassword = () => {
 export const useUploadAvatar = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
-  
+
   return useMutation(async (avatar: File) => {
     try {
       const data = await userClient.uploadAvatar(avatar);
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log(`Can't upload avatar`, e);
       handleError(new Error(t('apiErrors.uploadAvatar')));
     }
@@ -121,13 +123,13 @@ export const useUploadAvatar = () => {
 export const useUpdateUser = () => {
   const { t } = useTranslation();
   const { handleError } = useFeedback();
-  
+
   return useMutation(async (user: UpdateUser) => {
     try {
       const data = userClient.updateUser(user)
 
       return data;
-    } catch(e) {
+    } catch (e) {
       console.log('Couldn\'t update user', e);
       handleError(new Error(t('apiErrors.updateUser')));
     }

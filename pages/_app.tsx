@@ -7,6 +7,7 @@ import nextI18NextConfig from '../next-i18next.config.js';
 import { SessionProvider } from 'next-auth/react';
 // import { ReactQueryDevtools } from 'react-query/devtools';
 import { theme } from '../src/styles/theme';
+import { UserContextProvider } from '../src/context/User';
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -17,7 +18,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <SessionProvider session={session}>
-          <Component {...pageProps} />
+          <UserContextProvider>
+            <Component {...pageProps} />
+          </UserContextProvider>
           {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </SessionProvider>
       </QueryClientProvider>

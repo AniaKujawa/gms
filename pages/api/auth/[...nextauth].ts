@@ -2,6 +2,15 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { userClient } from "../../../src/client/User";
 
+const customAuthorize = async (credentials) => {
+  if (credentials) {
+    const user = await userClient.loginUser(credentials);
+
+    return user ?? null;
+  }
+  return null
+}
+
 
 export const authOptions = {
   providers: [
@@ -11,20 +20,23 @@ export const authOptions = {
         email: { label: "email", type: "text" },
         password: { label: "password", type: "password" }
       },
-      async authorize(credentials) {
-        if (credentials) {
-          const token = await userClient.loginUser(credentials);
-
-          return token ?? null;
-        }
-        return null
-      }
+      authorize: customAuthorize as any,
     })
   ],
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/start/zaloguj',
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      session.user = token.user;
+      session.token = token.accessToken;
+      return session;
+    }
+  }
 }
 
 export default NextAuth(authOptions)

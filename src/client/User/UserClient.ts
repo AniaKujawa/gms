@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios';
 import { endpoints } from '../../core/endpoints';
 import fetch from '../../core/FetchService';
 import { Login, UpdateUser, User, UserPayload } from '../../types';
@@ -14,9 +15,10 @@ class UserClient {
     return data.data.users;
   }
 
-  async getUser(id: number): Promise<User> {
+  async getUser(options: AxiosRequestConfig): Promise<User> {
     const data = await fetch.get({
-      url: `${endpoints.users}/${id}`
+      url: endpoints.profile,
+      ...options
     });
 
     return formatUserData(data.data.user);
@@ -40,10 +42,8 @@ class UserClient {
         user: data
       }
     });
-    // storage.setItem('token', response.data.token);
-    // storage.setItem('user', JSON.stringify(response.data.user));
 
-    return response.data;
+    return { accessToken: response.data.token, user: formatUserData(response.data.user) };
   }
 
   async recoverPassword(email: string) {
@@ -72,7 +72,7 @@ class UserClient {
 
   async updateUser(user: UpdateUser): Promise<User> {
     const response = await fetch.put({
-      url: `${endpoints.profile}`,
+      url: endpoints.profile,
       data: parseUpdateUser(user),
     });
 

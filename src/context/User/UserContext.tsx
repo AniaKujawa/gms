@@ -1,49 +1,23 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-
-import storage from './../../utils/storage';
+import React, { ReactNode, useContext } from 'react';
 
 import { UserContext as UserContextType } from './types';
 import { useGetUser } from '../../queries/user';
-import { noop } from 'lodash';
 
 const defaultContext = {
-  isLoggedIn: false,
   user: null,
   isLoading: false,
-  setIsLoggedIn: noop,
-  logout: noop,
 };
 
-const getToken = () => storage.getItem('token');
-const getUser = () => JSON.parse(storage.getItem('user') || '{}');
 
 const UserContext = React.createContext<UserContextType>(defaultContext);
 
-export const UserContextProvider: FC = ({ children }) => {
-  const defaultIsLoggedInValue = Boolean(getToken());
-  const userId = Number(getUser().id);
-  const [ isLoggedIn, setIsLoggedIn ] = useState(defaultIsLoggedInValue);
-  const { data: user, isLoading } = useGetUser(userId);
-
-  useEffect(() => {
-    if(user?.id) {
-      setIsLoggedIn(true);
-    }
-  }, [user, setIsLoggedIn]);
-
-  const logout = () => {
-    setIsLoggedIn(false);
-    storage.removeItem('token');
-    storage.removeItem('user');
-  };
+export const UserContextProvider = ({ children }: { children: ReactNode }) => {
+  const { data: user, isLoading } = useGetUser();
 
   return (
     <UserContext.Provider value={{
-      isLoggedIn,
       user,
       isLoading,
-      setIsLoggedIn,
-      logout,
     }}>
       {children}
     </UserContext.Provider>

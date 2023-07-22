@@ -1,9 +1,6 @@
 import request, { AxiosPromise, AxiosRequestConfig } from 'axios';
 import qs from 'qs';
 
-import storage from './../utils/storage';
-
-const AUTH_KEY = 'token';
 
 class FetchService {
   serializeParams(params: URLSearchParams) {
@@ -22,34 +19,12 @@ class FetchService {
     }
   }
 
-  auth(options: AxiosRequestConfig) {
-    const token = storage.getItem(AUTH_KEY);
-
-    if (token) {
-      return {
-        ...options,
-        headers: {
-          ...options.headers,
-          Authorization: `Bearer ${token}`
-        }
-      }
-    }
-
-    return options;
-  }
-
   request(options: AxiosRequestConfig): AxiosPromise {
-    const optionsWithHeader = this.attachHeaders(options);
-    const optionsWithAuth = this.auth(optionsWithHeader);
-
-    return request(optionsWithAuth);
-  }
-
-  requestWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
     const optionsWithHeader = this.attachHeaders(options);
 
     return request(optionsWithHeader);
   }
+
 
   get(options: AxiosRequestConfig): AxiosPromise {
     return this.request({
@@ -59,7 +34,7 @@ class FetchService {
   }
 
   getWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
-    return this.requestWithoutAuth({
+    return this.request({
       ...options,
       method: 'GET'
     });
@@ -73,7 +48,7 @@ class FetchService {
   }
 
   postWithoutAuth(options: AxiosRequestConfig): AxiosPromise {
-    return this.requestWithoutAuth({
+    return this.request({
       ...options,
       method: 'POST'
     });

@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -11,7 +11,6 @@ import { Button } from './../../shared/Button';
 import { PasswordRecover } from './components/PasswordRecover';
 import { LoginFormProps } from './types';
 import { useStyles } from './LoginForm.styles';
-import { useLoginUser } from '../../../../queries/user';
 import { PATHS } from '../../../../utils/consts';
 
 
@@ -22,8 +21,9 @@ export const LoginForm: FC = () => {
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
-  const { mutate, isLoading } = useLoginUser();
+  const { status } = useSession();
   const onSubmit = (data: LoginFormProps) => signIn("credentials", { ...data, callbackUrl: '/' });
+  const isLoading = status === 'loading';
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>

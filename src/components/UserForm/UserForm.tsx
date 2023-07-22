@@ -15,7 +15,7 @@ type Props = {
 
 export const UserForm: FC<Props> = ({ user }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['signing', 'profile', 'translation']);
   const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<UpdateUser>({
     mode: 'onChange',
@@ -33,16 +33,16 @@ export const UserForm: FC<Props> = ({ user }) => {
         error={!!errors.firstName}
         render={(
           { onChange, value }
-        )=> (
+        ) => (
           <TextField
-            label={t('signing.firstname')}
+            label={t('firstname')}
             type='text'
             onChange={onChange}
             value={value}
             helperText={errors?.firstName?.message}
           />
         )}
-       />
+      />
       <Controller
         name='lastName'
         control={control}
@@ -50,10 +50,10 @@ export const UserForm: FC<Props> = ({ user }) => {
         error={!!errors.lastName}
         render={(
           { onChange, value }
-        )=> (
+        ) => (
           <>
             <TextField
-              label={t('signing.lastname')}
+              label={t('lastname')}
               type='text'
               onChange={onChange}
               value={value}
@@ -66,30 +66,30 @@ export const UserForm: FC<Props> = ({ user }) => {
         name='name'
         control={control}
         rules={{
-          required: `${t('signing.errors.blankname')}`
+          required: `${t('errors.blankname')}`
         }}
         defaultValue=''
         error={!!errors.name}
         render={(
           { onChange, value }
-        )=> (
+        ) => (
           <TextField
-            label={t('signing.name')}
+            label={t('name')}
             type='text'
             onChange={onChange}
             value={value}
             helperText={errors?.name?.message}
           />
         )}
-       />
-       <Box className={classes.buttons}>
+      />
+      <Box className={classes.buttons}>
         <Button
           variant="outlined"
-          disabled={isLoading}            
+          disabled={isLoading}
           color="primary"
           onClick={() => push(PATHS.PROFILE)}
         >
-          {t('translation.cancel')}
+          {t('cancel')}
         </Button>
         <Button
           type='submit'
@@ -98,9 +98,9 @@ export const UserForm: FC<Props> = ({ user }) => {
           color="primary"
           className={classes.submitBtn}
         >
-          {isLoading ? t('loading') : t('profile.save')}
+          {isLoading ? t('loading') : t('save')}
         </Button>
-       </Box>
+      </Box>
     </form>
   )
 };

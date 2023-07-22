@@ -14,7 +14,7 @@ import { useStyles } from './UserProfile.styles';
 export const UserProfile: FC = () => {
   const { user, isLoading } = useUserContext();
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
 
   return (
     <LoadingLayout isLoading={isLoading}>
@@ -29,7 +29,7 @@ export const UserProfile: FC = () => {
                 </div>
                 <div>{user.name}</div>
                 <div className={classes.userInfo}>
-                  {t('profile.registerAsMusician')}
+                  {t('registerAsMusician')}
                   {user.musician ? <CheckBoxIcon /> : <ClearIcon />}
                 </div>
               </Grid>

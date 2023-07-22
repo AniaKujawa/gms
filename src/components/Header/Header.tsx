@@ -2,12 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { Grid, Icon } from '@material-ui/core';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 import { UserMenu } from '../UserMenu';
 import { UnloggedMenu } from '../UnloggedMenu';
 
 import { useStyles } from './Header.styles';
-import { useSession } from 'next-auth/react';
 
 const PlFlagImg = '/images/poland-flag.svg';
 const EnFlagImg = '/images/england-flag.svg';
