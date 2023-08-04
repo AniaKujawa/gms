@@ -1,3 +1,4 @@
+"use client"
 import { useTranslation } from "next-i18next";
 import { useMutation, useQuery } from "react-query";
 import { useRouter } from 'next/router';

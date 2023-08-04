@@ -1,3 +1,4 @@
+"use client"
 import React, { FC } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useForm, Controller } from 'react-hook-form';

@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useState } from 'react';
 import { Box } from '@material-ui/core';
 
@@ -13,10 +14,10 @@ type Props = {
 };
 
 export const Uploader: FC<Props> = ({ filename, setFile, fileUrl }) => {
-  const [ imageUrl, setImageUrl ] = useState(fileUrl || '');
+  const [imageUrl, setImageUrl] = useState(fileUrl || '');
 
   const handleFileChange = (file: Blob) => {
-    if(file) {
+    if (file) {
       setFile(file);
       setImageUrl(URL.createObjectURL(file));
     }
@@ -31,7 +32,7 @@ export const Uploader: FC<Props> = ({ filename, setFile, fileUrl }) => {
     <Box>
       {imageUrl && (
         <ImagePreview
-          image={{ url: fileUrl, id: filename}}
+          image={{ url: fileUrl, id: filename }}
           handleDelete={handleDelete}
         />
       )}

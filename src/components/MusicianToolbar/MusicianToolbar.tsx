@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useCallback, useState } from 'react';
 import { Box, Button } from '@material-ui/core';
 import { useTranslation } from 'next-i18next';

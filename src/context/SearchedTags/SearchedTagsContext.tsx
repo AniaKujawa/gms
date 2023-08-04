@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, createContext, useContext } from 'react';
 
 import { SearchedTagsContextProps } from './types';

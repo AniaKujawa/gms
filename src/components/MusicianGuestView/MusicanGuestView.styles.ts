@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     box: {
       padding: theme.spacing(5),
       marginTop: theme.spacing(),
-      backgroundColor: theme.palette.red.light,
+      // backgroundColor: theme.palette.red.light,
       maxWidth: 400,
       textAlign: 'center',
 

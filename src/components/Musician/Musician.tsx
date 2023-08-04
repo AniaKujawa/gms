@@ -1,3 +1,4 @@
+"use client"
 import React, { FC } from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import parse from 'html-react-parser';

@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, createContext, useContext, useState } from 'react';
 import noop from 'lodash/noop';
 
@@ -17,7 +18,7 @@ const defaultContext: FeedbackContextProps = {
 export const FeedbackContext = createContext<FeedbackContextProps>(defaultContext);
 
 export const FeedbackContextProvider: FC = ({ children }) => {
-  const [ alert, setAlert ] = useState(defaultAlert);
+  const [alert, setAlert] = useState(defaultAlert);
 
   return (
     <FeedbackContext.Provider

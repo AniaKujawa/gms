@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useCallback, useState } from 'react';
 import { Button } from '@material-ui/core';
 
@@ -13,13 +14,13 @@ interface PopularTag {
 
 export const PopularTag: FC<PopularTag> = ({ tag }) => {
   const { addTag, removeTag } = useSearchedTagsContext();
-  const [ isSelected, setIsSelected ] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const styles = useStyles({ selected: isSelected });
 
   const toggleSelected = useCallback(() => {
     setIsSelected(selected => !selected);
 
-    if(isSelected) {
+    if (isSelected) {
       return removeTag(tag)
     }
     addTag(tag);

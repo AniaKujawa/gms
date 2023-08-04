@@ -1,3 +1,4 @@
+"use client"
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 import { useAddMusicianImages, useUpdateMusicianBand } from '../../queries/musician';
@@ -12,15 +13,15 @@ export const MusicianUpdateForm: FC<Props> = ({ musician }) => {
   const { back } = useRouter();
   const { mutateAsync: addImages } = useAddMusicianImages();
 
-  const onSubmit = async(values: any) => {
+  const onSubmit = async (values: any) => {
     await mutateAsync({
       id: musician?.id,
       ...values
     });
-    if(values.images.length) {
+    if (values.images.length) {
       await addImages({
         id: musician.id,
-        images: [ ...values.images.map((file: ImageFile) => file.url) ],
+        images: [...values.images.map((file: ImageFile) => file.url)],
       })
     }
 

@@ -1,3 +1,4 @@
+"use client"
 import { Box } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -9,7 +10,7 @@ import { useStyles } from './MusicanGuestView.styles';
 import { Props } from './types';
 
 export const MusicianGuestView: FC<Props> = ({ musician }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('musician');
   const classes = useStyles();
 
   return (
@@ -18,7 +19,7 @@ export const MusicianGuestView: FC<Props> = ({ musician }) => {
         <Link
           href={PATHS.START}
         >
-          {t('musician.loginToUnblockContactInfo')}
+          {t('loginToUnblockContactInfo')}
         </Link>
       </Box>
     </Musician>

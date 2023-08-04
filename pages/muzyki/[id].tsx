@@ -6,14 +6,15 @@ import { MusicView, MusicViewExtended } from '../../src/views/MusicView';
 import { DashboardLayout } from '../../src/layout/DashboardLayout';
 import { useUserContext } from '../../src/context/User';
 import { endpoints } from '../../src/core/endpoints';
+import { getSession } from 'next-auth/react';
 
 const MusicianContentPage = () => {
-  const { isLoggedIn } = useUserContext();
-  const router = useRouter();
+  // const { isLoggedIn } = useUserContext();
+  // const router = useRouter();
 
-  if (!isLoggedIn) {
-    return <MusicView />
-  }
+  // if (!isLoggedIn) {
+  //   return <MusicView />
+  // }
 
   return <MusicViewExtended />
 }
@@ -45,5 +46,26 @@ export const getStaticProps: GetStaticProps<{}> = async ({
     ])),
   },
 })
+
+// export async function getServerSideProps(context) {
+//   const session = await getSession(context);
+
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/start/zaloguj',
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(context.locale ?? 'pl', [
+//         'profile', 'signing', 'translation'
+//       ])),
+//     },
+//   };
+// }
 
 export default MusicianView;

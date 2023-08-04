@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Card, Typography, Grid } from '@material-ui/core';
 
 import { PATHS } from '../../utils/consts';
@@ -18,14 +18,14 @@ export const MusicianCard: FC<Props> = ({ musician }) => {
       onClick={() => push(`${PATHS.MUSIC}/${musician.id}`)}
     >
       <Typography variant="h3">{musician.name}</Typography>
-        <Grid
-          className={classes.image}
-        >
-          <MusicianImage
-            title={musician.name}
-            imageUrl={musician.images[0]?.url}
-          />
-        </Grid>
+      <Grid
+        className={classes.image}
+      >
+        <MusicianImage
+          title={musician.name}
+          imageUrl={musician.images[0]?.url}
+        />
+      </Grid>
       <MusicianTags tags={musician.tags} />
     </Card>
   );

@@ -1,3 +1,4 @@
+"use client"
 import React, { FC, useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core'
 import { useTranslation } from 'next-i18next';
