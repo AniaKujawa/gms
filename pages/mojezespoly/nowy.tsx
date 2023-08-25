@@ -1,25 +1,41 @@
+import React, { ReactElement } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
 
+import { getSession } from '../../lib/auth';
 import { BandCreation } from '../../src/views/BandCreation';
-import { CheckAuthorization } from '../../src/routes/CheckAuthorization';
 import { DashboardLayout } from './../../src/layout/DashboardLayout';
 
-const BandCreationView = () =>
-  <CheckAuthorization>
+const Page = () =>
+  <BandCreation />
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session?.token) {
+    return {
+      redirect: {
+        destination: '/start/zaloguj',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      ...(await serverSideTranslations(context.locale ?? 'pl', [
+        'profile', 'signing', 'translation', 'menu'
+      ])),
+    },
+  };
+}
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
     <DashboardLayout>
-      <BandCreation />
+      {page}
     </DashboardLayout>
-  </CheckAuthorization>
+  )
+}
 
-export const getStaticProps: GetStaticProps<{}> = async ({
-  locale
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'pl', [
-      'signing',
-    ])),
-  },
-})
-
-export default BandCreationView;
+export default Page;

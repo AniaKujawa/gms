@@ -1,19 +1,18 @@
+import React, { ReactElement } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { getSession } from 'next-auth/react';
+import { getSession } from '../../lib/auth';
 
 import { UserProfileUpdate } from '../../src/views/UserProfileUpdate';
 import { DashboardLayout } from './../../src/layout/DashboardLayout';
 
 
-const UserProfileUpdateView = () =>
-  <DashboardLayout>
-    <UserProfileUpdate />
-  </DashboardLayout>
+const Page = () =>
+  <UserProfileUpdate />
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
-  if (!session) {
+  if (!session?.token) {
     return {
       redirect: {
         destination: '/start/zaloguj',
@@ -31,4 +30,12 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default UserProfileUpdateView;
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <DashboardLayout>
+      {page}
+    </DashboardLayout>
+  )
+}
+
+export default Page;

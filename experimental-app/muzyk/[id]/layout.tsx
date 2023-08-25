@@ -1,4 +1,5 @@
-// import { DashboardLayout } from "../../../src/layout/DashboardLayout";
+import React from "react";
+import { DashboardLayout } from "../../../src/layout/DashboardLayout";
 
 export const metadata = {
   title: 'Music',
@@ -11,8 +12,8 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <>
+    <DashboardLayout>
       {children}
-    </>
+    </DashboardLayout>
   );
 }

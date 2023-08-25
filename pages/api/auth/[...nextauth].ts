@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { userClient } from "../../../src/client/User";
 
-const customAuthorize = async (credentials) => {
+const customAuthorize = async (credentials: Record<"email" | "password", string> | undefined) => {
   if (credentials) {
     const user = await userClient.loginUser(credentials);
 

@@ -10,7 +10,7 @@ export default async function Page({ params }) {
   const musician = await musicianClient.getMusician(params.id);
 
   if (musician) {
-    if (session.token) {
+    if (session?.token) {
       return <MusicViewExtended musician={musician} />
     }
 

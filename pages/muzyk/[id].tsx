@@ -1,18 +1,21 @@
-
-
 import React, { ReactElement } from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { getSession } from '../../../lib/auth';
-import { BandUpdate } from '../../../src/views/BandUpdate';
-import { DashboardLayout } from '../../../src/layout/DashboardLayout';
-import fetch from '../../../src/core/FetchService';
-import { endpoints } from '../../../src/core/endpoints';
-import { formatMusician } from '../../../src/client/Musician/formatter';
+import { getSession } from '../../lib/auth';
+import { MusicView, MusicViewExtended } from '../../src/views/MusicView';
+import { DashboardLayout } from '../../src/layout/DashboardLayout';
+import fetch from '../../src/core/FetchService';
+import { endpoints } from '../../src/core/endpoints';
+import { formatMusician } from '../../src/client/Musician/formatter';
 
-const Page = ({ musician }) => (
-  <BandUpdate musician={musician} />
-)
+const Page = ({ musician, isLogged }) => {
+  if (!isLogged) {
+    return <MusicView musician={musician} />
+  }
+
+  return <MusicViewExtended musician={musician}/>
+}
+
 
 export async function getServerSideProps(context) {
   if (typeof context.query.id === 'string') {
@@ -21,20 +24,11 @@ export async function getServerSideProps(context) {
       'public, s-maxage=600, stale-while-revalidate=1200',
     );
     const session = await getSession(context);
-
-    if (!session?.token) {
-      return {
-        redirect: {
-          destination: '/start/zaloguj',
-          permanent: false,
-        },
-      };
-    }
-
+    // should we send token null if we don't have session? or maybe create new endpoint? to discuss with BE
     const data = await fetch.get({
       url: `${endpoints.bands}/${context.query.id}`,
       headers: {
-        Authorization: `Bearer ${session.token}`
+        Authorization: `Bearer ${session?.token}`
       },
     });
 
@@ -47,6 +41,7 @@ export async function getServerSideProps(context) {
           'profile', 'signing', 'translation'
         ])),
         musician,
+        isLogged: !!session
       }
     }
   } else {

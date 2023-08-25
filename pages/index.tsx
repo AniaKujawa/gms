@@ -1,12 +1,11 @@
+import React, { ReactElement } from 'react';
 import { Dashboard } from './../src/views/Dashboard';
 import { DashboardLayout } from './../src/layout/DashboardLayout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { GetStaticProps } from 'next';
 
-const DashboardView = () => (
-  <DashboardLayout>
-    <Dashboard />
-  </DashboardLayout>
+const Page = () => (
+  <Dashboard />
 )
 
 export const getStaticProps: GetStaticProps<{}> = async ({
@@ -19,4 +18,12 @@ export const getStaticProps: GetStaticProps<{}> = async ({
   },
 })
 
-export default DashboardView;
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <DashboardLayout>
+      {page}
+    </DashboardLayout>
+  )
+}
+
+export default Page;

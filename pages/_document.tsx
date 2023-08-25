@@ -1,3 +1,4 @@
+import { SessionProvider } from 'next-auth/react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import React from 'react';
@@ -29,8 +30,10 @@ export default class MyDocument extends Document {
         <Head>
         </Head>
         <body>
-          <Main />
-          <NextScript />
+          <SessionProvider>
+            <Main />
+            <NextScript />
+          </SessionProvider>
         </body>
       </Html>
     );
