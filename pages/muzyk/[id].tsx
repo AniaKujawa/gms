@@ -13,7 +13,7 @@ const Page = ({ musician, isLogged }) => {
     return <MusicView musician={musician} />
   }
 
-  return <MusicViewExtended musician={musician}/>
+  return <MusicViewExtended musician={musician} />
 }
 
 
@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         ...(await serverSideTranslations(context.locale ?? 'pl', [
-          'profile', 'signing', 'translation'
+          'profile', 'signing', 'translation', 'apiErrors'
         ])),
         musician,
         isLogged: !!session

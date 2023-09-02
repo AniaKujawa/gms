@@ -3,11 +3,11 @@ import { useFeedbackContext } from "../context/Feedback";
 
 export const useFeedback = () => {
   const { setAlert } = useFeedbackContext();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['apiErrors', 'translation']);
 
   const handleError = (err: Error) => {
     setAlert({
-      message: err.message || t('apiErrors.default'),
+      message: err.message || t('apiErrors:default'),
       warningLevel: 'error',
       isOpened: true,
     });
@@ -15,13 +15,13 @@ export const useFeedback = () => {
 
   const handleSuccess = (msg: string) => {
     setAlert({
-      message: msg || t('translation.defaultSuccess'),
+      message: msg || t('translation:defaultSuccess'),
       warningLevel: 'success',
       isOpened: true,
     });
   };
 
-  return { 
+  return {
     handleError,
     handleSuccess
   };

@@ -8,7 +8,7 @@ import { Toolbar } from '..';
 
 
 export const MusicianListToolbar: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('musician');
   const { push } = useRouter();
 
   return (
@@ -18,7 +18,7 @@ export const MusicianListToolbar: FC = () => {
         color="primary"
         onClick={() => push(PATHS.CREATE_BAND)}
       >
-        {t('musician.createBtn')}
+        {t('createBtn')}
       </Button>
     </Toolbar>
   )

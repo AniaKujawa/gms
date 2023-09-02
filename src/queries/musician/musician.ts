@@ -6,7 +6,7 @@ import { Musician, MusicianImages } from '../../types';
 
 
 export const useGetMusicians = (search: string) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery(['musicians', search], async () => {
@@ -16,13 +16,13 @@ export const useGetMusicians = (search: string) => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get all musicians', e);
-      handleError(new Error(t('apiErrors.getMusicians')));
+      handleError(new Error(t('getMusicians')));
     }
   });
 };
 
 export const useGetMusician = (id: string) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery(['musician', id], async () => {
@@ -32,13 +32,13 @@ export const useGetMusician = (id: string) => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get musician', e);
-      handleError(new Error(t('apiErrors.getMusicians')));
+      handleError(new Error(t('getMusicians')));
     }
   });
 };
 
 export const useGetMusicianBands = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery('bands', async () => {
@@ -48,13 +48,13 @@ export const useGetMusicianBands = () => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get all bands', e);
-      handleError(new Error(t('apiErrors.getMusiciansBands')));
+      handleError(new Error(t('getMusiciansBands')));
     }
   });
 };
 
 export const useCreateMusicianBand = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useMutation(async (musician: Musician) => {
@@ -64,13 +64,13 @@ export const useCreateMusicianBand = () => {
       return data;
     } catch (e) {
       console.log('Couldn\'t post new band', e);
-      handleError(new Error(t('apiErrors.postMusicianBand')));
+      handleError(new Error(t('postMusicianBand')));
     }
   });
 };
 
 export const useUpdateMusicianBand = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
@@ -83,13 +83,13 @@ export const useUpdateMusicianBand = () => {
       return;
     } catch (e) {
       console.log('Couldn\'t update band', e);
-      handleError(new Error(t('apiErrors.putMusicianBand')));
+      handleError(new Error(t('putMusicianBand')));
     }
   });
 };
 
 export const useAddMusicianImages = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
@@ -102,13 +102,13 @@ export const useAddMusicianImages = () => {
       return;
     } catch (e) {
       console.log('Couldn\'t update images', e);
-      handleError(new Error(t('apiErrors.postMusicianImages')));
+      handleError(new Error(t('postMusicianImages')));
     }
   });
 };
 
 export const useDeleteMusicianImage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
@@ -121,13 +121,13 @@ export const useDeleteMusicianImage = () => {
       return;
     } catch (e) {
       console.log('Couldn\'t delete image', e);
-      handleError(new Error(t('apiErrors.deleteMusicianImage')));
+      handleError(new Error(t('deleteMusicianImage')));
     }
   });
 };
 
 export const useActivateMusicianBand = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
@@ -140,13 +140,13 @@ export const useActivateMusicianBand = () => {
       return;
     } catch (e) {
       console.log('Couldn\'t activate band', e);
-      handleError(new Error(t('apiErrors.activateBand')));
+      handleError(new Error(t('activateBand')));
     }
   });
 };
 
 export const useDeactivateMusicianBand = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
 
@@ -159,13 +159,13 @@ export const useDeactivateMusicianBand = () => {
       return;
     } catch (e) {
       console.log('Couldn\'t update band', e);
-      handleError(new Error(t('apiErrors.deactivateBand')));
+      handleError(new Error(t('deactivateBand')));
     }
   });
 };
 
 export const useGetTags = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery('tags', async () => {
@@ -175,7 +175,7 @@ export const useGetTags = () => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get all tags', e);
-      handleError(new Error(t('apiErrors.getTags')));
+      handleError(new Error(t('getTags')));
     }
   });
 };

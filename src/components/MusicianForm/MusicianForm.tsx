@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next';
 import { Button, TextField, Grid } from '@material-ui/core';
 import dynamic from 'next/dynamic';
 
-// import { RichTextEditor } from '../RichTextEditor';
 import { Props } from '../RichTextEditor/types';
 import { FormProps } from './types';
 import { MusicianUploader } from './../MusicianUploader';
@@ -19,7 +18,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
   const { handleSubmit, control, errors } = useForm();
   const { data: tags } = useGetTags();
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation(['musician', 'profile', 'translation']);
 
   const RichTextEditor = dynamic<Props>(() => import('../RichTextEditor').then(mod => mod.RichTextEditor), {
     ssr: false,
@@ -33,15 +32,15 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             name='name'
             control={control}
             rules={{
-              required: `${t('musician.errors.blankName')}`
+              required: `${t('musician:errors.blankName')}`
             }}
             defaultValue={musician?.name || ''}
-            error={!!errors.name}        
+            error={!!errors.name}
             render={(
               { onChange, value }
             ) => (
               <TextField
-                label={t('musician.name')}
+                label={t('musician:name')}
                 type='text'
                 onChange={onChange}
                 value={value}
@@ -55,7 +54,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             name='images'
             control={control}
             defaultValue={[]}
-            error={!!errors.images}        
+            error={!!errors.images}
             render={(
               { onChange, value }
             ) => (
@@ -72,7 +71,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
             name='description'
             control={control}
             defaultValue={musician?.description || ''}
-            error={!!errors.description}        
+            error={!!errors.description}
             render={(
               { onChange, value }
             ) => (
@@ -87,8 +86,8 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
           <Controller
             name='tags'
             control={control}
-            defaultValue={musician?.tags?.map(tag => ({ name: tag.name }) ) || []}
-            error={!!errors.description}        
+            defaultValue={musician?.tags?.map(tag => ({ name: tag.name })) || []}
+            error={!!errors.description}
             render={(
               { onChange, value }
             ) => (
@@ -101,7 +100,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
           />
         </Grid>
         <Grid item>
-          <h3>{t('musician.socials')}</h3>
+          <h3>{t('musician:socials')}</h3>
           <Grid container spacing={4}>
             <Grid item md={6}>
               <Controller
@@ -121,7 +120,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors.socialLinks?.fb ? t('musician.urlValidation') : null}
+                    helperText={errors.socialLinks?.fb ? t('musician:urlValidation') : null}
                   />
                 )}
               />
@@ -144,7 +143,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors.socialLinks?.yt ? t('musician.urlValidation') : null}
+                    helperText={errors.socialLinks?.yt ? t('musician:urlValidation') : null}
                   />
                 )}
               />
@@ -168,7 +167,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type='text'
                     onChange={onChange}
                     value={value}
-                    helperText={errors.socialLinks?.inst ? t('musician.urlValidation') : null}
+                    helperText={errors.socialLinks?.inst ? t('musician:urlValidation') : null}
                   />
                 )}
               />
@@ -191,7 +190,7 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
                     type="text"
                     onChange={onChange}
                     value={value}
-                    helperText={errors.socialLinks?.tiktok ? t('musician.urlValidation') : null}
+                    helperText={errors.socialLinks?.tiktok ? t('musician:urlValidation') : null}
                   />
                 )}
               />
@@ -208,14 +207,14 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
           onClick={handleCancel}
           className={classes.cancelBtn}
         >
-          {t('translation.cancel')}
+          {t('translation:cancel')}
         </Button>
         <Button
           type="submit"
           variant="contained"
           color="primary"
         >
-          {t('profile.save')}
+          {t('profile:save')}
         </Button>
       </Toolbar>
     </form>

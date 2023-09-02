@@ -8,15 +8,15 @@ type Props = {
 };
 
 export const UploaderButton: FC<Props> = ({ onChange }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('translation');
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if(e.target.files) {
+    if (e.target.files) {
       onChange(e.target.files[0]);
     }
   }
 
- return (
-   <>
+  return (
+    <>
       <input
         accept="image/*"
         style={{ display: 'none' }}
@@ -31,9 +31,9 @@ export const UploaderButton: FC<Props> = ({ onChange }) => {
           component="span"
           startIcon={<CloudUploadIcon />}
         >
-          {t('translation.upload')}
+          {t('upload')}
         </Button>
       </label>
-   </>
- )
+    </>
+  )
 };

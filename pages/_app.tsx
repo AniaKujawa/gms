@@ -10,11 +10,15 @@ import { SessionProvider } from 'next-auth/react';
 // import { ReactQueryDevtools } from 'react-query/devtools';
 import { theme } from '../src/styles/theme';
 import { UserContextProvider } from '../src/context/User';
+import { FeedbackContextProvider } from '../src/context/Feedback';
+import { FeedbackAlert } from '../src/shared/components/Feedback';
+
+import '../src/styles/global.css';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
- 
+
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
@@ -29,9 +33,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppPropsWith
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <UserContextProvider>
-            {getLayout(<Component {...pageProps} />)}
+            <FeedbackContextProvider>
+              {getLayout(<Component {...pageProps} />)}
+              <FeedbackAlert />
+            </FeedbackContextProvider>
           </UserContextProvider>
-            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+          {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         </QueryClientProvider>
       </ThemeProvider >
     </SessionProvider>

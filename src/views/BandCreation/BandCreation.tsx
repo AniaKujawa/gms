@@ -6,12 +6,12 @@ import { MusicianCreateForm } from '../../components';
 
 
 export const BandCreation: FC = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('musician');
 
   return (
     <Container>
       <Typography variant="h1">
-        {t('musician.createBandTitle')}
+        {t('createBandTitle')}
       </Typography>
       <MusicianCreateForm />
     </Container>

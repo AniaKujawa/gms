@@ -2,7 +2,7 @@
 import React, { FC, createContext, useContext, useState } from 'react';
 import noop from 'lodash/noop';
 
-import { Alert as AlertType, FeedbackContextProps } from './types';
+import { Alert as AlertType, FeedbackContextProps, Props } from './types';
 
 export const defaultAlert: AlertType = {
   isOpened: false,
@@ -17,7 +17,7 @@ const defaultContext: FeedbackContextProps = {
 
 export const FeedbackContext = createContext<FeedbackContextProps>(defaultContext);
 
-export const FeedbackContextProvider: FC = ({ children }) => {
+export const FeedbackContextProvider: FC<Props> = ({ children }) => {
   const [alert, setAlert] = useState(defaultAlert);
 
   return (

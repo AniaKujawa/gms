@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Warning = 'success' | 'error' | 'warning' | 'info' | undefined;
 
 export type Alert = {
@@ -10,3 +12,7 @@ export type FeedbackContextProps = {
   alert: Alert;
   setAlert: (alert: Alert) => void;
 };
+
+export type Props = {
+  children: ReactNode;
+}

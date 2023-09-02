@@ -2,6 +2,7 @@ import { ThemeProvider } from '@material-ui/core';
 import React, { FC, ReactNode, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
+import { SessionProvider } from 'next-auth/react';
 
 import { theme } from './styles/theme';
 import { PipeProviders } from './utils/PipeProviders';
@@ -11,7 +12,6 @@ import { client } from './client/UserQuery';
 import { Routes } from './routes';
 import { FeedbackAlert } from './shared/components/Feedback';
 import { Loader } from './components';
-import { SessionProvider } from 'next-auth/react';
 
 const providers: FC<{ children: ReactNode }>[] = [
   FeedbackContextProvider,

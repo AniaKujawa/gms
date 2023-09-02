@@ -10,7 +10,7 @@ export const getStaticProps: GetStaticProps<{}> = async ({
 }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', [
-      'signing',
+      'signing', 'apiErrors', 'translation'
     ])),
   },
 })

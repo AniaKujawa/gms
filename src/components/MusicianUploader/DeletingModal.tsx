@@ -8,15 +8,15 @@ import { useStyles } from './DeletingModal.styles';
 
 
 export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handleDelete }) => {
-  const  { t } = useTranslation();
+  const { t } = useTranslation(['musician', 'translation']);
   const classes = useStyles();
 
   return (
     <Modal
       open={isModalOpen}
       handleClose={handleClose}
-      title={t('musician.deleteImgTitle')}
-      description={t('musician.deleteImgSubtitle')}
+      title={t('musician:deleteImgTitle')}
+      description={t('musician:deleteImgSubtitle')}
     >
       <Box className={classes.modalActions}>
         <Button
@@ -24,14 +24,14 @@ export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handle
           color="primary"
           onClick={handleClose}
         >
-          {t('translation.cancel')}
+          {t('translation:cancel')}
         </Button>
         <Button
           variant="contained"
           className={classes.deletingBtn}
           onClick={handleDelete}
         >
-          {t('musician.deleteImgBtn')}
+          {t('musician:deleteImgBtn')}
         </Button>
       </Box>
     </Modal>

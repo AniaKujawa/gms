@@ -3,5 +3,5 @@ import { Musician } from "../../types";
 
 export type Props = {
   musician: Musician;
-  children: ReactNode;
+  children?: ReactNode;
 };

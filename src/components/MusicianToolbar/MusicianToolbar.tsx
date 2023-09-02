@@ -65,7 +65,7 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
             color="primary"
             onClick={closeModal}
           >
-            {t('cancel')}
+            {t('translation:cancel')}
           </Button>
           <Button
             variant="contained"

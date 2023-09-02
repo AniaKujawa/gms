@@ -2,14 +2,13 @@ import React, { FC } from 'react';
 import Link from 'next/link'
 import { Container } from '@material-ui/core';
 
-import { useGetMusicianBands } from '../../queries/musician';
 import { MusicianMinimumInfo } from '../../components';
 import { MusicianListToolbar } from '../../components/MusicianListToolbar';
 import { PATHS } from '../../utils/consts';
 
-export const BandList: FC = () => {
-  const { data: bands } = useGetMusicianBands()
+import { Props } from './types';
 
+export const BandList: FC<Props> = ({ bands }) => {
   return (
     <Container>
       <MusicianListToolbar />
