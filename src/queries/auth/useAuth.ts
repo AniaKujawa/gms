@@ -1,12 +1,13 @@
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
 
 export const useAuth = () => {
   const { data } = useSession();
+  const headers: Record<string, string> = {};
+  const enabled = false;
 
-  return {
-    headers: {
-      Authorization: `Bearer ${data?.token}`
-    },
-    enabled: !!data?.token,
+  if (data?.token) {
+    headers.Authorization = `Bearer ${data.token}`;
   }
+
+  return { headers, enabled: !!data?.token };
 };

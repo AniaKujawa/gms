@@ -1,17 +1,20 @@
+import { useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
 import { Musician, MusicianImages } from '../../types';
+import { useAuth } from '../auth';
 
 
 export const useGetMusicians = (search: string) => {
   const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useQuery(['musicians', search], async () => {
     try {
-      const data = await musicianClient.getMusicians(search);
+      const data = await musicianClient.getMusicians(search, { headers });
 
       return data;
     } catch (e) {
@@ -24,10 +27,11 @@ export const useGetMusicians = (search: string) => {
 export const useGetMusician = (id: string) => {
   const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useQuery(['musician', id], async () => {
     try {
-      const data = await musicianClient.getMusician(id);
+      const data = await musicianClient.getMusician(id, { headers });
 
       return data;
     } catch (e) {
@@ -40,10 +44,11 @@ export const useGetMusician = (id: string) => {
 export const useGetMusicianBands = () => {
   const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useQuery('bands', async () => {
     try {
-      const data = await musicianClient.getMusicianBands();
+      const data = await musicianClient.getMusicianBands(headers);
 
       return data;
     } catch (e) {
@@ -56,10 +61,11 @@ export const useGetMusicianBands = () => {
 export const useCreateMusicianBand = () => {
   const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (musician: Musician) => {
     try {
-      const data = await musicianClient.postMusicianBands(musician);
+      const data = await musicianClient.postMusicianBands(musician, { headers });
 
       return data;
     } catch (e) {
@@ -73,10 +79,11 @@ export const useUpdateMusicianBand = () => {
   const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (musician: Musician) => {
     try {
-      await musicianClient.putMusicianBands(musician);
+      await musicianClient.putMusicianBands(musician, { headers });
 
       queryClient.invalidateQueries('musician');
 
@@ -92,10 +99,11 @@ export const useAddMusicianImages = () => {
   const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (images: MusicianImages) => {
     try {
-      await musicianClient.postMusicianImages(images);
+      await musicianClient.postMusicianImages(images, { headers });
 
       queryClient.invalidateQueries('musician');
 
@@ -111,10 +119,11 @@ export const useDeleteMusicianImage = () => {
   const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async ({ musicianId, imageId }: { musicianId: string, imageId: string }) => {
     try {
-      await musicianClient.deleteMusicianImage(musicianId, imageId);
+      await musicianClient.deleteMusicianImage(musicianId, imageId, { headers });
 
       queryClient.invalidateQueries('musician');
 
@@ -130,10 +139,11 @@ export const useActivateMusicianBand = () => {
   const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (id: string) => {
     try {
-      await musicianClient.activateMusicianBands(id);
+      await musicianClient.activateMusicianBands(id, { headers });
 
       queryClient.invalidateQueries('musician');
 
@@ -149,10 +159,11 @@ export const useDeactivateMusicianBand = () => {
   const { t } = useTranslation('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (id: string) => {
     try {
-      await musicianClient.deactivateMusicianBands(id);
+      await musicianClient.deactivateMusicianBands(id, { headers });
 
       queryClient.invalidateQueries('musician');
 

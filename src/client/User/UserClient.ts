@@ -57,23 +57,24 @@ class UserClient {
     return response.data;
   }
 
-  async uploadAvatar(avatar: File) {
+  async uploadAvatar(avatar: File, options: AxiosRequestConfig) {
     const data = new FormData();
     data.append('avatar', avatar);
 
     const response = await fetch.post({
       url: endpoints.avatar,
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { 'Content-Type': 'multipart/form-data', ...options.headers },
       data,
     });
 
     return response.data;
   }
 
-  async updateUser(user: UpdateUser): Promise<User> {
+  async updateUser(user: UpdateUser, options: AxiosRequestConfig): Promise<User> {
     const response = await fetch.put({
       url: endpoints.profile,
       data: parseUpdateUser(user),
+      ...options
     });
 
     return formatUserData(response.data.user);

@@ -11,7 +11,6 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
 
-import { Tooltip } from '../Tooltip';
 import { PATHS } from '../../utils/consts';
 import { Avatar } from '../Avatar';
 
@@ -34,11 +33,9 @@ export const UserMenu = () => {
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
-          <IconButton onClick={handleClick} size="small">
-            <Avatar>{data?.user?.name}</Avatar>
-          </IconButton>
-        </Tooltip>
+        <IconButton onClick={handleClick} size="small">
+          <Avatar>{data?.user?.name}</Avatar>
+        </IconButton>
       </Box>
       <Menu
         anchorEl={anchorEl}

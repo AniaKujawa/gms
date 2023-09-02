@@ -9,7 +9,7 @@ import { useUserContext } from "../../context/User";
 import { useAuth } from "../auth";
 
 export const useGetUsers = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery('users', () => {
@@ -19,14 +19,14 @@ export const useGetUsers = () => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get all users', e);
-      handleError(new Error(t('apiErrors.getUsers')));
+      handleError(new Error(t('getUsers')));
     }
   });
 };
 
 
 export const useGetUser = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
   const { enabled, headers } = useAuth();
 
@@ -37,7 +37,7 @@ export const useGetUser = () => {
       return data;
     } catch (e) {
       console.log('Couldn\'t get the user', e);
-      handleError(new Error(t('apiErrors.getUser')));
+      handleError(new Error(t('getUser')));
     }
   }, {
     refetchOnWindowFocus: false,
@@ -46,7 +46,7 @@ export const useGetUser = () => {
 };
 
 export const useRegisterUser = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['apiErrors', 'signing']);
   const { push } = useRouter();
   const { setIsLoggedIn } = useUserContext();
   const { handleError, handleSuccess } = useFeedback();
@@ -56,19 +56,19 @@ export const useRegisterUser = () => {
       const data = await userClient.registerUser(user);
 
       setIsLoggedIn(true);
-      handleSuccess(t('signing.registerSuccess'));
+      handleSuccess(t('signing:registerSuccess'));
       push('/');
 
       return data;
     } catch (e) {
       console.log(`Can't register user`, e);
-      handleError(new Error(t('apiErrors.register')));
+      handleError(new Error(t('apiErrors:register')));
     }
   });
 };
 
 export const useLoginUser = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { setIsLoggedIn } = useUserContext();
   const { push } = useRouter();
   const { handleError } = useFeedback();
@@ -83,56 +83,58 @@ export const useLoginUser = () => {
       return data;
     } catch (e) {
       console.log(`Can't login`, e);
-      handleError(new Error(t('apiErrors.login')));
+      handleError(new Error(t('login')));
     }
   });
 };
 
 export const useRecoverPassword = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(['apiErrors', 'signing']);
   const { handleError, handleSuccess } = useFeedback();
 
   return useMutation(async (email: string) => {
     try {
       const data = await userClient.recoverPassword(email);
-      handleSuccess(t('signing.lostPasswordSentEmail'));
+      handleSuccess(t('signing:lostPasswordSentEmail'));
 
       return data;
     } catch (e) {
       console.log(`Can't recover password`, e);
-      handleError(new Error(t('apiErrors.passwordRecovery')));
+      handleError(new Error(t('apiErrors:passwordRecovery')));
     }
   });
 };
 
 export const useUploadAvatar = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (avatar: File) => {
     try {
-      const data = await userClient.uploadAvatar(avatar);
+      const data = await userClient.uploadAvatar(avatar, { headers });
 
       return data;
     } catch (e) {
       console.log(`Can't upload avatar`, e);
-      handleError(new Error(t('apiErrors.uploadAvatar')));
+      handleError(new Error(t('uploadAvatar')));
     }
   });
 };
 
 export const useUpdateUser = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('apiErrors');
   const { handleError } = useFeedback();
+  const { headers } = useAuth();
 
   return useMutation(async (user: UpdateUser) => {
     try {
-      const data = userClient.updateUser(user)
+      const data = userClient.updateUser(user, { headers })
 
       return data;
     } catch (e) {
       console.log('Couldn\'t update user', e);
-      handleError(new Error(t('apiErrors.updateUser')));
+      handleError(new Error(t('updateUser')));
     }
   });
 };
