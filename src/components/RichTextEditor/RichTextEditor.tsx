@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { default as _Editor } from 'react-draft-wysiwyg';
+import { Editor as _Editor } from 'react-draft-wysiwyg';
 import { Card } from '@material-ui/core';
 import { convertFromHTML, ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
