@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { Container } from '@material-ui/core';
 import { useTranslation } from 'next-i18next'
@@ -7,7 +7,7 @@ import { Button } from './shared/Button';
 import { Card } from './shared/Card';
 import { useStyles } from './StarterView.styles';
 
-export const StarterView: FC= ({ children }) => {
+export const StarterView: FC<PropsWithChildren> = ({ children }) => {
   const classes = useStyles();
   const { t } = useTranslation('signing');
 

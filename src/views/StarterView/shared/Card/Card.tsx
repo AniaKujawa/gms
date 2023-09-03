@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { Card as MCard } from '@material-ui/core';
 
 import { useStyles } from './Card.styles';
 import { CardProps } from './types';
 
-export const Card: FC<CardProps> = ({ children, title }) => {
+export const Card: FC<PropsWithChildren<CardProps>> = ({ children, title }) => {
   const classes = useStyles();
 
   return (

@@ -14,7 +14,6 @@ type Props = {
 
 export const MusicViewExtended = ({ musician }: Props) => {
   return (
-    // <LoadingLayout isLoading={isLoading}>
     <Container>
       {musician ? (
         <MusicianExtended musician={musician} />
@@ -22,6 +21,5 @@ export const MusicViewExtended = ({ musician }: Props) => {
         <h2>Przykro nam, nie mamy dostępu do muzyka o tym id</h2>
       )}
     </Container>
-    // </LoadingLayout>
   );
 };

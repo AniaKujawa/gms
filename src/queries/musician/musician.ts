@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
 import { musicianClient } from '../../client/Musician';
