@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
+import { default as _Editor } from 'react-draft-wysiwyg';
 import { Card } from '@material-ui/core';
 import { convertFromHTML, ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
@@ -7,6 +7,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import { Props } from './types';
 
+const Editor = (_Editor as unknown) as React.FC<PropsWithChildren<any>>;
 
 export const RichTextEditor: FC<Props> = ({ html, onChange }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());

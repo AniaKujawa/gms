@@ -1529,10 +1529,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-draft-wysiwyg@^1.13.3":
-  version "1.13.3"
-  resolved "https://registry.npmjs.org/@types/react-draft-wysiwyg/-/react-draft-wysiwyg-1.13.3.tgz"
-  integrity sha512-njzkDqwIrEDUWz7Xzn2grlghu2PLlNf9PfOyGjQpUMOw5hwMEI3aQ6D4GUXBfGXaMv2nuheO4lu7Gu0cak5vmw==
+"@types/react-draft-wysiwyg@1.13.4":
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/@types/react-draft-wysiwyg/-/react-draft-wysiwyg-1.13.4.tgz#df951c76afb47e311061d363f41a10c76de04ac8"
+  integrity sha512-wasD1t78JDmQvdPDRPf/mf5FSHMlncunW0F6KMOKB3awzi3Wi21yHMGsRAUOkfTr3R8F+yceG8fSLz0kYWu/QA==
   dependencies:
     "@types/draft-js" "*"
     "@types/react" "*"
@@ -8527,10 +8527,10 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-draft-wysiwyg@^1.14.7:
-  version "1.14.7"
-  resolved "https://registry.npmjs.org/react-draft-wysiwyg/-/react-draft-wysiwyg-1.14.7.tgz"
-  integrity sha512-D4X8F/ourvQZuqHzCQ6Vs6Tnt6TbGH58kvHQxC+aZGq+45ko2EyatL6G5C/paMaNKDZq2JRe7yAzykneMLpNOg==
+react-draft-wysiwyg@1.15:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/react-draft-wysiwyg/-/react-draft-wysiwyg-1.15.0.tgz#d5b4173991033859b9e161c883889ddc00909a57"
+  integrity sha512-p1cYZcWc6/ALFBVksbFoCM3b29fGQDlZLIMrXng0TU/UElxIOF2/AWWo4L5auIYVhmqKTZ0NkNjnXOzGGuxyeA==
   dependencies:
     classnames "^2.2.6"
     draftjs-utils "^0.10.2"
