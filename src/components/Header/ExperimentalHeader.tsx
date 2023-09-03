@@ -10,8 +10,8 @@ import { UnloggedMenu } from '../UnloggedMenu';
 
 import { useStyles } from './Header.styles';
 
-const PlFlagImg = '/images/poland-flag.svg';
-const EnFlagImg = '/images/england-flag.svg';
+// const PlFlagImg = '/images/poland-flag.svg';
+// const EnFlagImg = '/images/england-flag.svg';
 
 
 export const Header = () => {
@@ -34,9 +34,9 @@ export const Header = () => {
             router.push(`${pathname}${query}`);
           }}
         >
-          {locale === 'en' ? (
+          {/* {locale === 'en' ? (
             <img src={PlFlagImg} alt="pl" className={classes.languageToggle} />
-          ) : (<img src={EnFlagImg} alt="en" className={classes.languageToggle} />)}
+          ) : (<img src={EnFlagImg} alt="en" className={classes.languageToggle} />)} */}
         </div>
         {status === 'authenticated' && <UserMenu />}
       </Grid>
