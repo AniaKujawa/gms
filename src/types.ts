@@ -47,7 +47,7 @@ export type Musician = {
   id: string;
   active: boolean;
   name: string;
-  imageUrl: string;
+  imageUrl: string | null;
   description: string;
   images: Image[];
   tags: Tag[];
