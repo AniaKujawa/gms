@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 export type Props = {
   open: boolean;
   handleClose: () => void;
-  title: string | ReactNode;
-  description?: string | ReactNode;
+  title: ReactNode;
+  description?: ReactNode;
+  children: ReactNode;
 };
