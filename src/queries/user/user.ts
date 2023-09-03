@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { userClient } from "../../client/User";
 import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
-import { useUserContext } from "../../context/User";
 import { useAuth } from "../auth";
 
 export const useGetUsers = () => {
@@ -48,14 +47,12 @@ export const useGetUser = () => {
 export const useRegisterUser = () => {
   const { t } = useTranslation(['apiErrors', 'signing']);
   const { push } = useRouter();
-  const { setIsLoggedIn } = useUserContext();
   const { handleError, handleSuccess } = useFeedback();
 
   return useMutation(async (user: UserPayload) => {
     try {
       const data = await userClient.registerUser(user);
 
-      setIsLoggedIn(true);
       handleSuccess(t('signing:registerSuccess'));
       push('/');
 
@@ -69,7 +66,6 @@ export const useRegisterUser = () => {
 
 export const useLoginUser = () => {
   const { t } = useTranslation('apiErrors');
-  const { setIsLoggedIn } = useUserContext();
   const { push } = useRouter();
   const { handleError } = useFeedback();
 
@@ -77,7 +73,6 @@ export const useLoginUser = () => {
     try {
       const data = await userClient.loginUser(user);
 
-      setIsLoggedIn(true);
       push('/');
 
       return data;
