@@ -29,6 +29,7 @@ export const UserMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const onLogOut = () => signOut();
 
   return (
     <>
@@ -61,7 +62,7 @@ export const UserMenu = () => {
           <AccountBox className={classes.icon} /> {t('account')}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={signOut}>
+        <MenuItem onClick={onLogOut}>
           <ExitToApp className={classes.icon} fontSize="small" />
           {t('logout')}
         </MenuItem>
