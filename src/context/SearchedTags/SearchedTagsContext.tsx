@@ -1,5 +1,5 @@
 "use client"
-import React, { FC, createContext, useContext } from 'react';
+import React, { FC, createContext, useContext, PropsWithChildren } from 'react';
 
 import { SearchedTagsContextProps } from './types';
 import { useBandsTags } from '../../hooks/useBandsTags';
@@ -14,7 +14,7 @@ const defaultContext: SearchedTagsContextProps = {
 
 export const SearchedTagsContext = createContext<SearchedTagsContextProps>(defaultContext);
 
-export const SearchedTagsContextProvider: FC = ({ children }) => {
+export const SearchedTagsContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const { tags, addTag, removeTag } = useBandsTags();
 
   return (

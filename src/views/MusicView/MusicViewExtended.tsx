@@ -5,6 +5,7 @@ import React from 'react';
 
 import { MusicianExtended } from '../../components';
 import { LoadingLayout } from '../../layout/LoadingLayout';
+import { Musician } from '../../types';
 
 type Props = {
   musician: Musician;
