@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
 import { Musician, MusicianImages } from '../../types';
@@ -136,7 +137,7 @@ export const useDeleteMusicianImage = () => {
 
 export const useActivateMusicianBand = () => {
   const { t } = useTranslation('apiErrors');
-  const queryClient = useQueryClient();
+  const router = useRouter();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -144,7 +145,7 @@ export const useActivateMusicianBand = () => {
     try {
       await musicianClient.activateMusicianBands(id, { headers });
 
-      queryClient.invalidateQueries('musician');
+      router.replace(router.asPath);
 
       return;
     } catch (e) {

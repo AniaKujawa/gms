@@ -6,7 +6,8 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import { signIn } from "next-auth/react";
 import { Menu as MenuIcon } from '@material-ui/icons';
 
 import { PATHS } from '../../utils/consts';
@@ -14,7 +15,7 @@ import { PATHS } from '../../utils/consts';
 
 export const MobileUnloggedMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { t } = useTranslation();
+  const { t } = useTranslation(['signing', 'translation']);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -40,20 +41,19 @@ export const MobileUnloggedMenu = () => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem
-          component={Link}
-          to={PATHS.LOGIN}
+          onClick={() => signIn(undefined, { callbackUrl: '/' })}
         >
           <Typography color="primary" >
-            {t('signing.login')}
+            {t('signing:login')}
           </Typography>
         </MenuItem>
         <Divider />
         <MenuItem
           component={Link}
-          to={PATHS.START}
+          href={PATHS.START}
         >
           <Typography color="primary" >
-            {t('translation.joinUs')}
+            {t('translation:joinUs')}
           </Typography>
         </MenuItem>
       </Menu>

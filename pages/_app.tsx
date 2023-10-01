@@ -6,6 +6,8 @@ import { appWithTranslation } from 'next-i18next'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import nextI18NextConfig from '../next-i18next.config.js';
 import { SessionProvider } from 'next-auth/react';
+import 'react-awesome-slider/dist/styles.css';
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 import { theme } from '../src/styles/theme';
 import { UserContextProvider } from '../src/context/User';

@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       ...(await serverSideTranslations(context.locale ?? 'pl', [
-        'profile', 'signing', 'translation', 'menu'
+        'profile', 'signing', 'translation', 'menu', 'apiErrors'
       ])),
     },
   };

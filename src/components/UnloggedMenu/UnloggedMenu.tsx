@@ -17,10 +17,8 @@ export const UnloggedMenu = () => {
   return isWide ? (
     <Grid>
       <Button
-        // component={Link}
         color="secondary"
         variant="text"
-        // href={PATHS.LOGIN}
         onClick={() => signIn(undefined, { callbackUrl: '/' })}
         className={classes.leftButton}
       >

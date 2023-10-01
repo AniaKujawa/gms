@@ -14,16 +14,16 @@ type Props = {
 
 export const AvatarUploader: FC<Props> = ({ url, name }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t } = useTranslation('profile');
   const { mutate } = useUploadAvatar();
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if(e.target.files) {
+    if (e.target.files) {
       mutate(e.target.files[0]);
     }
   }
 
- return (
-   <div className={classes.wrapper}>
+  return (
+    <div className={classes.wrapper}>
       <input
         accept="image/*"
         style={{ display: 'none' }}
@@ -32,7 +32,7 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
         onChange={handleFileChange}
       />
       <Tooltip
-        title={t('profile.uploadAvatarTooltip') || 'Click to upload new photo'}
+        title={t('uploadAvatarTooltip') || 'Click to upload new photo'}
       >
         <label htmlFor="button-file">
           <Avatar className={classes.avatar} src={url}>
@@ -40,6 +40,6 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
           </Avatar>
         </label>
       </Tooltip>
-   </div>
- );
+    </div>
+  );
 };
