@@ -13,11 +13,10 @@ icons
   .set('tiktok', faTiktok)
 
 export const SocialLink = ({ social, link }: SocialLinkProps) => {
-  const classes = useStyles();
 
   return (
     <a href={link} target="_blank" rel="noopener noreferrer">
-      <FontAwesomeIcon icon={icons.get(social)} className={classes.link} />
+      <FontAwesomeIcon icon={icons.get(social)} />
     </a>
   );
 };

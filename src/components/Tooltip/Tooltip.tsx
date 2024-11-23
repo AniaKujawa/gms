@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import { Tooltip as MuiTooltip } from '@material-ui/core';
 
-import { useStyles } from './Tooltip.styles';
+import { StyledTooltip } from './Tooltip.styles';
 
 type Props = {
   children: ReactElement;
@@ -9,11 +8,9 @@ type Props = {
 };
 
 export const Tooltip = ({ children, title }: Props) => {
-  const classes = useStyles();
-
   return (
-    <MuiTooltip arrow title={title} classes={classes}>
+    <StyledTooltip arrow title={title}>
       {children}
-    </MuiTooltip>
+    </StyledTooltip>
   );
 };

@@ -1,8 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { render } from '@testing-library/react';
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { unmountComponentAtNode } from 'react-dom';
-import { QueryClient } from 'react-query';
+import { QueryClient } from '@tanstack/react-query';
 import { ThemeProvider } from '@material-ui/core';
 
 import { theme } from '../../../styles/theme';

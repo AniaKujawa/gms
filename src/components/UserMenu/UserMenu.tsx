@@ -1,5 +1,6 @@
+"use client"
 import React from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import {
   Box,
   Menu,
@@ -9,18 +10,18 @@ import {
 } from '@material-ui/core';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
-import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
+// import { ExitToApp, LibraryMusic, AccountBox } from '@material-ui/icons';
 
 import { PATHS } from '../../utils/consts';
 import { Avatar } from '../Avatar';
 
-import { useStyles } from './UserMenu.styles';
+// import { useStyles } from './UserMenu.styles';
 
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { t } = useTranslation('menu');
-  const classes = useStyles();
+  const t = useTranslations('menu');
+  // const classes = useStyles();
   const open = Boolean(anchorEl);
   const { data } = useSession();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -53,17 +54,17 @@ export const UserMenu = () => {
           component={Link}
           href={PATHS.BANDS}
         >
-          <LibraryMusic className={classes.icon} /> {t('bands')}
+          {/* <LibraryMusic className={classes.icon} /> {t('bands')} */}
         </MenuItem>
         <MenuItem
           component={Link}
           href={PATHS.PROFILE}
         >
-          <AccountBox className={classes.icon} /> {t('account')}
+          {/* <AccountBox className={classes.icon} /> {t('account')} */}
         </MenuItem>
         <Divider />
         <MenuItem onClick={onLogOut}>
-          <ExitToApp className={classes.icon} fontSize="small" />
+          {/* <ExitToApp className={classes.icon} fontSize="small" /> */}
           {t('logout')}
         </MenuItem>
       </Menu>

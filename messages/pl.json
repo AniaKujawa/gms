@@ -1,0 +1,90 @@
+{
+  "errors": {
+    "default": "Przepraszamy, coś poszło nie tak",
+    "getMusicians": "Nie udało się pobrać wszystkich muzyków",
+    "getMusiciansBands": "Nie udało się pobrać wszystkich zespołów muzyka",
+    "postMusicianBand": "Nie udało się dodać nowego zespołu",
+    "putMusicianBand": "Nie udało się edytować zespołu, spróbuj ponownie później",
+    "postMusicianImages": "Nie udało się zapisać zdjęć",
+    "deleteMusicianImage": "Nie udało się usunąć zdjęcia",
+    "activateBand": "Nie udało się aktywować zespołu, spróbuj ponownie później",
+    "deactivateBand": "Nie udało się deaktywować zespołu, spróbuj ponownie później",
+    "getTags": "Nie udało się pobrać wszystkich tagów",
+    "getUsers": "Nie udało się pobrać wszystkich uzytkowników",
+    "getUser": "Nie udało się pobrać uzytkownika",
+    "register": "Nie udało się zarejestrować, spróbuj ponownie później",
+    "login": "Nie udało się zalogować, spróbuj ponownie później",
+    "passwordRecovery": "Nie udało się wysłać maila na podany adres, spróbuj ponownie później",
+    "uploadAvatar": "Nie udało się dodać avatara, spróbuj ponownie później. Avatar musi być obrazkiem typu .jpg, .jpeg, .png i ważyć mniej niż 5mb.",
+    "updateUser": "Nie udało się zaktualizować informacji o uytkowniku"
+  },
+  "dashboard": {
+    "subtitle": "Poznaj naszych wykonawców",
+    "searchBandPlaceholder": "Szukam...",
+    "title": "Znajdź muzyka"
+  },
+  "menu": {
+    "bands": "Moje zespoły",
+    "account": "Moje konto",
+    "logout": "Wyloguj"
+  },
+  "musician": {
+    "phoneNumber": "Numer kontaktowy",
+    "errors": {
+      "blankName": "Nazwa nie moze być pusta"
+    },
+    "name": "Nazwa",
+    "socials": "Social media",
+    "urlValidation": "Podaj poprawny url (z http)",
+    "loginToUnblockContactInfo": "Zaloguj się, aby zobaczyć informacje kontaktowe",
+    "createBtn": "Dodaj zespół",
+    "deleteImgTitle": "Usuwanie",
+    "deleteImgSubtitle": "Czy na pewno chcesz usunąć to zdjęcie?",
+    "deleteImgBtn": "Tak",
+    "createBandTitle": "Stwórz nowy zespół"
+  },
+  "profile": {
+    "uploadAvatarTooltip": "Kliknij, by dodać nowy avatar",
+    "save": "Zapisz",
+    "deactivate": "Deaktywuj",
+    "activate": "Opublikuj",
+    "edit": "Edytuj",
+    "deactivationModalTitle": "Jesteś pewnien, ze chcesz deaktywować zespół?",
+    "deactivationModalSubtitle": "Nie będzie on juz dostępny w publicznej wyszukiwarce, ale nadal będziesz mógł nim zarządzać w zakładce 'moje zespoły'.",
+    "registerAsMusician": "Zarejestrowany/a jako muzyk"
+  },
+  "signing": {
+    "login": "Zaloguj się",
+    "firstname": "Imię",
+    "lastname": "Nazwisko",
+    "errors": {
+      "blankname": "Nazwa nie moze być pusta",
+      "blankEmail": "Email nie moze być pusty",
+      "invalidEmail": "Nieprawidłowy email",
+      "blankPassword": "Hasło nie moze być puste",
+      "minLengthPassword": "Hasło musi zawierać conajmniej 6 znaków"
+    },
+    "name": "Nazwa",
+    "registerSuccess": "Udało ci się zarejestrować!",
+    "lostPasswordSentEmail": "Wysłaliśmy maila do dozyskania hasła.",
+    "lostPassword": "Zapomniałem/am hasła",
+    "loginButton": "Zaloguj",
+    "firstTime": "Nie masz jeszcze konta? Zarejestruj się!",
+    "isMusicianLabel": "Jestem muzykiem",
+    "register": "Zarejestruj się",
+    "alreadyRegistered": "Masz juz konto? Zaloguj się!",
+    "signup": "Zarejestruj się",
+    "email": "Email",
+    "password": "Hasło",
+    "checkPlatform": "Obczaj naszą platformę",
+    "guestContinue": "Kontynuuj jako gość"
+  },
+  "translation": {
+    "loading": "Jeszcze chwilkę...",
+    "cancel": "Anuluj",
+    "joinUs": "Dołącz do nas",
+    "upload": "Dodaj",
+    "defaultSuccess": "Udało się!",
+    "add": "Dodaj"
+  }
+}

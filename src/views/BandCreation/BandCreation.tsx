@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Typography, Container } from '@material-ui/core';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
 import { MusicianCreateForm } from '../../components';
 
 
 export const BandCreation: FC = () => {
-  const { t } = useTranslation('musician');
+  const t = useTranslations('musician');
 
   return (
     <Container>

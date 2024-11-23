@@ -1,12 +1,12 @@
-const { i18n } = require('./next-i18next.config')
+const createNextIntlPlugin = require('next-intl/plugin');
 
-module.exports = {
-  i18n,
+const withNextIntl = createNextIntlPlugin();
+
+const nextConfig = {
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,
   },
-  experimental: {
-    appDir: true,
-  },
 }
+
+module.exports = withNextIntl(nextConfig);

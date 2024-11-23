@@ -3,29 +3,27 @@ import { Typography, Grid } from '@material-ui/core';
 
 import { MusicianTags } from '../MusicianTags';
 import { Props } from './types';
-import { useStyles } from './Musician.styles';
+import { StyledImage, StyledRoot} from './Musician.styles';
 import { MusicianImage } from '../MusicianImage';
 
 
 export const MusicianMinimumInfo: FC<Props> = ({ musician, children }) => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <StyledRoot>
       <Typography variant="h2">{musician.name}</Typography>
-      <Grid
+      <StyledImage
         item
         md={6}
         lg={4}
-        className={classes.image}
       >
         <MusicianImage
           title={musician.name}
           imageUrl={musician.images[0]?.url}
         />
-      </Grid>
+      </StyledImage>
       <MusicianTags tags={musician.tags} />
       {children}
-    </div>
+    </StyledRoot>
   )
 };

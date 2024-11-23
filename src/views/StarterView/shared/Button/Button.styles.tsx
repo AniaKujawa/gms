@@ -1,14 +1,12 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
+import { styled } from '@mui/material/styles';
+import { Button as MuiButton } from '@mui/material';
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      margin: `${theme.spacing(5)}px ${theme.spacing(2)}px`,
-
-      '&:hover': {
-        backgroundColor: theme.palette.primary.light,
-      },
-    }
-  }),
-);
+export const StyledButton = styled(MuiButton)(({ theme }) => ({
+  margin: theme.spacing(5, 2),
+  
+  '&:hover': {
+    backgroundColor: theme.palette.primary.light,
+  },
+}));

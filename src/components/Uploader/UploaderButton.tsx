@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { Button } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const UploaderButton: FC<Props> = ({ onChange }) => {
-  const { t } = useTranslation('translation');
+  const t = useTranslations('translation');
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       onChange(e.target.files[0]);

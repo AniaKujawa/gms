@@ -1,6 +1,6 @@
 import React from 'react';
 import { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { Typography, Grid } from '@material-ui/core';
 
 import { useGetMusicians } from '../../queries/musician';
@@ -11,7 +11,7 @@ import { useBandsQuery } from '../../hooks/useBandsQuery';
 export const MusiciansList: FC = () => {
   const { query } = useBandsQuery();
   const { data: musicians } = useGetMusicians(query);
-  const { t } = useTranslation('dashboard');
+  const t = useTranslations('dashboard');
 
   return (
     <>

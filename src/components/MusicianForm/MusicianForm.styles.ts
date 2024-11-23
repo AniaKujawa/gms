@@ -1,7 +1,8 @@
-import { makeStyles } from '@material-ui/core';
+"use client"
 
-export const useStyles = makeStyles(theme => ({
-  cancelBtn: {
-    marginRight: theme.spacing(2),
-  },
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+
+export const StyledCancelButton = styled(Button)(({ theme }) => ({
+  marginRight: theme.spacing(2),
 }));

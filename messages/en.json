@@ -1,0 +1,90 @@
+{
+  "errors": {
+    "default": "Something went wrong",
+    "getMusicians": "Couldn't get all musicians",
+    "getMusiciansBands": "Couldn't get all bands of user",
+    "postMusicianBand": "Couldn't add a new band",
+    "putMusicianBand": "Couldn't update the band",
+    "postMusicianImages": "Couldn't add images",
+    "deleteMusicianImage": "Couldn't delete the image",
+    "activateBand": "Couldn't activate the band",
+    "deactivateBand": "Couldn't deactivate the band",
+    "getTags": "Couldn't get all tags",
+    "getUsers": "Couldn't get all users",
+    "getUser": "Couldn't get a user",
+    "register": "Can't register, try again later",
+    "login": "Can't login, try again later",
+    "passwordRecovery": "Something went wrong, please try later",
+    "uploadAvatar": "Couldn't add avatar. Avatar must be one of type: .jpg, .jpeg, .png and have size lesser than 5mb.",
+    "updateUser": "Couldn't update user"
+  },
+  "dashboard": {
+    "subtitle": "Meet our artists",
+    "searchBandPlaceholder": "I am searching...",
+    "title": "Find a musician"
+  },
+  "menu": {
+    "bands": "My bands",
+    "account": "My account",
+    "logout": "Log out"
+  },
+  "musician": {
+    "phoneNumber": "Phone number",
+    "errors": {
+      "blankName": "Name can't be blank"
+    },
+    "name": "Name",
+    "socials": "Social media",
+    "urlValidation": "Must be valid url starting with http",
+    "loginToUnblockContactInfo": "You need to log in to see band's contact info",
+    "createBtn": "Add band",
+    "deleteImgTitle": "Delete image",
+    "deleteImgSubtitle": "Are you sure you want to delete the image?",
+    "deleteImgBtn": "Yese",
+    "createBandTitle": "Create new band"
+  },
+  "profile": {
+    "uploadAvatarTooltip": "Click to upload new avatar",
+    "save": "Save",
+    "deactivate": "Deactivate",
+    "activate": "Activate",
+    "edit": "Edit",
+    "deactivationModalTitle": "Are you sure you want to deactivate this band?",
+    "deactivationModalSubtitle": "It removes the band from public search list. The band still will be visible in your band's list.",
+    "registerAsMusician": "Registered as a musician"
+  },
+  "signing": {
+    "login": "Log in",
+    "firstname": "First name",
+    "lastname": "Last name",
+    "errors": {
+      "blankname": "Name can not be blank",
+      "blankEmail": "Email can not be blank",
+      "invalidEmail": "Invalid email",
+      "blankPassword": "Password can not be blank",
+      "minLengthPassword": "Password must be at least 6 characters"
+    },
+    "name": "name",
+    "registerSuccess": "You've successfully registered!",
+    "lostPasswordSentEmail": "Email has been send.",
+    "lostPassword": "Forgotten password",
+    "loginButton": "Log in",
+    "firstTime": "Don't have an account? Register!",
+    "isMusicianLabel": "I am a musician",
+    "register": "Register",
+    "alreadyRegistered": "Have you already registered? Log in",
+    "signup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "checkPlatform": "Check our platform",
+    "guestContinue": "Continue as a guest"
+  },
+  "translation": {
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "joinUs": "Join us",
+    "upload": "Upload",
+    "defaultSuccess": "Success!",
+    "add": "Add"
+  }
+}

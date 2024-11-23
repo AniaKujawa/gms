@@ -1,19 +1,19 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+"use client"
+import { styled } from '@mui/material/styles';
+import { Button, Box } from '@mui/material';
 
-export const useStyles = makeStyles<Theme>(theme => ({
-  deletingBtn: {
-    backgroundColor: theme.palette.danger.main,
-    color: theme.palette.white.main,
-    marginLeft: theme.spacing(2),
+export const StyledDeletingButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.danger.main,
+  color: theme.palette.white.main,
+  marginLeft: theme.spacing(2),
 
-    '&:hover': {
-      backgroundColor: theme.palette.danger.light,
-    },
+  '&:hover': {
+    backgroundColor: theme.palette.danger.light,
   },
-  modalActions: {
-    marginTop: theme.spacing(2),
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
+}));
+
+export const StyledModalActionsBox = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex', 
+  justifyContent: 'flex-end',
 }));

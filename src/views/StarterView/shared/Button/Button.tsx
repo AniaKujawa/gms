@@ -1,19 +1,16 @@
 import React, { FC } from 'react';
-import { Button as MButton, ButtonProps } from '@material-ui/core';
+import { ButtonProps } from '@mui/material';
 
-import { useStyles } from './Button.styles';
+import { StyledButton } from './Button.styles';
 
 export const Button: FC<ButtonProps> = ({ children, color = 'primary', ...props }) => {
-  const classes = useStyles();
-
   return (
-    <MButton
+    <StyledButton
       variant='contained'
       color={color}
-      className={classes.root}
       {...props}
     >
       {children}
-    </MButton>
+    </StyledButton>
   );
 };

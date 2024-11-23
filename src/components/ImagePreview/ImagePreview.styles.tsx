@@ -1,17 +1,19 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    box: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    img: {
-      maxWidth: 400,
-      height: 'auto',
-    },
-    btn: {
-      alignSelf: 'end',
-    }
-  }),
-);
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
+export const StyledBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+export const StyledImage = styled('img')({
+  maxWidth: 400,
+  height: 'auto',
+});
+
+export const StyledButton = styled(Button)({
+  alignSelf: 'flex-end',
+});

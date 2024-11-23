@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@material-ui/core';
 import React, { FC, ReactNode, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { QueryClientProvider } from 'react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { SessionProvider } from 'next-auth/react';
 
 import { theme } from './styles/theme';

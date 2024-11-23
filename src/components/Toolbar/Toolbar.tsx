@@ -1,22 +1,20 @@
 import React, { FC, ReactNode } from 'react';
 import { Grid } from '@material-ui/core';
 
-import { useStyles } from './Toolbar.styles';
+import { StyledGrid} from './Toolbar.styles';
 
 type Props = {
   children: ReactNode;
 }
 
 export const Toolbar: FC<Props> = ({ children }) => {
-  const classes = useStyles();
 
   return (
-    <Grid
+    <StyledGrid
       container
       justifyContent="flex-end"
-      className={classes.root}
     >
       {children}
-    </Grid>
+    </StyledGrid>
   )
 };

@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
-import { Box, Button } from '@material-ui/core';
+import { useTranslations } from 'next-intl';
+import { Button } from '@material-ui/core';
 
 import { Modal } from './../Modal';
 import { ModalProps } from './types';
-import { useStyles } from './DeletingModal.styles';
+import { StyledDeletingButton, StyledModalActionsBox } from './DeletingModal.styles';
 
 
 export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handleDelete }) => {
-  const { t } = useTranslation(['musician', 'translation']);
-  const classes = useStyles();
+  const t = useTranslations(['musician', 'translation']);
 
   return (
     <Modal
@@ -18,7 +17,7 @@ export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handle
       title={t('musician:deleteImgTitle')}
       description={t('musician:deleteImgSubtitle')}
     >
-      <Box className={classes.modalActions}>
+      <StyledModalActionsBox>
         <Button
           variant="outlined"
           color="primary"
@@ -26,14 +25,13 @@ export const DeletingModal: FC<ModalProps> = ({ isModalOpen, handleClose, handle
         >
           {t('translation:cancel')}
         </Button>
-        <Button
+        <StyledDeletingButton
           variant="contained"
-          className={classes.deletingBtn}
           onClick={handleDelete}
         >
           {t('musician:deleteImgBtn')}
-        </Button>
-      </Box>
+        </StyledDeletingButton>
+      </StyledModalActionsBox>
     </Modal>
   );
 };

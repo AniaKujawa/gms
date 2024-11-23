@@ -1,7 +1,7 @@
 "use client"
 import React, { FC, useCallback, useState } from 'react';
-import { Box, Button } from '@material-ui/core';
-import { useTranslation } from 'next-i18next';
+import { Button } from '@material-ui/core';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
 
 import { Toolbar } from '..';
@@ -10,16 +10,15 @@ import { Props } from './types';
 import { useActivateMusicianBand, useDeactivateMusicianBand } from '../../queries/musician';
 import { PATHS } from '../../utils/consts';
 
-import { useStyles } from './MusicianToolbar.styles';
+import { StyledActivationButton, StyledDeactivationButton, StyledModalActionsBox } from './MusicianToolbar.styles';
 
 
 export const MusicianToolbar: FC<Props> = ({ musician }) => {
-  const { t } = useTranslation(['profile', 'translation']);
+  const t = useTranslations(['profile', 'translation']);
   const { push } = useRouter();
   const { mutate: activate } = useActivateMusicianBand();
   const { mutate: deactivate } = useDeactivateMusicianBand();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const classes = useStyles({ active: musician.active });
 
   const closeModal = () => setIsModalOpen(false);
 
@@ -37,14 +36,14 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
 
   return (
     <Toolbar>
-      <Button
+      <StyledActivationButton
         variant="outlined"
         color="inherit"
-        className={classes.activationBtn}
+        active={musician.active}
         onClick={handleActivation}
       >
         {musician.active ? t('deactivate') : t('activate')}
-      </Button>
+      </StyledActivationButton>
       <Button
         variant="outlined"
         color="primary"
@@ -59,7 +58,7 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
         title={t('deactivationModalTitle')}
         description={t('deactivationModalSubtitle')}
       >
-        <Box className={classes.modalActions}>
+        <StyledModalActionsBox>
           <Button
             variant="outlined"
             color="primary"
@@ -67,14 +66,13 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
           >
             {t('translation:cancel')}
           </Button>
-          <Button
+          <StyledDeactivationButton
             variant="contained"
-            className={classes.deactivationBtn}
             onClick={handleDeactivation}
           >
             {t('deactivate')}
-          </Button>
-        </Box>
+          </StyledDeactivationButton>
+        </StyledModalActionsBox>
       </Modal>
 
     </Toolbar>

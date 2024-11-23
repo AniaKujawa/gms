@@ -1,28 +1,24 @@
 import React, { FC, PropsWithChildren } from 'react';
 import Link from 'next/link';
-import { Container } from '@material-ui/core';
-import { useTranslation } from 'next-i18next'
+import { useTranslations } from 'next-intl'
 
 import { Button } from './shared/Button';
 import { Card } from './shared/Card';
-import { useStyles } from './StarterView.styles';
+import { StyledContainer } from './StarterView.styles';
 
 export const StarterView: FC<PropsWithChildren> = ({ children }) => {
-  const classes = useStyles();
-  const { t } = useTranslation('signing');
+  const t = useTranslations('signing');
 
   return (
-    <div className='container'>
-      <Container maxWidth='md' className={classes.root}>
-        {children}
-        <Card title={t('checkPlatform')}>
-          <Button>
-            <Link className={classes.link} href='/'>
-              {t('guestContinue')}
-            </Link>
-          </Button>
-        </Card>
-      </Container>
-    </div>
+    <StyledContainer component="main" maxWidth="xs">
+      {children}
+      <Card title={t('checkPlatform')}>
+        <Button>
+          <Link href='/'>
+            {t('guestContinue')}
+          </Link>
+        </Button>
+      </Card>
+    </StyledContainer>
   )
 };

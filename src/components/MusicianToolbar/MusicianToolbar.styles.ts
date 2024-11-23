@@ -1,28 +1,29 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+"use client"
+import { styled } from '@mui/material/styles';
+import { Button, Box } from '@mui/material';
 
 type Props = {
   active: boolean;
-};
+}
 
-export const useStyles = makeStyles<Theme, Props>(theme => ({
-  activationBtn: {
-    borderColor: props =>  props.active ? theme.palette.danger.main : theme.palette.success.main,
-    color: props =>  props.active ? theme.palette.danger.main : theme.palette.success.main,
-    marginRight: theme.spacing(2),
-  },
-  deactivationBtn: {
-    backgroundColor: theme.palette.danger.main,
-    color: theme.palette.white.main,
-    marginLeft: theme.spacing(2),
+export const StyledActivationButton = styled(Button)<Props>(({ theme, active }) => ({
+  borderColor: active ? theme.palette.danger.main : theme.palette.success.main,
+  color: active ? theme.palette.danger.main : theme.palette.success.main,
+  marginRight: theme.spacing(2),
+}));
 
-    '&:hover': {
-      backgroundColor: theme.palette.danger.light,
-    },
+export const StyledDeactivationButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.danger.main,
+  color: theme.palette.white.main,
+  marginLeft: theme.spacing(2),
+
+  '&:hover': {
+    backgroundColor: theme.palette.danger.light,
   },
-  modalActions: {
-    marginTop: theme.spacing(2),
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
+}));
+
+export const StyledModalActionsBox = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  display: 'flex',
+  justifyContent: 'flex-end',
 }));

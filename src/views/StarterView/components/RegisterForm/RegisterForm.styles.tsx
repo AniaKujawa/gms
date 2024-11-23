@@ -1,19 +1,21 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      flexDirection: 'column',
-      maxWidth: theme.spacing(40),
-      margin: 'auto',
-    },
-    link: {
-      cursor: 'pointer',
-    },
-    checkbox: {
-      marginTop: theme.spacing(),
-    },
-  }),
-);
+import { styled } from '@mui/material/styles';
+import { Checkbox } from '@mui/material';
+
+export const StyledForm = styled('form')(({ theme }) => ({
+  display: 'flex',
+  flexWrap: 'wrap', 
+  flexDirection: 'column',
+  maxWidth: theme.spacing(40),
+  margin: 'auto',
+}));
+
+export const StyledLink = styled('a')({
+  cursor: 'pointer',
+});
+
+export const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
+  marginTop: theme.spacing(),
+}));
+

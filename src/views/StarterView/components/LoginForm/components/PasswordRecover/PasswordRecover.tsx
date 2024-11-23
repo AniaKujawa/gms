@@ -1,17 +1,15 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
-import { Link } from '@material-ui/core';
+import { useTranslations } from 'next-intl';
 
 import { useRecoverPassword } from '../../../../../../queries/user';
 import { useFeedback } from '../../../../../../hooks/useFeedback';
-import { useStyles } from './../../LoginForm.styles';
+import { StyledLink } from './../../../RegisterForm/RegisterForm.styles';
 
 import { Props } from './types';
 
 
 export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
-  const classes = useStyles();
-  const { t } = useTranslation('signing');
+  const t = useTranslations('signing');
   const { handleError } = useFeedback();
 
   const { mutate } = useRecoverPassword();
@@ -27,11 +25,10 @@ export const PasswordRecover: FC<Props> = ({ control, emailErrors }) => {
   };
 
   return (
-    <Link 
+    <StyledLink 
       onClick={handleLostPassword}
-      className={classes.link}
     >
       {t('lostPassword')}
-    </Link>
+    </StyledLink>
   );
 };

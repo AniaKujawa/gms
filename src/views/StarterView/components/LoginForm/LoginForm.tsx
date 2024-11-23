@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
-import { Link } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { signIn, useSession } from "next-auth/react";
 
@@ -10,13 +9,13 @@ import { Button } from './../../shared/Button';
 
 import { PasswordRecover } from './components/PasswordRecover';
 import { LoginFormProps } from './types';
-import { useStyles } from './LoginForm.styles';
+import { StyledForm } from './LoginForm.styles';
 import { PATHS } from '../../../../utils/consts';
+import { StyledLink } from '../RegisterForm/RegisterForm.styles';
 
 
 export const LoginForm: FC = () => {
-  const classes = useStyles();
-  const { t } = useTranslation('signing');
+  const t = useTranslations('signing');
   const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
@@ -26,7 +25,7 @@ export const LoginForm: FC = () => {
   const isLoading = status === 'loading';
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Form control={control} errors={errors} />
       <Button
         type='submit'
@@ -34,13 +33,12 @@ export const LoginForm: FC = () => {
       >
         {isLoading ? t('loading') : t('loginButton')}
       </Button>
-      <Link
+      <StyledLink
         onClick={() => push(PATHS.START)}
-        className={classes.link}
       >
         {t('firstTime')}
-      </Link>
+      </StyledLink>
       <PasswordRecover control={control} emailErrors={errors.email} />
-    </form>
+    </StyledForm>
   );
 };

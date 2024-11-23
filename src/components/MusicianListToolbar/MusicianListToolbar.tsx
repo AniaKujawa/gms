@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button } from '@material-ui/core';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
 import { PATHS } from '../../utils/consts';
 
@@ -8,7 +8,7 @@ import { Toolbar } from '..';
 
 
 export const MusicianListToolbar: FC = () => {
-  const { t } = useTranslation('musician');
+  const t = useTranslations('musician');
   const { push } = useRouter();
 
   return (

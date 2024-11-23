@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import MUIAutocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import { TextField } from '@material-ui/core';
 
@@ -8,7 +8,7 @@ import { Props, Option } from './types';
 const filter = createFilterOptions<Option>()
 
 export const Autocomplete: FC<Props> = ({ onChange, value, options }) => {
-  const { t } = useTranslation('translation');
+  const t = useTranslations('translation');
 
   return (
     <MUIAutocomplete

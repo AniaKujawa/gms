@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/core';
+"use client"
 
-export const useStyles = makeStyles(theme => ({
-  icon: {
-    marginRight: theme.spacing(0.5),
-    color: theme.palette.primary.light,
-  },
+import { styled } from '@mui/material/styles';
+
+export const StyledIcon = styled('div')(({ theme }) => ({
+  marginRight: theme.spacing(0.5),
+  color: theme.palette.primary.light
 }));

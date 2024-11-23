@@ -1,9 +1,8 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    box: {
-      marginTop: theme.spacing(),
-    },
-  }),
-);
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+
+export const StyledBox = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(),
+}));

@@ -1,5 +1,6 @@
-import { useTranslation } from 'next-i18next';
-import { useQueryClient, useMutation, useQuery } from 'react-query';
+"use client"
+import { useTranslations } from 'next-intl';
+import { useQueryClient, useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { musicianClient } from '../../client/Musician';
 import { useFeedback } from '../../hooks/useFeedback';
@@ -8,7 +9,7 @@ import { useAuth } from '../auth';
 
 
 export const useGetMusicians = (search: string) => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -25,7 +26,7 @@ export const useGetMusicians = (search: string) => {
 };
 
 export const useGetMusician = (id: string) => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -42,7 +43,7 @@ export const useGetMusician = (id: string) => {
 };
 
 export const useGetMusicianBands = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -59,7 +60,7 @@ export const useGetMusicianBands = () => {
 };
 
 export const useCreateMusicianBand = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -76,7 +77,7 @@ export const useCreateMusicianBand = () => {
 };
 
 export const useUpdateMusicianBand = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
@@ -96,7 +97,7 @@ export const useUpdateMusicianBand = () => {
 };
 
 export const useAddMusicianImages = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
@@ -116,7 +117,7 @@ export const useAddMusicianImages = () => {
 };
 
 export const useDeleteMusicianImage = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
@@ -136,7 +137,7 @@ export const useDeleteMusicianImage = () => {
 };
 
 export const useActivateMusicianBand = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const router = useRouter();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
@@ -156,7 +157,7 @@ export const useActivateMusicianBand = () => {
 };
 
 export const useDeactivateMusicianBand = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const queryClient = useQueryClient();
   const { handleError } = useFeedback();
   const { headers } = useAuth();
@@ -176,7 +177,7 @@ export const useDeactivateMusicianBand = () => {
 };
 
 export const useGetTags = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery('tags', async () => {

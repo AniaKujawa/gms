@@ -1,19 +1,18 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+// import { useTranslations } from 'next-intl';
 import { Typography } from '@material-ui/core';
 
-import { useStyles } from './Loader.styles';
+import { StyledLoader, StyledRoot } from './Loader.styles';
 
 export const Loader = () => {
-  const { t } = useTranslation('translation');
-  const classes = useStyles();
+  // const t = useTranslations('translation');
 
   return (
-    <div className={classes.root}>
-      <img className={classes.loader} src="/loader.jpg" alt="loader" />
+    <StyledRoot>
+      <StyledLoader src="/loader.jpg" alt="loader" />
       <Typography variant="h2">
-        {t('loading')}
+        {'loading'}
       </Typography>
-    </div>
+    </StyledRoot>
   )
 }

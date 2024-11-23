@@ -1,24 +1,23 @@
 
+"use client"
 import React, { FC } from 'react';
-import { Typography, Box } from '@material-ui/core';
-import { useTranslation } from 'next-i18next';
-
-import { useStyles } from './Welcome.styles';
-import { SearchBand } from '../SearchBand';
-import { PopularTags } from '../PopularTags';
+import { Typography } from '@material-ui/core';
+import { useTranslations } from 'next-intl';
+import { StyledBox } from './Welcome.styles';
+// import { SearchBand } from '../SearchBand';
+// import { PopularTags } from '../PopularTags';
 
 
 export const Welcome: FC = () => {
-  const { t } = useTranslation('dashboard');
-  const classes = useStyles();
+  const t = useTranslations();
 
   return (
-    <Box className={classes.root}>
+    <StyledBox>
       <Typography variant="h1" color="secondary">
-        {t('title')}
+        {t('dashboard.title')}
       </Typography>
-      <SearchBand />
-      <PopularTags />
-    </Box>
+      {/* <SearchBand />
+      <PopularTags /> */}
+    </StyledBox>
   )
 }

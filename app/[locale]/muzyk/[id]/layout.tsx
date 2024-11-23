@@ -1,5 +1,5 @@
 import React from "react";
-import { DashboardLayout } from "../../../src/layout/DashboardLayout";
+import { DashboardLayout } from "../../../../src/layout/DashboardLayout";
 
 export const metadata = {
   title: 'Music',

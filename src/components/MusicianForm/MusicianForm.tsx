@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { Button, TextField, Grid } from '@material-ui/core';
 import dynamic from 'next/dynamic';
 
@@ -9,7 +9,7 @@ import { FormProps } from './types';
 import { MusicianUploader } from './../MusicianUploader';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import { Toolbar } from '..';
-import { useStyles } from './MusicianForm.styles';
+import { StyledCancelButton } from './MusicianForm.styles';
 import { useGetTags } from '../../queries/musician';
 import { URL_REGEX } from '../../utils/musicianForm';
 
@@ -17,8 +17,7 @@ import { URL_REGEX } from '../../utils/musicianForm';
 export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }) => {
   const { handleSubmit, control, errors } = useForm();
   const { data: tags } = useGetTags();
-  const classes = useStyles();
-  const { t } = useTranslation(['musician', 'profile', 'translation']);
+  const t = useTranslations(['musician', 'profile', 'translation']);
 
   const RichTextEditor = dynamic<Props>(() => import('../RichTextEditor').then(mod => mod.RichTextEditor), {
     ssr: false,
@@ -200,15 +199,14 @@ export const MusicianForm: FC<FormProps> = ({ musician, onSubmit, handleCancel }
       </Grid>
 
       <Toolbar>
-        <Button
+        <StyledCancelButton
           type="button"
           variant="outlined"
           color="primary"
           onClick={handleCancel}
-          className={classes.cancelBtn}
         >
           {t('translation:cancel')}
-        </Button>
+        </StyledCancelButton>
         <Button
           type="submit"
           variant="contained"

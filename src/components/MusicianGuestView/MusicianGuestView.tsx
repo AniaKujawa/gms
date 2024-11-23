@@ -1,27 +1,26 @@
 "use client"
 import { Box } from '@material-ui/core';
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Musician } from ".."
 import { PATHS } from '../../utils/consts';
 
-import { useStyles } from './MusicanGuestView.styles';
+import { StyledBox } from './MusicanGuestView.styles';
 import { Props } from './types';
 
 export const MusicianGuestView: FC<Props> = ({ musician }) => {
-  const { t } = useTranslation('musician');
-  const classes = useStyles();
+  const t = useTranslations('musician');
 
   return (
     <Musician musician={musician}>
-      <Box className={classes.box}>
+      <StyledBox>
         <Link
           href={PATHS.START}
         >
           {t('loginToUnblockContactInfo')}
         </Link>
-      </Box>
+      </StyledBox>
     </Musician>
   );
 };

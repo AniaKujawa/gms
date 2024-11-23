@@ -1,6 +1,6 @@
 "use client"
-import { useTranslation } from "next-i18next";
-import { useMutation, useQuery } from "react-query";
+import { useTranslations } from "next-intl";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from 'next/router';
 import { userClient } from "../../client/User";
 import { Login, UserPayload, UpdateUser } from '../../types';
@@ -8,7 +8,7 @@ import { useFeedback } from "../../hooks/useFeedback";
 import { useAuth } from "../auth";
 
 export const useGetUsers = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
 
   return useQuery('users', () => {
@@ -25,7 +25,7 @@ export const useGetUsers = () => {
 
 
 export const useGetUser = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { enabled, headers } = useAuth();
 
@@ -45,7 +45,7 @@ export const useGetUser = () => {
 };
 
 export const useRegisterUser = () => {
-  const { t } = useTranslation(['apiErrors', 'signing']);
+  const t = useTranslations(['apiErrors', 'signing']);
   const { push } = useRouter();
   const { handleError, handleSuccess } = useFeedback();
 
@@ -65,7 +65,7 @@ export const useRegisterUser = () => {
 };
 
 export const useLoginUser = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { push } = useRouter();
   const { handleError } = useFeedback();
 
@@ -84,7 +84,7 @@ export const useLoginUser = () => {
 };
 
 export const useRecoverPassword = () => {
-  const { t } = useTranslation(['apiErrors', 'signing']);
+  const t = useTranslations(['apiErrors', 'signing']);
   const { handleError, handleSuccess } = useFeedback();
 
   return useMutation(async (email: string) => {
@@ -101,7 +101,7 @@ export const useRecoverPassword = () => {
 };
 
 export const useUploadAvatar = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 
@@ -118,7 +118,7 @@ export const useUploadAvatar = () => {
 };
 
 export const useUpdateUser = () => {
-  const { t } = useTranslation('apiErrors');
+  const t = useTranslations('apiErrors');
   const { handleError } = useFeedback();
   const { headers } = useAuth();
 

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
 import { Card } from './shared/Card';
 import { RegisterForm } from './components/RegisterForm';
 import { StarterView } from './StarterView';
 
 export const RegisterView: FC = () => {
-  const { t } = useTranslation('signing');
+  const t = useTranslations('signing');
 
   return (
     <StarterView>

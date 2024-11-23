@@ -1,9 +1,8 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    tag: {
-      marginRight: theme.spacing(0.5),
-    },
-  }),
-);
+import { styled } from '@mui/material/styles';
+import { Chip } from '@mui/material';
+
+export const StyledTag = styled(Chip)(({ theme }) => ({
+  marginRight: theme.spacing(0.5),
+}));

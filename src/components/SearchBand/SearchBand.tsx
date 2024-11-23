@@ -1,16 +1,15 @@
 "use client"
 import React, { FC, useState, useEffect } from 'react';
 import { TextField } from '@material-ui/core'
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
-import { useStyles } from './SearchBand.styles';
+import { StyledContainer } from './SearchBand.styles';
 import { useBandsSearch } from '../../hooks/useBandsSearch';
 
 export const SearchBand: FC = () => {
-    const { t } = useTranslation('dashboard');
+    const t = useTranslations('dashboard');
     const { value, delayedSearch } = useBandsSearch();
     const [searchInput, setSearchInput] = useState(value);
-    const classes = useStyles();
 
     useEffect(() => {
         setSearchInput(value);
@@ -23,7 +22,7 @@ export const SearchBand: FC = () => {
     };
 
     return (
-        <div className={classes.container}>
+        <StyledContainer>
             <TextField
                 fullWidth
                 type="search"
@@ -32,6 +31,6 @@ export const SearchBand: FC = () => {
                 onChange={handleInputChange}
                 variant="outlined"
             />
-        </div>
+        </StyledContainer>
     )
 }

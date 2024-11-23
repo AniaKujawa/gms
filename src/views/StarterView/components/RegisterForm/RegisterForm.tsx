@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
-import { TextField, Link, Checkbox, FormControlLabel } from '@material-ui/core';
+import { TextField, FormControlLabel } from '@material-ui/core';
 import { useRouter } from 'next/router';
 
 import { Form } from './../../shared/Form';
@@ -9,12 +9,11 @@ import { Button } from './../../shared/Button';
 import { useRegisterUser } from '../../../../queries/user';
 
 import { RegisterFormProps } from './types';
-import { useStyles } from './RegisterForm.styles';
+import { StyledCheckbox, StyledForm, StyledLink } from './RegisterForm.styles';
 import { PATHS } from '../../../../utils/consts';
 
 export const RegisterForm: FC = () => {
-  const classes = useStyles();
-  const { t } = useTranslation('signing');
+  const t = useTranslations('signing');
   const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
@@ -23,7 +22,7 @@ export const RegisterForm: FC = () => {
   const onSubmit = (data: RegisterFormProps) => mutate(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name='firstName'
         control={control}
@@ -91,7 +90,7 @@ export const RegisterForm: FC = () => {
         )=> (
           <FormControlLabel
             control={
-              <Checkbox
+              <StyledCheckbox
                 onChange={e => onChange(e.target.checked)}
                 value={value}
                 checked={value}
@@ -99,7 +98,6 @@ export const RegisterForm: FC = () => {
               />
             }
             label={t('isMusicianLabel')}
-            className={classes.checkbox}
           />
         )}
        />
@@ -109,12 +107,11 @@ export const RegisterForm: FC = () => {
       >
         {isLoading ? t('loading') : t('register')}
       </Button>
-      <Link
+      <StyledLink
         onClick={() => push(PATHS.LOGIN)}
-        className={classes.link}
       >
         {t('alreadyRegistered')}
-      </Link>
-    </form>
+      </StyledLink>
+    </StyledForm>
   )
 };

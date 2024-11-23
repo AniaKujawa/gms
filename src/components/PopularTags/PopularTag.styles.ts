@@ -1,14 +1,13 @@
-import { makeStyles, Theme } from '@material-ui/core/styles';
+"use client";
+import { styled } from '@mui/material/styles';
 
 interface Props {
   selected: boolean;
 }
 
-export const useStyles = makeStyles<Theme, Props>(theme => ({
-  element: {
-    '& .MuiButton-root': {
-      color: props => !props.selected ? theme.palette.black.main : theme.palette.white.main,
-      marginRight: theme.spacing(2),
-    }
+export const StyledLiElement = styled('li')<Props>(({ theme, selected }) => ({
+  '& .MuiButton-root': {
+    color: !selected ? theme.palette.black.main : theme.palette.white.main,
+    marginRight: theme.spacing(2),
   }
 }));

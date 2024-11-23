@@ -1,18 +1,18 @@
-import React from 'react';
-import { RegisterView } from '../../src/views/StarterView';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import type { GetStaticProps } from 'next';
+// import React from 'react';
+// import { RegisterView } from '../../src/views/StarterView';
+// import { serverSideTranslations } from 'next-intl/serverSideTranslations';
+// import type { GetStaticProps } from 'next';
 
-<RegisterView />
+// <RegisterView />
 
-export const getStaticProps: GetStaticProps<{}> = async ({
-  locale
-}) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'pl', [
-      'signing', 'apiErrors', 'translation'
-    ])),
-  },
-})
+// export const getStaticProps: GetStaticProps<{}> = async ({
+//   locale
+// }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale ?? 'pl', [
+//       'signing', 'apiErrors', 'translation'
+//     ])),
+//   },
+// })
 
-export default RegisterView;
+// export default RegisterView;

@@ -2,38 +2,37 @@ import React, { FC } from 'react';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Card, Container, Grid } from '@material-ui/core';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 
 import { LoadingLayout } from '../../layout/LoadingLayout';
 import { useUserContext } from '../../context/User';
 import { AvatarUploader } from '../../components';
 
-import { useStyles } from './UserProfile.styles';
+import { StyledCard, StyledNames, StyledUserInfo} from './UserProfile.styles';
 
 
 export const UserProfile: FC = () => {
   const { user, isLoading } = useUserContext();
-  const classes = useStyles();
-  const { t } = useTranslation('profile');
+  const t = useTranslations('profile');
 
   return (
     <LoadingLayout isLoading={isLoading}>
       <Container>
         {
           user?.id ? (
-            <Card variant="outlined" className={classes.card}>
+            <StyledCard variant="outlined">
               <AvatarUploader url={user.avatar} name={user.name} />
               <Grid container direction='column'>
-                <div className={classes.names}>
+                <StyledNames>
                   {user.firstName} {user.lastName}
-                </div>
+                </StyledNames>
                 <div>{user.name}</div>
-                <div className={classes.userInfo}>
+                <StyledUserInfo>
                   {t('registerAsMusician')}
                   {user.musician ? <CheckBoxIcon /> : <ClearIcon />}
-                </div>
+                </StyledUserInfo>
               </Grid>
-            </Card>
+            </StyledCard>
           ) : (
             <h2>You profile couldn't be displayed. Contact our service.</h2>
           )

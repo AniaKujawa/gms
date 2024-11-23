@@ -1,17 +1,16 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    box: {
-      padding: theme.spacing(5),
-      marginTop: theme.spacing(),
-      // backgroundColor: theme.palette.red.light,
-      maxWidth: 400,
-      textAlign: 'center',
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
-      '& a:hover': {
-        textDecoration: 'underline',
-      }
-    },
-  }),
-);
+export const StyledBox = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(5),
+  marginTop: theme.spacing(),
+  // backgroundColor: theme.palette.red.light,
+  maxWidth: 400,
+  textAlign: 'center',
+
+  '& a:hover': {
+    textDecoration: 'underline',
+  }
+}));

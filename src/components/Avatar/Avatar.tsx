@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar as MuiAvatar, AvatarProps } from '@material-ui/core';
+import { Avatar as MuiAvatar, AvatarProps } from '@mui/material';
 
 
 const formatAvatarString = (text: string) => {

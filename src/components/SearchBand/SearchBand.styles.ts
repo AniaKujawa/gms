@@ -1,17 +1,18 @@
-import { Theme } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+"use client"
 
-export const useStyles = makeStyles<Theme>(theme => ({
-  container: {
-    minWidth: '100%',
-    padding: theme.spacing(2),
+import { Theme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
-    [theme.breakpoints.up('md')]: {
-      minWidth: 600,
-    },
+export const StyledContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
+  minWidth: '100%',
+  padding: theme.spacing(2),
 
-    '& .MuiInputBase-root': {
-      backgroundColor: theme.palette.white.main,
-    }
+  [theme.breakpoints.up('md')]: {
+    minWidth: 600,
+  },
+
+  '& .MuiInputBase-root': {
+    backgroundColor: theme.palette.common.white,
   }
 }));

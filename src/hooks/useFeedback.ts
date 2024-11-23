@@ -1,9 +1,9 @@
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { useFeedbackContext } from "../context/Feedback";
 
 export const useFeedback = () => {
   const { setAlert } = useFeedbackContext();
-  const { t } = useTranslation(['apiErrors', 'translation']);
+  const t = useTranslations(['apiErrors', 'translation']);
 
   const handleError = (err: Error) => {
     setAlert({

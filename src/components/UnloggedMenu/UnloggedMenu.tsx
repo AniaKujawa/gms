@@ -1,31 +1,30 @@
+"use client"
 import React from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Button, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { signIn } from "next-auth/react";
 import { PATHS } from '../../utils/consts';
 
 import { MobileUnloggedMenu } from './MobileUnloggedMenu';
-import { useStyles } from './UnloggedMenu.styles';
+import { LeftButton } from './UnloggedMenu.styles';
 
 export const UnloggedMenu = () => {
   const theme = useTheme();
   const isWide = useMediaQuery(theme.breakpoints.up('sm'));
-  const { t } = useTranslation(['signing', 'translation']);
-  const classes = useStyles();
+  const t = useTranslations(['signing', 'translation']);
 
   return isWide ? (
     <Grid>
-      <Button
-        color="secondary"
-        variant="text"
+      <LeftButton
+        variant="contained"
+        color="primary"
         onClick={() => signIn(undefined, { callbackUrl: '/' })}
-        className={classes.leftButton}
       >
         <Typography color="secondary" >
           {t('signing:login')}
         </Typography>
-      </Button>
+      </LeftButton>
       <Button
         component={Link}
         color="secondary"

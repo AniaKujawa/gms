@@ -7,28 +7,27 @@ import { Slider } from '../Slider';
 import { MusicianTags } from './../MusicianTags';
 
 import { Props } from './types';
-import { useStyles } from './Musician.styles';
+import { StyledDescription, StyledRoot, StyledSlider } from './Musician.styles';
 
 
 export const Musician: FC<Props> = ({ musician, children }) => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <StyledRoot>
       <Typography variant="h2">{musician.name}</Typography>
       {musician.images.length ? (
-        <Grid md={6} container className={classes.slider}>
+        <StyledSlider md={6} container>
           <Slider images={musician.images} />
-        </Grid>
+        </StyledSlider>
       )
         : null}
-      <Grid item md={6} lg={4} className={classes.description}>
+      <StyledDescription item md={6} lg={4}>
         <Typography variant="body1">
           {parse(musician.description || '')}
         </Typography>
-      </Grid>
+      </StyledDescription>
       <MusicianTags tags={musician.tags} />
       {children}
-    </div>
+    </StyledRoot>
   )
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 import {
   Divider,
   Menu,
@@ -15,7 +15,7 @@ import { PATHS } from '../../utils/consts';
 
 export const MobileUnloggedMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const { t } = useTranslation(['signing', 'translation']);
+  const t = useTranslations(['signing', 'translation']);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+// import { useTranslations } from 'next-intl';
 
 import { useUploadAvatar } from '../../queries/user';
 import { Tooltip } from '../../components';
 
-import { Avatar } from './Avatar';
-import { useStyles } from './AvatarUploader.styles';
+import { StyledAvatar, StyledWrapper } from './AvatarUploader.styles';
 
 type Props = {
   url: string;
@@ -13,8 +12,7 @@ type Props = {
 };
 
 export const AvatarUploader: FC<Props> = ({ url, name }) => {
-  const classes = useStyles();
-  const { t } = useTranslation('profile');
+  // const t = useTranslations('profile');
   const { mutate } = useUploadAvatar();
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -23,7 +21,7 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
   }
 
   return (
-    <div className={classes.wrapper}>
+    <StyledWrapper>
       <input
         accept="image/*"
         style={{ display: 'none' }}
@@ -32,14 +30,14 @@ export const AvatarUploader: FC<Props> = ({ url, name }) => {
         onChange={handleFileChange}
       />
       <Tooltip
-        title={t('uploadAvatarTooltip') || 'Click to upload new photo'}
+        title={'uploadAvatarTooltip' || 'Click to upload new photo'}
       >
         <label htmlFor="button-file">
-          <Avatar className={classes.avatar} src={url}>
+          <StyledAvatar src={url}>
             {name}
-          </Avatar>
+          </StyledAvatar>
         </label>
       </Tooltip>
-    </div>
+    </StyledWrapper>
   );
 };

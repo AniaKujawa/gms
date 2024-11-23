@@ -1,22 +1,21 @@
 "use client"
 import React, { FC } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from 'next-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Box } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { useUpdateUser } from '../../queries/user';
 
-import { useStyles } from './UserForm.styles';
 import { User, UpdateUser } from '../../types';
 import { PATHS } from '../../utils/consts';
+import { ButtonContainer, StyledForm, SubmitButton } from './UserForm.styles';
 
 type Props = {
   user: User;
 };
 
 export const UserForm: FC<Props> = ({ user }) => {
-  const classes = useStyles();
-  const { t } = useTranslation(['signing', 'profile', 'translation']);
+  const t = useTranslations(['signing', 'profile', 'translation']);
   const { push } = useRouter();
   const { handleSubmit, control, errors } = useForm<UpdateUser>({
     mode: 'onChange',
@@ -26,7 +25,7 @@ export const UserForm: FC<Props> = ({ user }) => {
   const onSubmit = (data: UpdateUser) => mutate(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name='firstName'
         control={control}
@@ -83,7 +82,7 @@ export const UserForm: FC<Props> = ({ user }) => {
           />
         )}
       />
-      <Box className={classes.buttons}>
+      <ButtonContainer>
         <Button
           variant="outlined"
           disabled={isLoading}
@@ -92,7 +91,7 @@ export const UserForm: FC<Props> = ({ user }) => {
         >
           {t('cancel')}
         </Button>
-        <Button
+        <SubmitButton
           type='submit'
           disabled={isLoading}
           variant="contained"
@@ -100,8 +99,8 @@ export const UserForm: FC<Props> = ({ user }) => {
           className={classes.submitBtn}
         >
           {isLoading ? t('loading') : t('save')}
-        </Button>
-      </Box>
-    </form>
+        </SubmitButton>
+      </ButtonContainer>
+    </StyledForm>
   )
 };
