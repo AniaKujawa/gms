@@ -3,12 +3,12 @@ import { getServerSession } from "next-auth";
 
 import { authOptions } from "../../../../pages/api/auth/[...nextauth]";
 import { MusicView, MusicViewExtended } from "../../../../src/views/MusicView";
-import { musicianClient } from '../../../../src/client/Musician';
+import { musicianClient } from "../../../../src/client/Musician";
 
 interface IProps {
   params: {
     id: string;
-  }
+  };
 }
 
 export default async function Page({ params }: IProps) {
@@ -19,11 +19,11 @@ export default async function Page({ params }: IProps) {
 
   if (musician) {
     if (session?.token) {
-      return <MusicViewExtended musician={musician} />
+      return <MusicViewExtended musician={musician} />;
     }
 
-    return <MusicView musician={musician} />
+    return <MusicView musician={musician} />;
   }
 
-  return <p>Music doesn't exist</p>
-};
+  return <p>Music doesn't exist</p>;
+}

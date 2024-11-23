@@ -8,7 +8,7 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   padding: theme.spacing(1, 4),
   justifyContent: 'space-between',
   alignItems: 'center', 
-  backgroundColor: theme.palette.black.main,
+  // backgroundColor: theme.palette.black.main,
   position: 'sticky',
   top: 0,
   zIndex: 2,

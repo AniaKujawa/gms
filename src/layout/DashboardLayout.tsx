@@ -1,6 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { Header } from '../components';
-import { StyledContainer, StyledContent } from './DashboardLayout.styles';
+"use client";
+
+import React, { FC, ReactNode } from "react";
+import { Header } from "../components";
+import { StyledContainer, StyledContent } from "./DashboardLayout.styles";
 
 interface Props {
   children: ReactNode;
@@ -9,8 +11,6 @@ interface Props {
 export const DashboardLayout: FC<Props> = ({ children }) => (
   <StyledContainer>
     <Header />
-    <StyledContent>
-      {children}
-    </StyledContent>
+    <StyledContent>{children}</StyledContent>
   </StyledContainer>
 );

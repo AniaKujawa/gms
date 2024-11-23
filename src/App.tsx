@@ -1,22 +1,23 @@
-import { ThemeProvider } from '@material-ui/core';
-import React, { FC, ReactNode, Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { SessionProvider } from 'next-auth/react';
+"use client";
+import { ThemeProvider } from "@material-ui/core";
+import React, { FC, ReactNode, Suspense } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { SessionProvider } from "next-auth/react";
 
-import { theme } from './styles/theme';
-import { PipeProviders } from './utils/PipeProviders';
-import { UserContextProvider } from './context/User';
-import { FeedbackContextProvider } from './context/Feedback';
-import { client } from './client/UserQuery';
-import { Routes } from './routes';
-import { FeedbackAlert } from './shared/components/Feedback';
-import { Loader } from './components';
+import { theme } from "./styles/theme";
+import { PipeProviders } from "./utils/PipeProviders";
+import { UserContextProvider } from "./context/User";
+import { FeedbackContextProvider } from "./context/Feedback";
+import { client } from "./client/UserQuery";
+import { Routes } from "./routes";
+import { FeedbackAlert } from "./shared/components/Feedback";
+import { Loader } from "./components";
 
 const providers: FC<{ children: ReactNode }>[] = [
   FeedbackContextProvider,
   // UserContextProvider
-  SessionProvider
+  SessionProvider,
 ];
 
 const App: FC = () => {
@@ -34,6 +35,6 @@ const App: FC = () => {
       </QueryClientProvider>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

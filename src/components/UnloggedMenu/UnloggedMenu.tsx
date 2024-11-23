@@ -1,29 +1,33 @@
-"use client"
-import React from 'react';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { Button, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+"use client";
+import React from "react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import {
+  Button,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import { signIn } from "next-auth/react";
-import { PATHS } from '../../utils/consts';
+import { PATHS } from "../../utils/consts";
 
-import { MobileUnloggedMenu } from './MobileUnloggedMenu';
-import { LeftButton } from './UnloggedMenu.styles';
+import { MobileUnloggedMenu } from "./MobileUnloggedMenu";
+import { LeftButton } from "./UnloggedMenu.styles";
 
 export const UnloggedMenu = () => {
   const theme = useTheme();
-  const isWide = useMediaQuery(theme.breakpoints.up('sm'));
-  const t = useTranslations(['signing', 'translation']);
+  const isWide = useMediaQuery(theme.breakpoints.up("sm"));
+  const t = useTranslations();
 
   return isWide ? (
     <Grid>
       <LeftButton
         variant="contained"
         color="primary"
-        onClick={() => signIn(undefined, { callbackUrl: '/' })}
+        onClick={() => signIn(undefined, { callbackUrl: "/" })}
       >
-        <Typography color="secondary" >
-          {t('signing:login')}
-        </Typography>
+        <Typography color="secondary">{t("signing.login")}</Typography>
       </LeftButton>
       <Button
         component={Link}
@@ -31,12 +35,10 @@ export const UnloggedMenu = () => {
         variant="outlined"
         href={PATHS.START}
       >
-        <Typography color="secondary" >
-          {t('translation:joinUs')}
-        </Typography>
+        <Typography color="secondary">{t("translation.joinUs")}</Typography>
       </Button>
-    </Grid >
+    </Grid>
   ) : (
     <MobileUnloggedMenu />
-  )
+  );
 };

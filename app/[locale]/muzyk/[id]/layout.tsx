@@ -2,8 +2,8 @@ import React from "react";
 import { DashboardLayout } from "../../../../src/layout/DashboardLayout";
 
 export const metadata = {
-  title: 'Music',
-  description: 'Music profile',
+  title: "Music",
+  description: "Music profile",
 };
 
 type Props = {
@@ -11,9 +11,5 @@ type Props = {
 };
 
 export default function Layout({ children }: Props) {
-  return (
-    <DashboardLayout>
-      {children}
-    </DashboardLayout>
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 }
