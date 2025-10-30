@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 import { Box, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 import { Toolbar } from '..';
@@ -15,7 +15,7 @@ import { useStyles } from './MusicianToolbar.styles';
 
 export const MusicianToolbar: FC<Props> = ({ musician }) => {
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { mutate: activate } = useActivateMusicianBand();
   const { mutate: deactivate } = useDeactivateMusicianBand();
   const [ isModalOpen, setIsModalOpen ] = useState(false);
@@ -48,7 +48,7 @@ export const MusicianToolbar: FC<Props> = ({ musician }) => {
       <Button
         variant="outlined"
         color="primary"
-        onClick={() => push(`${PATHS.BANDS_EDIT}/${musician.id}`)}
+        onClick={() => navigate(`${PATHS.BANDS_EDIT}/${musician.id}`)}
       >
         {t('profile.edit')}
       </Button>

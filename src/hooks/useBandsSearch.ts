@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useUrlQuery } from './useUrlQuery';
 
 interface HookApi {
@@ -10,15 +10,15 @@ interface HookApi {
 export const useBandsSearch = (): HookApi => {
   const query = useUrlQuery();
   const { pathname } = useLocation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const [ search, setSearch ] = useState(query.get('search') || '');
 
   const handleSearchChange = useCallback((search: string) => {
     if(search) {
-      return push(`${pathname}?search=${search}`);
+      return navigate(`${pathname}?search=${search}`);
     }
-    push(pathname);
-  }, [pathname, push]);
+    navigate(pathname);
+  }, [pathname, navigate]);
 
   useEffect(() => {
     setSearch(query.get('search') || '');

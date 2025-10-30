@@ -4,8 +4,7 @@ import { QueryClientProvider } from 'react-query';
 import { unmountComponentAtNode } from 'react-dom';
 import { QueryClient } from 'react-query';
 import { ThemeProvider } from '@material-ui/core';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history'
+import { MemoryRouter } from 'react-router-dom';
 
 import { musicianClient } from '../../../client/Musician';
 import { theme } from '../../../styles/theme';
@@ -97,17 +96,13 @@ describe('Band profile page', () => {
   });
 
   it('display message when musician not found in api', async() => {
-    const history = createMemoryHistory();
-
-    history.push(`${PATHS.BANDS}/2`);
-
     jest.spyOn(musicianClient, 'getMusician').mockImplementation(id => Promise.reject());
 
     await act(async() => {
       render(
-        <Router history={history}>
+        <MemoryRouter initialEntries={[`${PATHS.BANDS}/2`]}>
           <BandProfile />
-        </Router>,
+        </MemoryRouter>,
         { container, wrapper }
       );
     });

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useMutation, useQuery } from "react-query";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { userClient } from "../../client/User";
 import { Login, UserPayload, UpdateUser } from '../../types';
 import { useFeedback } from "../../hooks/useFeedback";
@@ -44,7 +44,7 @@ export const useGetUser = (id: number) => {
 
 export const useRegisterUser = () => {
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { setIsLoggedIn } = useUserContext();
   const { handleError, handleSuccess } = useFeedback();
   
@@ -54,7 +54,7 @@ export const useRegisterUser = () => {
 
       setIsLoggedIn(true);
       handleSuccess(t('signing.registerSuccess'));
-      push('/');
+      navigate('/');
 
       return data;
     } catch(e) {
@@ -67,7 +67,7 @@ export const useRegisterUser = () => {
 export const useLoginUser = () => {
   const { t } = useTranslation();
   const { setIsLoggedIn } = useUserContext();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { handleError } = useFeedback();
   
   return useMutation(async (user: Login) => {
@@ -75,7 +75,7 @@ export const useLoginUser = () => {
       const data = await userClient.loginUser(user);
 
       setIsLoggedIn(true);
-      push('/');
+      navigate('/');
 
       return data;
     } catch(e) {

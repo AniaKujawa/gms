@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Link, Checkbox, FormControlLabel } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -15,7 +15,7 @@ import { PATHS } from '../../../../utils/consts';
 export const RegisterForm: FC = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { handleSubmit, control, errors } = useForm<RegisterFormProps>({
     mode: 'onChange',
   });
@@ -110,7 +110,7 @@ export const RegisterForm: FC = () => {
         {isLoading ? t('loading') : t('signing.register')}
       </Button>
       <Link
-        onClick={() => push(PATHS.LOGIN)}
+        onClick={() => navigate(PATHS.LOGIN)}
         className={classes.link}
       >
         {t('signing.alreadyRegistered')}

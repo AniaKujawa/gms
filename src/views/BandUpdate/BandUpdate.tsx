@@ -11,7 +11,7 @@ import { Params } from './types';
 
 export const BandUpdate: FC = () => {
   const { id } = useParams<Params>();
-  const { data: musician, isLoading } = useGetMusician(id);
+  const { data: musician, isLoading } = useGetMusician(id!);
 
   return (
     <LoadingLayout isLoading={isLoading}>
