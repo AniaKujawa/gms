@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Link } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Form } from './../../shared/Form';
 import { Button } from './../../shared/Button';
@@ -17,7 +17,7 @@ import { PATHS } from '../../../../utils/consts';
 export const LoginForm: FC = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { handleSubmit, control, errors } = useForm<LoginFormProps>({
     mode: 'onChange',
   });
@@ -34,7 +34,7 @@ export const LoginForm: FC = () => {
         {isLoading ? t('loading') : t('signing.loginButton')}
       </Button>
       <Link
-        onClick={() => push(PATHS.START)}
+        onClick={() => navigate(PATHS.START)}
         className={classes.link}
       >
         {t('signing.firstTime')}

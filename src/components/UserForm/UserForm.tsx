@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { TextField, Button, Box } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useUpdateUser } from '../../queries/user';
 
 import { useStyles } from './UserForm.styles';
@@ -16,7 +16,7 @@ type Props = {
 export const UserForm: FC<Props> = ({ user }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { handleSubmit, control, errors } = useForm<UpdateUser>({
     mode: 'onChange',
     defaultValues: user
@@ -87,7 +87,7 @@ export const UserForm: FC<Props> = ({ user }) => {
           variant="outlined"
           disabled={isLoading}            
           color="primary"
-          onClick={() => push(PATHS.PROFILE)}
+          onClick={() => navigate(PATHS.PROFILE)}
         >
           {t('translation.cancel')}
         </Button>
